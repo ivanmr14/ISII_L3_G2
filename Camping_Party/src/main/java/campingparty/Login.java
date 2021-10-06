@@ -43,6 +43,12 @@ public class Login extends javax.swing.JFrame {
 
         etPass.setText("Contraseña");
 
+        fieldPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldPassActionPerformed(evt);
+            }
+        });
+
         btnAdelante.setText("Adelante");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -88,6 +94,10 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void fieldPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldPassActionPerformed
 
     /**
      * @param args the command line arguments
