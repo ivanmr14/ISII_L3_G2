@@ -37,8 +37,8 @@ public class RegistroCliente extends javax.swing.JFrame {
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        Aceptar = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
+        aceptar = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,13 +64,18 @@ public class RegistroCliente extends javax.swing.JFrame {
 
         jTextField9.setText("jTextField9");
 
-        jButton1.setText("Cancelar");
-
-        Aceptar.setText("Aceptar");
-        Aceptar.setToolTipText("");
-        Aceptar.addActionListener(new java.awt.event.ActionListener() {
+        cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AceptarActionPerformed(evt);
+                cancelarActionPerformed(evt);
+            }
+        });
+
+        aceptar.setText("Aceptar");
+        aceptar.setToolTipText("");
+        aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptarActionPerformed(evt);
             }
         });
 
@@ -103,9 +108,9 @@ public class RegistroCliente extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(cancelar)
                                 .addGap(54, 54, 54)
-                                .addComponent(Aceptar)))
+                                .addComponent(aceptar)))
                         .addGap(89, 89, 89))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -144,17 +149,27 @@ public class RegistroCliente extends javax.swing.JFrame {
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(Aceptar))
+                    .addComponent(cancelar)
+                    .addComponent(aceptar))
                 .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
+    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_AceptarActionPerformed
+        Cliente cliente = new Cliente();
+        cliente.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_aceptarActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        // TODO add your handling code here:
+        Login login = new Login();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,8 +207,8 @@ public class RegistroCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Aceptar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton aceptar;
+    private javax.swing.JButton cancelar;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

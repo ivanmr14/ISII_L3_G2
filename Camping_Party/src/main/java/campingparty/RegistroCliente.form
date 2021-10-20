@@ -56,9 +56,9 @@
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="cancelar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                              <Component id="Aceptar" min="-2" max="-2" attributes="0"/>
+                              <Component id="aceptar" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
@@ -110,8 +110,8 @@
               </Group>
               <EmptySpace pref="29" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Aceptar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="aceptar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
@@ -172,18 +172,21 @@
         <Property name="text" type="java.lang.String" value="jTextField9"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="cancelar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="Aceptar">
+    <Component class="javax.swing.JButton" name="aceptar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Aceptar"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AceptarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aceptarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="jPasswordField1">

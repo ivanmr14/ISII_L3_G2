@@ -27,47 +27,52 @@ public class Cliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        hacerReserva = new javax.swing.JButton();
+        modificarReserva = new javax.swing.JButton();
+        reservarActividad = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        cancelarActividad = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Hacer Reserva");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        hacerReserva.setText("Hacer Reserva");
+        hacerReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                hacerReservaActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Modificar Reservas");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        modificarReserva.setText("Modificar Reservas");
+        modificarReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                modificarReservaActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Reservar Actividad");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        reservarActividad.setText("Reservar Actividad");
+        reservarActividad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                reservarActividadActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Salir");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                salirActionPerformed(evt);
             }
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Bienvenido!");
 
-        jButton5.setText("Cancelar Actividad");
+        cancelarActividad.setText("Cancelar Actividad");
+        cancelarActividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActividadActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,16 +86,16 @@ public class Cliente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(121, 121, 121)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
+                            .addComponent(modificarReserva)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton5)
-                                .addComponent(jButton3))
+                                .addComponent(cancelarActividad)
+                                .addComponent(reservarActividad))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(12, 12, 12)
-                                .addComponent(jButton1))))
+                                .addComponent(hacerReserva))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(166, 166, 166)
-                        .addComponent(jButton4)))
+                        .addComponent(salir)))
                 .addContainerGap(132, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,49 +104,58 @@ public class Cliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(38, 38, 38)
-                .addComponent(jButton1)
+                .addComponent(hacerReserva)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(modificarReserva)
                 .addGap(24, 24, 24)
-                .addComponent(jButton3)
+                .addComponent(reservarActividad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(cancelarActividad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(salir)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void hacerReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hacerReservaActionPerformed
         // TODO add your handling code here:
         ReservaCliente rc = new ReservaCliente();
         rc.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_hacerReservaActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        Login login = new Login();
+        login.setVisible(true);
         this.dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_salirActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void reservarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservarActividadActionPerformed
         ActividadesCliente actividadescliente = new ActividadesCliente();// TODO add your handling code here:
         actividadescliente.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_reservarActividadActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void modificarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarReservaActionPerformed
         ModificarReserva modificarReserva = new ModificarReserva();// TODO add your handling code here:
         modificarReserva.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_modificarReservaActionPerformed
+
+    private void cancelarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActividadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelarActividadActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton cancelarActividad;
+    private javax.swing.JButton hacerReserva;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton modificarReserva;
+    private javax.swing.JButton reservarActividad;
+    private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }

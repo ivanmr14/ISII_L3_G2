@@ -31,9 +31,9 @@ public class Login extends javax.swing.JFrame {
         etUsuario = new javax.swing.JLabel();
         etPass = new javax.swing.JLabel();
         fieldUsuario = new javax.swing.JTextField();
-        btnAdelante = new javax.swing.JButton();
+        registro = new javax.swing.JButton();
         fieldPass = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        entrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,17 +46,22 @@ public class Login extends javax.swing.JFrame {
         etPass.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         etPass.setText("Contraseña");
 
-        btnAdelante.setText("Registrarse");
-        btnAdelante.addActionListener(new java.awt.event.ActionListener() {
+        registro.setText("Registrarse");
+        registro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registroMouseClicked(evt);
+            }
+        });
+        registro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdelanteActionPerformed(evt);
+                registroActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Entrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        entrar.setText("Entrar");
+        entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                entrarActionPerformed(evt);
             }
         });
 
@@ -71,7 +76,7 @@ public class Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAdelante)
+                    .addComponent(registro)
                     .addComponent(etUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(etPass, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,7 +87,7 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(fieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(95, 95, 95)
-                        .addComponent(jButton1)))
+                        .addComponent(entrar)))
                 .addGap(0, 95, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -100,26 +105,31 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(fieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdelante)
-                    .addComponent(jButton1))
+                    .addComponent(registro)
+                    .addComponent(entrar))
                 .addGap(32, 32, 32))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAdelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdelanteActionPerformed
+    private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
         // TODO add your handling code here:
-        Gerente gerente = new Gerente();
-        gerente.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnAdelanteActionPerformed
+        RegistroCliente registro = new RegistroCliente();
+        registro.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_registroActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
         Cliente cliente = new Cliente();// TODO add your handling code here:
         cliente.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_entrarActionPerformed
+
+    private void registroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_registroMouseClicked
 
     /**
      * @param args the command line arguments
@@ -157,12 +167,12 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdelante;
     private javax.swing.JLabel campingParty;
+    private javax.swing.JButton entrar;
     private javax.swing.JLabel etPass;
     private javax.swing.JLabel etUsuario;
     private javax.swing.JPasswordField fieldPass;
     private javax.swing.JTextField fieldUsuario;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton registro;
     // End of variables declaration//GEN-END:variables
 }

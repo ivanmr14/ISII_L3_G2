@@ -31,7 +31,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="btnAdelante" min="-2" max="-2" attributes="0"/>
+                  <Component id="registro" min="-2" max="-2" attributes="0"/>
                   <Component id="etUsuario" min="-2" pref="60" max="-2" attributes="0"/>
                   <Component id="etPass" min="-2" pref="88" max="-2" attributes="0"/>
               </Group>
@@ -45,7 +45,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="entrar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="0" pref="95" max="32767" attributes="0"/>
@@ -69,8 +69,8 @@
               </Group>
               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnAdelante" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="registro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="entrar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
@@ -104,22 +104,23 @@
     </Component>
     <Component class="javax.swing.JTextField" name="fieldUsuario">
     </Component>
-    <Component class="javax.swing.JButton" name="btnAdelante">
+    <Component class="javax.swing.JButton" name="registro">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrarse"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAdelanteActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="registroMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registroActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="fieldPass">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="entrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Entrar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="entrarActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

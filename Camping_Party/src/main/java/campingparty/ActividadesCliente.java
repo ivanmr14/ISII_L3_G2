@@ -33,8 +33,8 @@ public class ActividadesCliente extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        boton_atras = new javax.swing.JButton();
-        boton_confirmar = new javax.swing.JButton();
+        volver = new javax.swing.JButton();
+        aceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,17 +56,17 @@ public class ActividadesCliente extends javax.swing.JFrame {
             }
         });
 
-        boton_atras.setText("Atrás");
-        boton_atras.addActionListener(new java.awt.event.ActionListener() {
+        volver.setText("volver");
+        volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_atrasActionPerformed(evt);
+                volverActionPerformed(evt);
             }
         });
 
-        boton_confirmar.setText("Confirmar");
-        boton_confirmar.addActionListener(new java.awt.event.ActionListener() {
+        aceptar.setText("Aceptar");
+        aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_confirmarActionPerformed(evt);
+                aceptarActionPerformed(evt);
             }
         });
 
@@ -86,17 +86,17 @@ public class ActividadesCliente extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(boton_confirmar)
+                            .addComponent(aceptar)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(boton_atras)
+                                    .addComponent(volver)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel4))
                                 .addGap(27, 27, 27)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,8 +115,8 @@ public class ActividadesCliente extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boton_atras)
-                    .addComponent(boton_confirmar))
+                    .addComponent(volver)
+                    .addComponent(aceptar))
                 .addGap(29, 29, 29))
         );
 
@@ -127,24 +127,27 @@ public class ActividadesCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void boton_atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_atrasActionPerformed
+    private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
+        Cliente cliente = new Cliente();
+        cliente.setVisible(true);
         this.dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_boton_atrasActionPerformed
+    }//GEN-LAST:event_volverActionPerformed
 
-    private void boton_confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boton_confirmarActionPerformed
-        this.dispose();// TODO add your handling code here:
-    }//GEN-LAST:event_boton_confirmarActionPerformed
+    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
+        
+         this.dispose();
+    }//GEN-LAST:event_aceptarActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton boton_atras;
-    private javax.swing.JButton boton_confirmar;
+    private javax.swing.JButton aceptar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }
