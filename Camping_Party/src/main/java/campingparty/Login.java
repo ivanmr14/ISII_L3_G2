@@ -34,6 +34,7 @@ public class Login extends javax.swing.JFrame {
         registro = new javax.swing.JButton();
         fieldPass = new javax.swing.JPasswordField();
         entrar = new javax.swing.JButton();
+        gerente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +66,13 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        gerente.setText("Gerente");
+        gerente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gerenteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,6 +97,10 @@ public class Login extends javax.swing.JFrame {
                         .addGap(95, 95, 95)
                         .addComponent(entrar)))
                 .addGap(0, 95, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(gerente)
+                .addGap(175, 175, 175))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +115,9 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(etPass)
                     .addComponent(fieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(63, 63, 63)
+                .addGap(25, 25, 25)
+                .addComponent(gerente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registro)
                     .addComponent(entrar))
@@ -130,6 +144,13 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_registroMouseClicked
+
+    private void gerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenteActionPerformed
+        // TODO add your handling code here:
+        Gerente gerente = new Gerente();
+        gerente.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_gerenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,6 +194,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel etUsuario;
     private javax.swing.JPasswordField fieldPass;
     private javax.swing.JTextField fieldUsuario;
+    private javax.swing.JButton gerente;
     private javax.swing.JButton registro;
     // End of variables declaration//GEN-END:variables
 }

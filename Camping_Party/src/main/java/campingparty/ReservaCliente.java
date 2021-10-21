@@ -125,6 +125,8 @@ public class ReservaCliente extends javax.swing.JFrame {
 
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
         // TODO add your handling code here:
+        DatosTiendaCampaña tienda = new DatosTiendaCampaña();
+        tienda.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_siguienteActionPerformed
 

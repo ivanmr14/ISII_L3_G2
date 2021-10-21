@@ -43,7 +43,7 @@ public class Cliente extends javax.swing.JFrame {
             }
         });
 
-        modificarReserva.setText("Modificar Reservas");
+        modificarReserva.setText("Cambiar fecha Reserva");
         modificarReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modificarReservaActionPerformed(evt);
@@ -81,20 +81,20 @@ public class Cliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(hacerReserva))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(103, 103, 103)
-                        .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(modificarReserva)
+                            .addComponent(jLabel1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(121, 121, 121)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(modificarReserva)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cancelarActividad)
-                                .addComponent(reservarActividad))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(hacerReserva))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cancelarActividad)
+                            .addComponent(reservarActividad)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
+                        .addGap(160, 160, 160)
                         .addComponent(salir)))
                 .addContainerGap(132, Short.MAX_VALUE))
         );
@@ -146,6 +146,9 @@ public class Cliente extends javax.swing.JFrame {
 
     private void cancelarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActividadActionPerformed
         // TODO add your handling code here:
+        CancelarActividadCliente cancelar = new CancelarActividadCliente();
+        cancelar.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_cancelarActividadActionPerformed
 
 

@@ -50,6 +50,11 @@
               </Group>
               <EmptySpace min="0" pref="95" max="32767" attributes="0"/>
           </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="gerente" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -67,7 +72,9 @@
                   <Component id="etPass" min="-2" max="-2" attributes="0"/>
                   <Component id="fieldPass" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Component id="gerente" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="registro" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="entrar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -121,6 +128,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="entrarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="gerente">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gerente"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gerenteActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
