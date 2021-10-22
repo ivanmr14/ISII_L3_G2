@@ -27,46 +27,53 @@ public class Gerente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        entrada = new javax.swing.JButton();
-        salida = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        actividades = new javax.swing.JButton();
+        reservas = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        entrada.setText("Registrar entrada");
+        actividades.setText("Gestión de Actividades");
 
-        salida.setText("Registrar Salida");
+        reservas.setText("Gestión de Reservas");
 
-        jButton6.setText("Nueva entrada");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("Bienvenido de nuevo!");
 
-        jButton7.setText("Gestion de Actividades");
+        salir.setText("Salir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(145, 145, 145)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(entrada)
-                    .addComponent(jButton7)
-                    .addComponent(jButton6)
-                    .addComponent(salida))
-                .addContainerGap(88, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(actividades)
+                            .addComponent(reservas)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(salir)))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(entrada)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(reservas)
                 .addGap(18, 18, 18)
-                .addComponent(salida)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton6)
-                .addGap(18, 18, 18)
-                .addComponent(jButton7)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addComponent(actividades)
+                .addGap(99, 99, 99)
+                .addComponent(salir)
+                .addGap(54, 54, 54))
         );
 
         pack();
@@ -75,9 +82,9 @@ public class Gerente extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton entrada;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton salida;
+    private javax.swing.JButton actividades;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton reservas;
+    private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }

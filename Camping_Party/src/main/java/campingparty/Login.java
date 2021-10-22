@@ -5,6 +5,9 @@
  */
 package campingparty;
 
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alumno
@@ -30,21 +33,21 @@ public class Login extends javax.swing.JFrame {
         campingParty = new javax.swing.JLabel();
         etUsuario = new javax.swing.JLabel();
         etPass = new javax.swing.JLabel();
-        fieldUsuario = new javax.swing.JTextField();
+        fieldusuario = new javax.swing.JTextField();
         registro = new javax.swing.JButton();
-        fieldPass = new javax.swing.JPasswordField();
+        fieldpass = new javax.swing.JPasswordField();
         entrar = new javax.swing.JButton();
         gerente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        campingParty.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        campingParty.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
         campingParty.setText("CAMPING PARTY");
 
-        etUsuario.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        etUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         etUsuario.setText("Usuario");
 
-        etPass.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        etPass.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         etPass.setText("Contraseña");
 
         registro.setText("Registrarse");
@@ -78,10 +81,6 @@ public class Login extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addComponent(campingParty, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(registro)
@@ -91,8 +90,8 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(fieldUsuario)
-                            .addComponent(fieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(fieldusuario)
+                            .addComponent(fieldpass, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addComponent(entrar)))
@@ -101,20 +100,24 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(gerente)
                 .addGap(175, 175, 175))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(campingParty)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addComponent(campingParty)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etUsuario)
-                    .addComponent(fieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(etPass)
-                    .addComponent(fieldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fieldpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addComponent(gerente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -135,9 +138,16 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_registroActionPerformed
 
     private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
+        
+        if(fieldusuario.getText().isEmpty() || fieldpass.getPassword().length==0){
+           JOptionPane.showMessageDialog(this,"Debes introducir un usuario y una contraseña.","Alert",JOptionPane.WARNING_MESSAGE); 
+        
+        }
+        else{
         Cliente cliente = new Cliente();// TODO add your handling code here:
         cliente.setVisible(true);
         this.dispose();
+        }
     }//GEN-LAST:event_entrarActionPerformed
 
     private void registroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroMouseClicked
@@ -192,8 +202,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton entrar;
     private javax.swing.JLabel etPass;
     private javax.swing.JLabel etUsuario;
-    private javax.swing.JPasswordField fieldPass;
-    private javax.swing.JTextField fieldUsuario;
+    private javax.swing.JPasswordField fieldpass;
+    private javax.swing.JTextField fieldusuario;
     private javax.swing.JButton gerente;
     private javax.swing.JButton registro;
     // End of variables declaration//GEN-END:variables
