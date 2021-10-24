@@ -46,6 +46,11 @@ public class Gerente extends javax.swing.JFrame {
         jLabel1.setText("Bienvenido de nuevo!");
 
         salir.setText("Salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Reservas");
@@ -153,6 +158,13 @@ public class Gerente extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_jList2MouseClicked
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        // TODO add your handling code here:
+        Login login = new Login();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_salirActionPerformed
 
    
 
