@@ -7,6 +7,7 @@ package campingparty;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,6 +20,9 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        
+        //INICIALIZAMOS VECTOR clientes
+        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
     }
 
     /**
@@ -144,9 +148,19 @@ public class Login extends javax.swing.JFrame {
         
         }
         else{
-        Cliente cliente = new Cliente();// TODO add your handling code here:
-        cliente.setVisible(true);
-        this.dispose();
+        
+        
+        //ACCEDER AL CLIENTE ADECUADO DEL VECTOR cliente (?)
+        for (Cliente i : clientes) {
+            if(i.getUser() == fieldusuario.getText()){
+                Cliente cliente = new Cliente(i.getUser(), i.getPassword(),i.getDNI(),i.getName(),i.getSurname());
+                
+                cliente.setVisible(true);
+                this.dispose();
+            }
+        }
+        
+        
         }
     }//GEN-LAST:event_entrarActionPerformed
 
@@ -197,6 +211,9 @@ public class Login extends javax.swing.JFrame {
         });
     }
 
+    //VARIABLE PARA ALMACENAR CLIENTES REGISTRADOS DE FORMA TEMPORAL PARA RegistroCliente
+    private ArrayList<Cliente> clientes;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel campingParty;
     private javax.swing.JButton entrar;
