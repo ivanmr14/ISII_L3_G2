@@ -21,7 +21,10 @@ public class RegistroCliente extends javax.swing.JFrame {
     
     //CONTRUCTOR CON RGYMENTO (ARRAY DE CLIENETS)
     public RegistroCliente(ArrayList<Cliente> clientes) {
-        this.clientes = clientes;
+        
+        //INICIALIZAMOS VECTOR clientes
+        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+        
         initComponents();
     }
 
@@ -224,8 +227,8 @@ public class RegistroCliente extends javax.swing.JFrame {
         });
     }
     
-    //VARIABKE AUXILIAR PARA ALMACENAR LA LISTA DE CLIENTES OBTENEIDO POR EL CONTRUCTOR
-    ArrayList<Cliente> clientes;
+    //LISTA CON TODOS LOS CLIENTES REGISTRADOS
+    private ArrayList<Cliente> clientes;
             
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
