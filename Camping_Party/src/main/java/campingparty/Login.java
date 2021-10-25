@@ -147,13 +147,24 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_registroActionPerformed
 
     private void entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarActionPerformed
+        /**
+         * Para quitar el apaño del boton de acceder al menu clientes,
+         * comentar las siguientes 3 lineas y descomentar el resto.
+         */
+        Cliente cliente = new Cliente();
+        cliente.setVisible(true);
+        this.dispose();
         
+        
+                
+                
+        /*
         if(fieldusuario.getText().isEmpty() || fieldpass.getPassword().length==0){
            JOptionPane.showMessageDialog(this,"Debes introducir un usuario y una contraseña.","Alert",JOptionPane.WARNING_MESSAGE); 
         
         }
         else{
-                //Comprobar login gerente
+            //Comprobar login gerente
             for(Cliente i: clientes){
             if(i.getUser().equals(fieldusuario.getText())){
              
@@ -163,7 +174,7 @@ public class Login extends javax.swing.JFrame {
             }
         }
         }
-        
+        */
         
         
     }//GEN-LAST:event_entrarActionPerformed
