@@ -20,6 +20,13 @@ public class Gerente extends javax.swing.JFrame {
         initComponents();
         
     }
+    
+    public Gerente(String user, String pass){
+        this.user = user;
+        this.pass = pass;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -166,8 +173,26 @@ public class Gerente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_salirActionPerformed
 
+    //GETTERS Y SETTERS
+    
+    public void setUser(String user){
+        this.user = user;
+    }
+    
+    public void setPass(String pass){
+        this.pass = pass;
+    }
+    
+    public String getUser(){
+        return this.user;
+    }
+    
+    public String getPass(){
+        return this.pass;
+    }
    
-
+    private String user;
+    private String pass;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel actividades;
     private javax.swing.JButton jButton1;

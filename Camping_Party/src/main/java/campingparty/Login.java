@@ -147,9 +147,15 @@ public class Login extends javax.swing.JFrame {
         
         }
         else{
-                Cliente cliente = new Cliente();
-                cliente.setVisible(true);
-                this.dispose();
+                //Comprobar login gerente
+            for(Cliente i: clientes){
+            if(i.getUser().equals(fieldusuario.getText())){
+             
+               Cliente cli = new Cliente(i.getUser(),i.getPassword(),i.getDNI(),i.getName(),i.getSurname());
+               cli.setVisible(true);
+               this.dispose();
+            }
+        }
         }
         
         
@@ -163,9 +169,21 @@ public class Login extends javax.swing.JFrame {
 
     private void gerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenteActionPerformed
         // TODO add your handling code here:
-        Gerente gerente = new Gerente();
-        gerente.setVisible(true);
-        this.dispose();
+        //Comprobar login gerente
+        for(Gerente ger: arrayGerentes){
+            if(ger.getUser().equals(fieldusuario.getText())){
+                String pass = fieldpass.getPassword().toString();
+                if(ger.getPass().equals(pass)){
+                    Gerente gerente = new Gerente(ger.getUser(), ger.getPass());
+                    gerente.setVisible(true);
+                    this.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(this,"Los datos introducidos no son correctos.",
+                            "Alert",JOptionPane.WARNING_MESSAGE); 
+        
+                }
+            }
+        }
     }//GEN-LAST:event_gerenteActionPerformed
 
     /**
@@ -203,6 +221,12 @@ public class Login extends javax.swing.JFrame {
         });
     }
 
+    
+    //Array para dar de alta gerentes
+    private ArrayList<Gerente> arrayGerentes;
+    
+    //Array para dar de alta clientes
+    private ArrayList<Cliente> clientes;
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
