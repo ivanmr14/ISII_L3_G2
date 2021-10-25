@@ -8,6 +8,7 @@ package campingparty;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -18,12 +19,12 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    
+     private ArrayList<Cliente> clientes;
     public Login() {
         initComponents();
         
-        arrayGerentes = new ArrayList();
-        g = new Gerente("admin","admin");
-        arrayGerentes.add(g);
+       
         
         
         clientes = new ArrayList();
@@ -58,6 +59,12 @@ public class Login extends javax.swing.JFrame {
 
         etPass.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         etPass.setText("Contraseña");
+
+        fieldusuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldusuarioActionPerformed(evt);
+            }
+        });
 
         registro.setText("Registrarse");
         registro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -187,21 +194,31 @@ public class Login extends javax.swing.JFrame {
     private void btnGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenteActionPerformed
         // TODO add your handling code here:
         //Comprobar login gerente
-        for(Gerente ger: arrayGerentes){
-            if(ger.getUser().equals(fieldusuario.getText())){
-                String pass = fieldpass.getPassword().toString();
-                if(ger.getPass().equals(pass)){
-                    Gerente gerente = new Gerente(ger.getUser(), ger.getPass());
-                    gerente.setVisible(true);
-                    this.dispose();
-                }else{
-                    JOptionPane.showMessageDialog(this,"Los datos introducidos no son correctos.",
-                            "Alert",JOptionPane.WARNING_MESSAGE); 
+         arrayGerentes = new ArrayList();
+       Gerente g = new Gerente("admin","admin");
+        arrayGerentes.add(g);
         
-                }
+        arrayGerentes.forEach(ger -> {
+            String pass_string = new String (fieldpass.getPassword());
+            
+            if(ger.getUser().equals(fieldusuario.getText()) && ger.getPass().equals(pass_string)){
+                Gerente gerente = new Gerente();
+                gerente.setVisible(true);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(this,"Los datos introducidos no son correctos.",
+                        "Alert",JOptionPane.WARNING_MESSAGE);
+                
             }
-        }
+         }); /* Gerente gerente = new Gerente(ge);
+         gerente.setVisible(true);
+         this.dispose();*/
+        
     }//GEN-LAST:event_btnGerenteActionPerformed
+
+    private void fieldusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldusuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldusuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,9 +258,9 @@ public class Login extends javax.swing.JFrame {
     
     //Array para dar de alta gerentes
     private ArrayList<Gerente> arrayGerentes;
-    private Gerente g;
+    //private Gerente g;
     //Array para dar de alta clientes
-    private ArrayList<Cliente> clientes;
+   
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
