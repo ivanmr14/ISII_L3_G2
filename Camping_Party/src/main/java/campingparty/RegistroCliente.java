@@ -23,7 +23,7 @@ public class RegistroCliente extends javax.swing.JFrame {
     public RegistroCliente(ArrayList<Cliente> clientes) {
         
         //INICIALIZAMOS VECTOR clientes
-        ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+        clientes = new ArrayList<Cliente>();
         
         initComponents();
     }
@@ -162,12 +162,7 @@ public class RegistroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-        Cliente cliente = new Cliente();
-        cliente.setUser(userField.getText());
-        cliente.setUser(passwordField.getText());
-        cliente.setDNI(dniField.getText());
-        cliente.setName(nameField.getText());
-        cliente.setSurname(surnameField.getText());
+        Cliente cliente = new Cliente(userField.getText(),passwordField.getText(),dniField.getText(),nameField.getText(),surnameField.getText());
         
         for (Cliente i : clientes){
             if (i.getDNI() == cliente.getDNI()){
@@ -177,7 +172,7 @@ public class RegistroCliente extends javax.swing.JFrame {
                 //TODO mensaje de que el username no está disponible
             }
             else{
-                clientes.add(cliente);
+                this.anyadirCliente(cliente);
             }
         }
         
@@ -229,6 +224,15 @@ public class RegistroCliente extends javax.swing.JFrame {
     
     //LISTA CON TODOS LOS CLIENTES REGISTRADOS
     private ArrayList<Cliente> clientes;
+    
+    private ArrayList<Cliente> getClientes(){
+        return this.clientes;
+    }
+    
+    private void anyadirCliente(Cliente cliente){
+        
+        this.clientes.add(cliente);
+    }
             
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;

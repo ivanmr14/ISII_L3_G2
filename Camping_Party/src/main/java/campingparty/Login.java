@@ -147,7 +147,7 @@ public class Login extends javax.swing.JFrame {
         
         }
         else{
-        
+                Cliente cliente = new Cliente();
                 cliente.setVisible(true);
                 this.dispose();
         }
