@@ -21,6 +21,12 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         
+        arrayGerentes = new ArrayList();
+        g = new Gerente("admin","admin");
+        arrayGerentes.add(g);
+        
+        
+        clientes = new ArrayList();
         
     }
 
@@ -40,7 +46,7 @@ public class Login extends javax.swing.JFrame {
         registro = new javax.swing.JButton();
         fieldpass = new javax.swing.JPasswordField();
         entrar = new javax.swing.JButton();
-        gerente = new javax.swing.JButton();
+        btnGerente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,10 +78,10 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        gerente.setText("Gerente");
-        gerente.addActionListener(new java.awt.event.ActionListener() {
+        btnGerente.setText("Gerente");
+        btnGerente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gerenteActionPerformed(evt);
+                btnGerenteActionPerformed(evt);
             }
         });
 
@@ -101,7 +107,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(0, 95, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(gerente)
+                .addComponent(btnGerente)
                 .addGap(175, 175, 175))
             .addGroup(layout.createSequentialGroup()
                 .addGap(101, 101, 101)
@@ -122,7 +128,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(etPass)
                     .addComponent(fieldpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
-                .addComponent(gerente)
+                .addComponent(btnGerente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registro)
@@ -167,7 +173,7 @@ public class Login extends javax.swing.JFrame {
         
     }//GEN-LAST:event_registroMouseClicked
 
-    private void gerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gerenteActionPerformed
+    private void btnGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenteActionPerformed
         // TODO add your handling code here:
         //Comprobar login gerente
         for(Gerente ger: arrayGerentes){
@@ -184,7 +190,7 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         }
-    }//GEN-LAST:event_gerenteActionPerformed
+    }//GEN-LAST:event_btnGerenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,19 +230,19 @@ public class Login extends javax.swing.JFrame {
     
     //Array para dar de alta gerentes
     private ArrayList<Gerente> arrayGerentes;
-    
+    private Gerente g;
     //Array para dar de alta clientes
     private ArrayList<Cliente> clientes;
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGerente;
     private javax.swing.JLabel campingParty;
     private javax.swing.JButton entrar;
     private javax.swing.JLabel etPass;
     private javax.swing.JLabel etUsuario;
     private javax.swing.JPasswordField fieldpass;
     private javax.swing.JTextField fieldusuario;
-    private javax.swing.JButton gerente;
     private javax.swing.JButton registro;
     // End of variables declaration//GEN-END:variables
 }

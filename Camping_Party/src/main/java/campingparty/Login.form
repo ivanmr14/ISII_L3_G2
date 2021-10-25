@@ -47,7 +47,7 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="gerente" min="-2" max="-2" attributes="0"/>
+              <Component id="btnGerente" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -73,7 +73,7 @@
                   <Component id="fieldpass" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-              <Component id="gerente" min="-2" max="-2" attributes="0"/>
+              <Component id="btnGerente" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="registro" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -130,12 +130,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="entrarActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="gerente">
+    <Component class="javax.swing.JButton" name="btnGerente">
       <Properties>
         <Property name="text" type="java.lang.String" value="Gerente"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gerenteActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGerenteActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
