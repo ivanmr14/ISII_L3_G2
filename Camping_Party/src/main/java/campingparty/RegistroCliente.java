@@ -4,6 +4,8 @@
  */
 package campingparty;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 
 /**
  *
@@ -15,19 +17,10 @@ public class RegistroCliente extends javax.swing.JFrame {
      * Creates new form RegistroCliente
      */
     public RegistroCliente() {
-        
+        clientes = new ArrayList<Cliente>();
         initComponents();
     }
     
-    //CONTRUCTOR CON RGYMENTO (ARRAY DE CLIENETS)
-    public RegistroCliente(ArrayList<Cliente> clientes) {
-        
-        //INICIALIZAMOS VECTOR clientes
-        clientes = new ArrayList<Cliente>();
-        
-        initComponents();
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,14 +60,6 @@ public class RegistroCliente extends javax.swing.JFrame {
 
         jLabel6.setText("Contraseña");
 
-        userField.setText("jTextField6");
-
-        dniField.setText("jTextField7");
-
-        surnameField.setText("jTextField8");
-
-        nameField.setText("jTextField9");
-
         cancelar.setText("Cancelar");
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,8 +74,6 @@ public class RegistroCliente extends javax.swing.JFrame {
                 aceptarActionPerformed(evt);
             }
         });
-
-        passwordField.setText("jPasswordField1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,7 +92,7 @@ public class RegistroCliente extends javax.swing.JFrame {
                         .addGap(160, 160, 160)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(userField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                            .addComponent(userField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nameField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dniField, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(surnameField, javax.swing.GroupLayout.Alignment.LEADING))
@@ -118,8 +101,9 @@ public class RegistroCliente extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
                                 .addComponent(cancelar)
-                                .addGap(54, 54, 54)
+                                .addGap(135, 135, 135)
                                 .addComponent(aceptar)))
                         .addGap(89, 89, 89))))
         );
@@ -148,7 +132,7 @@ public class RegistroCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelar)
                     .addComponent(aceptar))
@@ -164,17 +148,30 @@ public class RegistroCliente extends javax.swing.JFrame {
         
         Cliente cliente = new Cliente(userField.getText(),passwordField.getText(),dniField.getText(),nameField.getText(),surnameField.getText());
         
-        for (Cliente i : clientes){
-            if (i.getDNI() == cliente.getDNI()){
-                //TODO mensaje de que ya hay un cliente registrado con el DNI introducido
+        if (clientes.size() > 0){
+            for (Cliente i : clientes){
+                if (i.getDNI() == cliente.getDNI()){
+                    //TODO mensaje de que ya hay un cliente registrado con el DNI introducido
+                    JOptionPane.showMessageDialog(new JFrame(), "Ya hay un cliente registrado con el DNI introducido.", "Dialog", JOptionPane.ERROR_MESSAGE);
+                }
+                else if(i.getUser() == cliente.getUser()){
+                    //TODO mensaje de que el username no está disponible
+                    JOptionPane.showMessageDialog(new JFrame(), "Username no está disponible.", "Dialog", JOptionPane.ERROR_MESSAGE);
+                }
+                else{
+                    clientes.add(cliente);
+                    Login login = new Login();
+                    login.setVisible(true);
+                    this.dispose();
+                }
             }
-            else if(i.getUser() == cliente.getUser()){
-                //TODO mensaje de que el username no está disponible
-            }
-            else{
-                this.anyadirCliente(cliente);
-            }
+        }else{
+            clientes.add(cliente);
+            Login login = new Login();
+            login.setVisible(true);
+            this.dispose();
         }
+        
         
         cliente.setVisible(true);
         this.dispose();
@@ -196,10 +193,6 @@ public class RegistroCliente extends javax.swing.JFrame {
         return this.clientes;
     }
     
-    private void anyadirCliente(Cliente cliente){
-        
-        this.clientes.add(cliente);
-    }
             
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
