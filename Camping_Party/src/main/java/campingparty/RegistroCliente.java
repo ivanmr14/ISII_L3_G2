@@ -16,8 +16,8 @@ public class RegistroCliente extends javax.swing.JFrame {
     /**
      * Creates new form RegistroCliente
      */
-    public RegistroCliente() {
-        clientes = new ArrayList<Usuario>();
+    public RegistroCliente(Controlador controlador) {
+        clientes = controlador.getListaClientes();
         initComponents();
     }
     
@@ -147,11 +147,11 @@ public class RegistroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-        Usuario cliente = new Usuario(userField.getText(),passwordField.getText(),dniField.getText(),nameField.getText(),surnameField.getText());
+        Cliente cliente = new Cliente(userField.getText(),passwordField.getText(),dniField.getText(),nameField.getText(),surnameField.getText());
         boolean validos = true;
         
         //comprobamos que los datos introducidos son válidos
-        for (Usuario i : clientes){
+        for (Cliente i : clientes){
             if (i.getDNI() == cliente.getDNI()){
                 //TODO mensaje de que ya hay un cliente registrado con el DNI introducido
                 JOptionPane.showMessageDialog(new JFrame(), "Ya hay un cliente registrado con el DNI introducido.", "Dialog", JOptionPane.ERROR_MESSAGE);
@@ -167,6 +167,7 @@ public class RegistroCliente extends javax.swing.JFrame {
         //Si todo está en orden añadimos el cliente al array de clientes
         if(validos){
             clientes.add(cliente);
+            
             this.dispose();
             Login login = new Login();
             login.setVisible(true);
@@ -184,9 +185,9 @@ public class RegistroCliente extends javax.swing.JFrame {
 
     
     //LISTA CON TODOS LOS CLIENTES REGISTRADOS
-    private ArrayList<Usuario> clientes;
+    private ArrayList<Cliente> clientes;
     
-    private ArrayList<Usuario> getClientes(){
+    private ArrayList<Cliente> getClientes(){
         return this.clientes;
     }
     

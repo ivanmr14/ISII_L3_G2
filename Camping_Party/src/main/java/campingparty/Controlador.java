@@ -35,4 +35,8 @@ public class Controlador {
     public ArrayList getListaClientes(){
         return clientes;
     }
+    
+    public void registrarClienteNuevo(Cliente cliente){
+        clientes.add(cliente);
+    }
 }
