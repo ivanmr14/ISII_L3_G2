@@ -17,7 +17,7 @@ public class RegistroCliente extends javax.swing.JFrame {
      * Creates new form RegistroCliente
      */
     public RegistroCliente() {
-        clientes = new ArrayList<Cliente>();
+        clientes = new ArrayList<Usuario>();
         initComponents();
     }
     
@@ -146,35 +146,31 @@ public class RegistroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-        Cliente cliente = new Cliente(userField.getText(),passwordField.getText(),dniField.getText(),nameField.getText(),surnameField.getText());
+        Usuario cliente = new Usuario(userField.getText(),passwordField.getText(),dniField.getText(),nameField.getText(),surnameField.getText());
+        boolean validos = true;
         
-        if (clientes.size() > 0){
-            for (Cliente i : clientes){
-                if (i.getDNI() == cliente.getDNI()){
-                    //TODO mensaje de que ya hay un cliente registrado con el DNI introducido
-                    JOptionPane.showMessageDialog(new JFrame(), "Ya hay un cliente registrado con el DNI introducido.", "Dialog", JOptionPane.ERROR_MESSAGE);
-                }
-                else if(i.getUser() == cliente.getUser()){
-                    //TODO mensaje de que el username no está disponible
-                    JOptionPane.showMessageDialog(new JFrame(), "Username no está disponible.", "Dialog", JOptionPane.ERROR_MESSAGE);
-                }
-                else{
-                    clientes.add(cliente);
-                    Login login = new Login();
-                    login.setVisible(true);
-                    this.dispose();
-                }
+        //comprobamos que los datos introducidos son válidos
+        for (Usuario i : clientes){
+            if (i.getDNI() == cliente.getDNI()){
+                //TODO mensaje de que ya hay un cliente registrado con el DNI introducido
+                JOptionPane.showMessageDialog(new JFrame(), "Ya hay un cliente registrado con el DNI introducido.", "Dialog", JOptionPane.ERROR_MESSAGE);
+                validos = false;
             }
-        }else{
-            clientes.add(cliente);
-            Login login = new Login();
-            login.setVisible(true);
-            this.dispose();
+            else if(i.getUser() == cliente.getUser()){
+                //TODO mensaje de que el username no está disponible
+                JOptionPane.showMessageDialog(new JFrame(), "Username no está disponible.", "Dialog", JOptionPane.ERROR_MESSAGE);
+                validos = false;
+            }
         }
         
-        
-        cliente.setVisible(true);
-        this.dispose();
+        //Si todo está en orden añadimos el cliente al array de clientes
+        if(validos){
+            clientes.add(cliente);
+            this.dispose();
+            Login login = new Login();
+            login.setVisible(true);
+        }
+            
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
@@ -187,9 +183,9 @@ public class RegistroCliente extends javax.swing.JFrame {
 
     
     //LISTA CON TODOS LOS CLIENTES REGISTRADOS
-    private ArrayList<Cliente> clientes;
+    private ArrayList<Usuario> clientes;
     
-    private ArrayList<Cliente> getClientes(){
+    private ArrayList<Usuario> getClientes(){
         return this.clientes;
     }
     
