@@ -136,6 +136,7 @@ public class Fronton extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void comenzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comenzarActionPerformed
@@ -153,8 +154,6 @@ public class Fronton extends javax.swing.JFrame {
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         // TODO add your handling code here:
-        Gerente gerente = new Gerente();
-        gerente.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_volverActionPerformed
 

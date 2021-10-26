@@ -15,15 +15,18 @@ public class Gerente extends javax.swing.JFrame {
 
     /**
      * Creates new form Gerente
+     * @param c
      */
-    public Gerente() {
+    public Gerente(Controlador c) {
         initComponents();
+        this.controlador = c;
         
     }
     
-    public Gerente(String user, String pass){
+    public Gerente(String user, String pass, Controlador c){
         this.user = user;
         this.pass = pass;
+        this.controlador = c;
     }
     
     
@@ -43,9 +46,11 @@ public class Gerente extends javax.swing.JFrame {
         actividades = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
+        btnRegistroCliente = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
+        btnRegistrarSalida = new javax.swing.JButton();
+        btnRegistroActividad = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,10 +77,10 @@ public class Gerente extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
-        jButton1.setText("Nuevo cliente sin reserva");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistroCliente.setText("Nuevo cliente sin reserva");
+        btnRegistroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegistroClienteActionPerformed(evt);
             }
         });
 
@@ -90,6 +95,20 @@ public class Gerente extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(jList2);
+
+        btnRegistrarSalida.setText("Registrar Salida");
+        btnRegistrarSalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarSalidaActionPerformed(evt);
+            }
+        });
+
+        btnRegistroActividad.setText("Registrar Actividad");
+        btnRegistroActividad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistroActividadActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,13 +125,8 @@ public class Gerente extends javax.swing.JFrame {
                 .addComponent(actividades)
                 .addGap(103, 103, 103))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jButton1)))
+                .addGap(255, 255, 255)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
@@ -120,6 +134,14 @@ public class Gerente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(btnRegistroCliente)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRegistrarSalida)
+                .addGap(115, 115, 115)
+                .addComponent(btnRegistroActividad)
+                .addGap(82, 82, 82))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,21 +163,24 @@ public class Gerente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRegistroCliente)
+                    .addComponent(btnRegistrarSalida)
+                    .addComponent(btnRegistroActividad))
                 .addGap(48, 48, 48)
                 .addComponent(salir)
                 .addGap(46, 46, 46))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroClienteActionPerformed
         // TODO add your handling code here:
         ReservaCliente cliente = new ReservaCliente();
         cliente.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRegistroClienteActionPerformed
 
     private void jList2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList2MouseClicked
         // TODO add your handling code here:
@@ -172,6 +197,18 @@ public class Gerente extends javax.swing.JFrame {
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_salirActionPerformed
+
+    private void btnRegistrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarSalidaActionPerformed
+        // TODO add your handling code here:
+        RegistrarSalida rs = new RegistrarSalida(controlador);
+        rs.setVisible(true);
+    }//GEN-LAST:event_btnRegistrarSalidaActionPerformed
+
+    private void btnRegistroActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActividadActionPerformed
+        // TODO add your handling code here:
+        Fronton fronton = new Fronton();
+        fronton.setVisible(true);
+    }//GEN-LAST:event_btnRegistroActividadActionPerformed
 
     //GETTERS Y SETTERS
     
@@ -193,9 +230,12 @@ public class Gerente extends javax.swing.JFrame {
    
     private String user;
     private String pass;
+    private Controlador controlador;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel actividades;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnRegistrarSalida;
+    private javax.swing.JButton btnRegistroActividad;
+    private javax.swing.JButton btnRegistroCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JList<String> jList1;

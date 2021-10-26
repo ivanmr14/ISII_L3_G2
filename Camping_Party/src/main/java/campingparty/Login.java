@@ -24,6 +24,10 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         
+        //Inicio controlador del programa y cargo datos iniciales
+        c = new Controlador();
+        c.cargarClientesIniciales();
+        
        
         
         
@@ -144,6 +148,7 @@ public class Login extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
@@ -195,14 +200,16 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Comprobar login gerente
          arrayGerentes = new ArrayList();
-       Gerente g = new Gerente("admin","admin");
+       Gerente g = new Gerente("admin","admin",c);
         arrayGerentes.add(g);
         
+        String pass_string = new String (fieldpass.getPassword());
+        
         arrayGerentes.forEach(ger -> {
-            String pass_string = new String (fieldpass.getPassword());
+            
             
             if(ger.getUser().equals(fieldusuario.getText()) && ger.getPass().equals(pass_string)){
-                Gerente gerente = new Gerente();
+                Gerente gerente = new Gerente(c);
                 gerente.setVisible(true);
                 this.dispose();
             }else{
@@ -262,7 +269,8 @@ public class Login extends javax.swing.JFrame {
     //Array para dar de alta clientes
    
     
-    
+    //Clase controladora
+    private Controlador c;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGerente;
     private javax.swing.JLabel campingParty;

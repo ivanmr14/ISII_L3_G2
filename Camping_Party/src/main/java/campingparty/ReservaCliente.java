@@ -140,12 +140,12 @@ public class ReservaCliente extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         // TODO add your handling code here:
-        Gerente gerente = new Gerente ();
-        gerente.setVisible(true);
+      
         this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed
 
