@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package campingparty;
+package vista;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
 
@@ -16,8 +17,24 @@ public class RegistroCliente extends javax.swing.JFrame {
     /**
      * Creates new form RegistroCliente
      */
-    public RegistroCliente(Controlador controlador) {
-        clientes = controlador.getListaClientes();
+    
+     //LISTA CON TODOS LOS CLIENTES REGISTRADOS
+    static ArrayList<Cliente> clientes = new ArrayList();
+
+    
+    public ArrayList<Cliente> getClientes() {
+        return clientes;
+    }
+
+    /*private ArrayList<Cliente> getClientes(){
+    return this.clientes;
+    }*/
+    public void setClientes(ArrayList<Cliente> clientes) {    
+        this.clientes = clientes;
+    }
+
+    public RegistroCliente(/*Controlador controlador*/) {
+        /*clientes = controlador.getListaClientes();*/
         initComponents();
     }
     
@@ -147,31 +164,41 @@ public class RegistroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-        Cliente cliente = new Cliente(userField.getText(),passwordField.getText(),dniField.getText(),nameField.getText(),surnameField.getText());
-        boolean validos = true;
+        //Cliente cliente = new Cliente(userField.getText(),passwordField.getText(),dniField.getText(),nameField.getText(),surnameField.getText());
+        //boolean validos = true;
+        Cliente cliente = new Cliente();
+        
         
         //comprobamos que los datos introducidos son válidos
         for (Cliente i : clientes){
-            if (i.getDNI() == cliente.getDNI()){
+            if (i.getDNI().equals(dniField.getText())){
                 //TODO mensaje de que ya hay un cliente registrado con el DNI introducido
                 JOptionPane.showMessageDialog(new JFrame(), "Ya hay un cliente registrado con el DNI introducido.", "Dialog", JOptionPane.ERROR_MESSAGE);
-                validos = false;
+                //validos = false;
             }
-            else if(i.getUser() == cliente.getUser()){
+            else {
                 //TODO mensaje de que el username no está disponible
-                JOptionPane.showMessageDialog(new JFrame(), "Username no está disponible.", "Dialog", JOptionPane.ERROR_MESSAGE);
-                validos = false;
+                cliente.setName(nameField.getText());
+                cliente.setName(surnameField.getText());
+                cliente.setDNI(dniField.getText());
+                cliente.setUser(userField.getText());
+                cliente.setPassword(Arrays.toString(passwordField.getPassword()));
+                
+                clientes.add(cliente);
+                
+                JOptionPane.showMessageDialog(new JFrame(), "Cliente creado con éxito!.", "Dialog", JOptionPane.ERROR_MESSAGE);
+                //validos = false;
             }
         }
         
         //Si todo está en orden añadimos el cliente al array de clientes
-        if(validos){
-            clientes.add(cliente);
+        /*if(validos){
+            
             
             this.dispose();
             Login login = new Login();
             login.setVisible(true);
-        }
+        }*/
             
     }//GEN-LAST:event_aceptarActionPerformed
 
@@ -184,13 +211,7 @@ public class RegistroCliente extends javax.swing.JFrame {
 
 
     
-    //LISTA CON TODOS LOS CLIENTES REGISTRADOS
-    private ArrayList<Cliente> clientes;
-    
-    private ArrayList<Cliente> getClientes(){
-        return this.clientes;
-    }
-    
+   
             
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;

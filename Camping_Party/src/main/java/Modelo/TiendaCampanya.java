@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package campingparty;
+package Modelo;
 
 /**
  * Esta clase sirve para gestionar, guardar, mantener y acceder a los

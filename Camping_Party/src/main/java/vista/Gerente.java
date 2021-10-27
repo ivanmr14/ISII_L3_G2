@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package campingparty;
+package vista;
 
+import Modelo.Controlador;
+import vista.Login;
+import vista.RegistrarSalida;
+import vista.ReservaCliente;
+import vista.Fronton;
 import javax.swing.JTabbedPane;
 
 /**

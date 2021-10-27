@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package campingparty;
+package vista;
 
+import Modelo.Controlador;
+import vista.RegistroCliente;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
@@ -20,18 +22,14 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     
-     private ArrayList<Cliente> clientes;
     public Login() {
         initComponents();
         
         //Inicio controlador del programa y cargo datos iniciales
-        c = new Controlador();
-        c.cargarClientesIniciales();
+       // c = new Controlador();
+        //c.cargarClientesIniciales();
         
-       
-        
-        
-        clientes = new ArrayList();
+      
         
     }
 
@@ -153,7 +151,7 @@ public class Login extends javax.swing.JFrame {
 
     private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
         // TODO add your handling code here:
-        RegistroCliente registro = new RegistroCliente(c);
+        RegistroCliente registro = new RegistroCliente();
         registro.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registroActionPerformed
@@ -163,30 +161,34 @@ public class Login extends javax.swing.JFrame {
          * Para quitar el apaño del boton de acceder al menu clientes,
          * comentar las siguientes 3 lineas y descomentar el resto.
          */
-        Cliente cliente = new Cliente();
+        /*Cliente cliente = new Cliente();
         cliente.setVisible(true);
-        this.dispose();
+        this.dispose();*/
+                 
         
-        
-                
-                
-        /*
         if(fieldusuario.getText().isEmpty() || fieldpass.getPassword().length==0){
            JOptionPane.showMessageDialog(this,"Debes introducir un usuario y una contraseña.","Alert",JOptionPane.WARNING_MESSAGE); 
         
         }
         else{
-            //Comprobar login gerente
-            for(Cliente i: clientes){
+           
+           RegistroCliente registros = new RegistroCliente();
+              
+            for(Cliente i: registros.getClientes()){
             if(i.getUser().equals(fieldusuario.getText())){
              
-               Cliente cli = new Cliente(i.getUser(),i.getPassword(),i.getDNI(),i.getName(),i.getSurname());
-               cli.setVisible(true);
+               i.setVisible(true);
                this.dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"El usuario no está registrado","Alert",JOptionPane.WARNING_MESSAGE); 
+            
             }
         }
         }
-        */
+        
+      
+    
         
         
     }//GEN-LAST:event_entrarActionPerformed
