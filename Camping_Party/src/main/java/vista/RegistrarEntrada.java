@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
-import campingparty.Controlador;
+
+import Modelo.Camping;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
@@ -16,10 +17,10 @@ public class RegistrarEntrada extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public RegistrarEntrada(Controlador controlador) {
+    public RegistrarEntrada(Camping controlador) {
         initComponents();
         this.controlador = controlador;
-        clientes = controlador.getListaClientesEnElCamping();
+        //clientes = controlador.getListaClientesEnElCamping();
         DefaultListModel listaAux = new DefaultListModel<>();
         
         //Recoger y mostrar los clientes en el JList
@@ -111,13 +112,13 @@ public class RegistrarEntrada extends javax.swing.JFrame {
 
     private void btnRegistrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarSalidaActionPerformed
         // TODO add your handling code here:
-        controlador.registrarEntrada(listaClientes.getSelectedValue());
+        //controlador.registrarEntrada(listaClientes.getSelectedValue());
         this.dispose();
     }//GEN-LAST:event_btnRegistrarSalidaActionPerformed
 
 
     private ArrayList<Cliente> clientes;
-    private Controlador controlador;
+    private Camping controlador;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnRegistrarSalida;

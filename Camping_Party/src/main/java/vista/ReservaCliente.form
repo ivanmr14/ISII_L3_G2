@@ -36,7 +36,7 @@
                               <Component id="jLabel7" alignment="0" min="-2" pref="185" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                  <Component id="cantidad" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="numeroTiendas" min="-2" pref="75" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
@@ -44,7 +44,7 @@
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jCalendar1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="fechaEntrada" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -52,7 +52,7 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jCalendar2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="fechaSalida" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -86,12 +86,12 @@
                           <Group type="102" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jCalendar1" min="-2" pref="197" max="-2" attributes="0"/>
+                              <Component id="fechaEntrada" min="-2" pref="197" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jCalendar2" min="-2" pref="197" max="-2" attributes="0"/>
+                              <Component id="fechaSalida" min="-2" pref="197" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
@@ -99,7 +99,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="cantidad" min="-2" max="-2" attributes="0"/>
+                      <Component id="numeroTiendas" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="85" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -154,17 +154,17 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="siguienteActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="cantidad">
+    <Component class="javax.swing.JTextField" name="numeroTiendas">
       <Properties>
         <Property name="text" type="java.lang.String" value="n&#xba; tiendas"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cantidadActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="numeroTiendasActionPerformed"/>
       </Events>
     </Component>
-    <Component class="com.toedter.calendar.JCalendar" name="jCalendar1">
+    <Component class="com.toedter.calendar.JCalendar" name="fechaEntrada">
     </Component>
-    <Component class="com.toedter.calendar.JCalendar" name="jCalendar2">
+    <Component class="com.toedter.calendar.JCalendar" name="fechaSalida">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>

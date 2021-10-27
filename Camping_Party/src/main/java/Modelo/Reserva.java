@@ -70,12 +70,12 @@ public class Reserva {
     
     //SETTERS
     
-    public void setFechaEntrada( jcalendar NuevaFechaEntrada)
+    public void setFechaEntrada( Date NuevaFechaEntrada)
     {
         this.fechaEntrada = NuevaFechaEntrada;
     }
     
-    public void setFechaSalida( jcalendar NuevaFechaSalida)
+    public void setFechaSalida( Date NuevaFechaSalida)
     {
         this.fechaSalida = NuevaFechaSalida;
     }

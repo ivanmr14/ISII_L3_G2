@@ -4,6 +4,8 @@
  */
 package vista;
 
+import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,11 +13,20 @@ import javax.swing.JOptionPane;
  * @author MIRENA
  */
 public class SeleccionarParcelas extends javax.swing.JFrame {
-
+    private ArrayList tiendas;
+    Date entrada;
+    Date salida;
     /**
      * Creates new form SeleccionarParcelas
+     * @param nombres
+     * @param tamanyos
+     * @param entrada
+     * @param salida
      */
-    public SeleccionarParcelas() {
+    public SeleccionarParcelas(ArrayList nombres, ArrayList tamanyos, Date entrada, Date salida) {
+        this.entrada = entrada;
+        this.salida = salida;
+        this.tiendas = tiendas;
         initComponents();
     }
 
@@ -120,7 +131,7 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         // TODO add your handling code here:
-        DatosTiendaCampaña tienda = new DatosTiendaCampaña();
+        DatosTiendaCampanya tienda = new DatosTiendaCampanya(ArrayList<String>);
         tienda.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_volverActionPerformed

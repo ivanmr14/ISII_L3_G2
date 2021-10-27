@@ -5,7 +5,8 @@
  */
 package vista;
 
-import Modelo.Controlador;
+import Modelo.Camping;
+import campingparty.Controlador;
 import vista.Login;
 import vista.RegistrarSalida;
 import vista.ReservaCliente;
@@ -16,24 +17,17 @@ import javax.swing.JTabbedPane;
  *
  * @author alumno
  */
-public class Gerente extends javax.swing.JFrame {
+public class MenuGerente extends javax.swing.JFrame {
 
     /**
      * Creates new form Gerente
      * @param c
      */
-    public Gerente(Controlador c) {
+    public MenuGerente(Controlador c) {
         initComponents();
         this.controlador = c;
         
-    }
-    
-    public Gerente(String user, String pass, Controlador c){
-        this.user = user;
-        this.pass = pass;
-        this.controlador = c;
-    }
-    
+    }    
     
 
     /**
@@ -205,8 +199,8 @@ public class Gerente extends javax.swing.JFrame {
 
     private void btnRegistrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarSalidaActionPerformed
         // TODO add your handling code here:
-        RegistrarSalida rs = new RegistrarSalida(controlador);
-        rs.setVisible(true);
+        //RegistrarSalida rs = new RegistrarSalida(controlador);
+        //rs.setVisible(true);
     }//GEN-LAST:event_btnRegistrarSalidaActionPerformed
 
     private void btnRegistroActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActividadActionPerformed
@@ -215,23 +209,7 @@ public class Gerente extends javax.swing.JFrame {
         fronton.setVisible(true);
     }//GEN-LAST:event_btnRegistroActividadActionPerformed
 
-    //GETTERS Y SETTERS
     
-    public void setUser(String user){
-        this.user = user;
-    }
-    
-    public void setPass(String pass){
-        this.pass = pass;
-    }
-    
-    public String getUser(){
-        return this.user;
-    }
-    
-    public String getPass(){
-        return this.pass;
-    }
    
     private String user;
     private String pass;

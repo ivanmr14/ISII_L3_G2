@@ -24,11 +24,11 @@ public class Cliente extends javax.swing.JFrame {
     
     //CONSTRUCTOR CON ARGUMENTOS
     public Cliente(String user, String password, String dni, String name, String surname){
-        this.user = user;
+        /*this.user = user;
         this.password = password;
         this.dni = dni;
         this.name = name;
-        this.surname = surname;
+        this.surname = surname;*/
         initComponents();
     }
 
@@ -169,44 +169,8 @@ public class Cliente extends javax.swing.JFrame {
 
 
     //VARIABLES PARA ALMACENAR USUARIO Y CONTRASEÑA DEL Cliente
-    private String user;
-    private String password;
-    private String dni;
-    private String name;
-    private String surname;
     
-    public String getUser(){
-        return this.user;
-    }
-    public String getPassword(){
-        return this.user;
-    }
-    public String getDNI(){
-        return this.dni;
-    }
-    public String getName(){
-        return this.name;
-    }
-    public String getSurname(){
-        return this.surname;
-    }
-    
-    
-    public void setUser(String user){
-        this.user =  user;
-    }
-    public void setPassword(String password){
-        this.password = password;
-    }
-    public void setDNI(String dni){
-        this.dni = dni;
-    }
-    public void setName(String name){
-        this.name = name;
-    }
-    public void setSurname(String surname){
-        this.surname = surname;
-    }
+   
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelarActividad;
