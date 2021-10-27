@@ -147,31 +147,60 @@ public class RegistroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-        Cliente cliente = new Cliente(userField.getText(),passwordField.getText(),dniField.getText(),nameField.getText(),surnameField.getText());
         boolean validos = true;
         
-        //comprobamos que los datos introducidos son válidos
-        for (Cliente i : clientes){
-            if (i.getDNI() == cliente.getDNI()){
-                //TODO mensaje de que ya hay un cliente registrado con el DNI introducido
-                JOptionPane.showMessageDialog(new JFrame(), "Ya hay un cliente registrado con el DNI introducido.", "Dialog", JOptionPane.ERROR_MESSAGE);
-                validos = false;
-            }
-            else if(i.getUser() == cliente.getUser()){
-                //TODO mensaje de que el username no está disponible
-                JOptionPane.showMessageDialog(new JFrame(), "Username no está disponible.", "Dialog", JOptionPane.ERROR_MESSAGE);
-                validos = false;
+        //Comporbamos que se han completado todos los campos
+        if(dniField.getText() == ""){
+            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo DNI.", "Dialog", JOptionPane.ERROR_MESSAGE);
+            validos = false;
+        }
+        else if (nameField.getText()==""){
+            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Nombre.", "Dialog", JOptionPane.ERROR_MESSAGE);
+            validos = false;
+        }
+        else if (surnameField.getText() == ""){
+            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Apellidos.", "Dialog", JOptionPane.ERROR_MESSAGE);
+            validos = false;
+        }
+        else if (userField.getText() == ""){
+            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Contraseña.", "Dialog", JOptionPane.ERROR_MESSAGE);
+            validos = false;
+        }
+        else if (userField.getText() == ""){
+            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Nombre de usuario.", "Dialog", JOptionPane.ERROR_MESSAGE);
+            validos = false;
+        }
+        else{
+            Cliente cliente = new Cliente(userField.getText(),userField.getText(),dniField.getText(),nameField.getText(),surnameField.getText());
+            
+            //comprobamos que los datos introducidos son válidos
+            for (Cliente i : clientes){
+            
+                if (i.getDNI() == cliente.getDNI()){
+                    JOptionPane.showMessageDialog(new JFrame(), "Ya hay un cliente registrado con el DNI introducido.", "Dialog", JOptionPane.ERROR_MESSAGE);
+                    validos = false;
+                }
+                else if(i.getUser() == cliente.getUser()){
+                    JOptionPane.showMessageDialog(new JFrame(), "Username no está disponible.", "Dialog", JOptionPane.ERROR_MESSAGE);
+                    validos = false;
+                }
+            
+            //Si todo está en orden añadimos el cliente al array de clientes
+            if(validos){
+                clientes.add(cliente);
+
+                this.dispose();
+                Login login = new Login();
+                login.setVisible(true);
             }
         }
         
-        //Si todo está en orden añadimos el cliente al array de clientes
-        if(validos){
-            clientes.add(cliente);
+        
             
-            this.dispose();
-            Login login = new Login();
-            login.setVisible(true);
         }
+        
+        
+        
             
     }//GEN-LAST:event_aceptarActionPerformed
 

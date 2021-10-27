@@ -15,6 +15,8 @@ public class Controlador {
     
     private ArrayList<Cliente> clientes;
     
+    private ArrayList<Cliente> clientesEnElCamping;
+    
     public Controlador(){
         clientes = new ArrayList();
     }
@@ -27,6 +29,11 @@ public class Controlador {
         clientes.add(new Cliente("clienteCinco","pass5","55555555e","Cliente Cinco","Apellido Cinco"));
     }
     
+    public void registrarEntrada(Object c){
+        Cliente cli = (Cliente) c;
+        clientes.add(cli);
+    }
+    
     public void registrarSalida(Object c){
         Cliente cli = (Cliente) c;
         clientes.remove(cli);
@@ -36,7 +43,11 @@ public class Controlador {
         return clientes;
     }
     
+    public ArrayList getListaClientesEnElCamping(){
+        return clientesEnElCamping;
+    }
+    
     public void registrarClienteNuevo(Cliente cliente){
-        clientes.add(cliente);
+        clientesEnElCamping.add(cliente);
     }
 }
