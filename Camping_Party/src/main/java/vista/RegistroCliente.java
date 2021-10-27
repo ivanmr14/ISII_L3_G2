@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
+import Modelo.Camping;
+import Modelo.ClienteDatos;
+import campingparty.Controlador;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
@@ -14,29 +17,16 @@ import javax.swing.JFrame;
  */
 public class RegistroCliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistroCliente
-     */
-    
-     //LISTA CON TODOS LOS CLIENTES REGISTRADOS
-    static ArrayList<Cliente> clientes = new ArrayList();
-
-    
-    public ArrayList<Cliente> getClientes() {
-        return clientes;
-    }
-
-    /*private ArrayList<Cliente> getClientes(){
-    return this.clientes;
-    }*/
-    public void setClientes(ArrayList<Cliente> clientes) {    
-        this.clientes = clientes;
-    }
-
-    public RegistroCliente(/*Controlador controlador*/) {
-        /*clientes = controlador.getListaClientes();*/
+  
+      public RegistroCliente(Controlador controlador, Camping camping) {
+        //clientes = controlador.getListaClientes();
+        this.controlador = controlador;
+        this.camping = camping;
         initComponents();
     }
+
+      private Controlador controlador;
+      private Camping camping;
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -166,30 +156,43 @@ public class RegistroCliente extends javax.swing.JFrame {
         
         //Cliente cliente = new Cliente(userField.getText(),passwordField.getText(),dniField.getText(),nameField.getText(),surnameField.getText());
         //boolean validos = true;
-        Cliente cliente = new Cliente();
+        //boolean validos = true;
+        
+        //Comporbamos que se han completado todos los campos
+        if(dniField.getText() == ""){
+            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo DNI.", "Dialog", JOptionPane.ERROR_MESSAGE);
+      
+        }
+        else if (nameField.getText()==""){
+            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Nombre.", "Dialog", JOptionPane.ERROR_MESSAGE);
+          
+        }
+        else if (surnameField.getText() == ""){
+            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Apellidos.", "Dialog", JOptionPane.ERROR_MESSAGE);
+        
+        }
+        else if (passwordField.getText() == ""){
+            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Contraseña.", "Dialog", JOptionPane.ERROR_MESSAGE);
+         
+        }
+        else if (userField.getText() == ""){
+            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Nombre de usuario.", "Dialog", JOptionPane.ERROR_MESSAGE);
+          
+        }
+        else{
+            
+            
+            controlador.registrarCliente(dniField.getText(), nameField.getText(), surnameField.getText(), userField.getText(), passwordField.getText());
+            
+           
+                this.dispose();
+                Login login = new Login();
+                login.setVisible(true);
+            }
         
         
         //comprobamos que los datos introducidos son válidos
-        for (Cliente i : clientes){
-            if (i.getDNI().equals(dniField.getText())){
-                //TODO mensaje de que ya hay un cliente registrado con el DNI introducido
-                JOptionPane.showMessageDialog(new JFrame(), "Ya hay un cliente registrado con el DNI introducido.", "Dialog", JOptionPane.ERROR_MESSAGE);
-                //validos = false;
-            }
-            else {
-                //TODO mensaje de que el username no está disponible
-                cliente.setName(nameField.getText());
-                cliente.setName(surnameField.getText());
-                cliente.setDNI(dniField.getText());
-                cliente.setUser(userField.getText());
-                cliente.setPassword(Arrays.toString(passwordField.getPassword()));
-                
-                clientes.add(cliente);
-                
-                JOptionPane.showMessageDialog(new JFrame(), "Cliente creado con éxito!.", "Dialog", JOptionPane.ERROR_MESSAGE);
-                //validos = false;
-            }
-        }
+      
         
         //Si todo está en orden añadimos el cliente al array de clientes
         /*if(validos){

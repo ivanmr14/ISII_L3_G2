@@ -6,6 +6,7 @@
 package vista;
 
 import Modelo.*;
+import campingparty.Controlador;
 import vista.RegistroCliente;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -28,11 +29,15 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     
+    private Controlador c;
+    private Camping camping;
+    
     public Login() {
         initComponents();
         
         //Inicio controlador del programa y cargo datos iniciales
-       // c = new Controlador();
+        Controlador c = new Controlador();
+        Camping  camping = new Camping();
         //c.cargarClientesIniciales();
         
       
@@ -156,8 +161,9 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
+
         // TODO add your handling code here:
-        RegistroCliente registro = new RegistroCliente();
+        RegistroCliente registro = new RegistroCliente(c, camping);
         registro.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registroActionPerformed
@@ -178,19 +184,7 @@ public class Login extends javax.swing.JFrame {
         }
         else{
            
-           RegistroCliente registros = new RegistroCliente();
-              
-            for(Cliente i: registros.getClientes()){
-            if(i.getUser().equals(fieldusuario.getText())){
-             
-               i.setVisible(true);
-               this.dispose();
-            }
-            else{
-                JOptionPane.showMessageDialog(this,"El usuario no está registrado","Alert",JOptionPane.WARNING_MESSAGE); 
-            
-            }
-        }
+        
         }
         
       
@@ -278,7 +272,7 @@ public class Login extends javax.swing.JFrame {
    
     
     //Clase controladora
-    private Controlador c;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGerente;
     private javax.swing.JLabel campingParty;

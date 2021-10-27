@@ -13,13 +13,13 @@ import vista.Login;
  *
  * @author christian
  */
-public class RegistroCliente extends javax.swing.JFrame {
+public class RegistroClienteModelo extends javax.swing.JFrame {
 
     /**
      * Creates new form RegistroCliente
      */
-    public RegistroCliente(Controlador controlador) {
-        clientes = controlador.getListaClientes();
+    public RegistroClienteModelo(Camping controlador) {
+        //clientes = controlador.getListaClientes();
         initComponents();
     }
     
@@ -149,47 +149,8 @@ public class RegistroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         
-        boolean validos = true;
-        
-        //Comporbamos que se han completado todos los campos
-        if(dniField.getText() == ""){
-            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo DNI.", "Dialog", JOptionPane.ERROR_MESSAGE);
-            validos = false;
-        }
-        else if (nameField.getText()==""){
-            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Nombre.", "Dialog", JOptionPane.ERROR_MESSAGE);
-            validos = false;
-        }
-        else if (surnameField.getText() == ""){
-            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Apellidos.", "Dialog", JOptionPane.ERROR_MESSAGE);
-            validos = false;
-        }
-        else if (userField.getText() == ""){
-            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Contraseña.", "Dialog", JOptionPane.ERROR_MESSAGE);
-            validos = false;
-        }
-        else if (userField.getText() == ""){
-            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Nombre de usuario.", "Dialog", JOptionPane.ERROR_MESSAGE);
-            validos = false;
-        }
-        else{
-            Cliente cliente = new Cliente(userField.getText(),userField.getText(),dniField.getText(),nameField.getText(),surnameField.getText());
+      
             
-            //comprobamos que los datos introducidos son válidos
-            for (Cliente i : clientes){
-            
-                if (i.getDNI() == cliente.getDNI()){
-                    JOptionPane.showMessageDialog(new JFrame(), "Ya hay un cliente registrado con el DNI introducido.", "Dialog", JOptionPane.ERROR_MESSAGE);
-                    validos = false;
-                }
-                else if(i.getUser() == cliente.getUser()){
-                    JOptionPane.showMessageDialog(new JFrame(), "Username no está disponible.", "Dialog", JOptionPane.ERROR_MESSAGE);
-                    validos = false;
-                }
-            
-            //Si todo está en orden añadimos el cliente al array de clientes
-            if(validos){
-                clientes.add(cliente);
 
                 this.dispose();
                 Login login = new Login();
@@ -199,7 +160,7 @@ public class RegistroCliente extends javax.swing.JFrame {
         
         
             
-        }
+    /*
         
         
         
@@ -239,4 +200,4 @@ public class RegistroCliente extends javax.swing.JFrame {
     private javax.swing.JTextField surnameField;
     private javax.swing.JTextField userField;
     // End of variables declaration//GEN-END:variables
-}
+}*/

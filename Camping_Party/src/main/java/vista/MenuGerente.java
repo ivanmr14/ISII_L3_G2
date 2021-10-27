@@ -5,7 +5,8 @@
  */
 package vista;
 
-import Modelo.Controlador;
+import Modelo.Camping;
+import campingparty.Controlador;
 import vista.Login;
 import vista.RegistrarSalida;
 import vista.ReservaCliente;
@@ -198,8 +199,8 @@ public class MenuGerente extends javax.swing.JFrame {
 
     private void btnRegistrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarSalidaActionPerformed
         // TODO add your handling code here:
-        RegistrarSalida rs = new RegistrarSalida(controlador);
-        rs.setVisible(true);
+        //RegistrarSalida rs = new RegistrarSalida(controlador);
+        //rs.setVisible(true);
     }//GEN-LAST:event_btnRegistrarSalidaActionPerformed
 
     private void btnRegistroActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActividadActionPerformed
