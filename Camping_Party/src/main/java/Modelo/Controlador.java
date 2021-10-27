@@ -21,6 +21,7 @@ public class Controlador {
     }
     
     public void cargarClientesIniciales(){
+        clientes.add(new Cliente("admin","admin","admin","admin","admin"));
         clientes.add(new Cliente("clienteUno","pass1","11111111a","Cliente Uno","Apellido Uno"));
         clientes.add(new Cliente("clienteDos","pass2","22222222b","Cliente Dos","Apellido Dos"));
         clientes.add(new Cliente("clenteTres","pass3","33333333c","Cliente Tres","Apellido Tres"));
