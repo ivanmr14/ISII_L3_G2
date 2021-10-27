@@ -6,6 +6,7 @@
 package vista;
 
 import Modelo.Controlador;
+import Modelo.Gerente;
 import vista.RegistroCliente;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -201,8 +202,8 @@ public class Login extends javax.swing.JFrame {
     private void btnGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenteActionPerformed
         // TODO add your handling code here:
         //Comprobar login gerente
-         arrayGerentes = new ArrayList();
-       Gerente g = new Gerente("admin","admin",c);
+        arrayGerentes = new ArrayList();
+        Gerente g = new Gerente("admin","admin");
         arrayGerentes.add(g);
         
         String pass_string = new String (fieldpass.getPassword());
@@ -211,8 +212,8 @@ public class Login extends javax.swing.JFrame {
             
             
             if(ger.getUser().equals(fieldusuario.getText()) && ger.getPass().equals(pass_string)){
-                Gerente gerente = new Gerente(c);
-                gerente.setVisible(true);
+                MenuGerente mGerente = new MenuGerente(c);
+                mGerente.setVisible(true);
                 this.dispose();
             }else{
                 JOptionPane.showMessageDialog(this,"Los datos introducidos no son correctos.",

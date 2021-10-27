@@ -16,24 +16,17 @@ import javax.swing.JTabbedPane;
  *
  * @author alumno
  */
-public class Gerente extends javax.swing.JFrame {
+public class MenuGerente extends javax.swing.JFrame {
 
     /**
      * Creates new form Gerente
      * @param c
      */
-    public Gerente(Controlador c) {
+    public MenuGerente(Controlador c) {
         initComponents();
         this.controlador = c;
         
-    }
-    
-    public Gerente(String user, String pass, Controlador c){
-        this.user = user;
-        this.pass = pass;
-        this.controlador = c;
-    }
-    
+    }    
     
 
     /**
