@@ -208,23 +208,7 @@ public class MenuGerente extends javax.swing.JFrame {
         fronton.setVisible(true);
     }//GEN-LAST:event_btnRegistroActividadActionPerformed
 
-    //GETTERS Y SETTERS
     
-    public void setUser(String user){
-        this.user = user;
-    }
-    
-    public void setPass(String pass){
-        this.pass = pass;
-    }
-    
-    public String getUser(){
-        return this.user;
-    }
-    
-    public String getPass(){
-        return this.pass;
-    }
    
     private String user;
     private String pass;

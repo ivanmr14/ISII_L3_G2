@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
-import campingparty.Controlador;
+
+import Modelo.Controlador;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 

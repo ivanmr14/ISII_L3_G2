@@ -5,13 +5,18 @@
  */
 package vista;
 
-import Modelo.Controlador;
-import Modelo.Gerente;
+import Modelo.*;
 import vista.RegistroCliente;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import javax.swing.JOptionPane;
+
+import javax.swing.JOptionPane;
+
+import javax.swing.JOptionPane;
 
 /**
  *

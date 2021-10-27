@@ -11,7 +11,31 @@ package Modelo;
  */
 public class Gerente {
     
+    String user;
+    String pass;
+    
     public Gerente(String user, String pass){
-        
+       this.user = user;
+       this.pass = pass;
     }
+    
+    //GETTERS Y SETTERS
+    
+    public void setUser(String user){
+        this.user = user;
+    }
+    
+    public void setPass(String pass){
+        this.pass = pass;
+    }
+    
+    public String getUser(){
+        return this.user;
+    }
+    
+    public String getPass(){
+        return this.pass;
+    }
+
+    
 }
