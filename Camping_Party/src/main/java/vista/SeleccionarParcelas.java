@@ -131,7 +131,7 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         // TODO add your handling code here:
-        DatosTiendaCampanya tienda = new DatosTiendaCampanya(ArrayList<String>);
+        //DatosTiendaCampanya tienda = new DatosTiendaCampanya(ArrayList<String>);
         tienda.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_volverActionPerformed
