@@ -6,6 +6,7 @@
 package vista;
 
 import Modelo.Camping;
+import campingparty.Controlador;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
@@ -18,11 +19,11 @@ public class RegistrarSalida extends javax.swing.JFrame {
     /**
      * Creates new form RegistrarSalida
      */
-    public RegistrarSalida(Camping c) {
+    public RegistrarSalida(Controlador c) {
         initComponents();
         this.controlador = c;
         
-        //clientes = controlador.getListaClientes();
+        clientes = controlador.getListaClientes();
         DefaultListModel listaAux = new DefaultListModel<>();
         
         //Recoger y mostrar los clientes en el JList
@@ -116,12 +117,12 @@ public class RegistrarSalida extends javax.swing.JFrame {
 
     private void btnRegistrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarSalidaActionPerformed
         // TODO add your handling code here:
-        //controlador.registrarSalida(listaClientes.getSelectedValue());
+        controlador.registrarSalida(listaClientes.getSelectedValue());
         this.dispose();
     }//GEN-LAST:event_btnRegistrarSalidaActionPerformed
 
     private ArrayList clientes;
-    private Camping controlador;
+    private Controlador controlador;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnRegistrarSalida;

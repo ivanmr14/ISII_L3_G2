@@ -29,16 +29,14 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     
-    private Controlador c;
-    private Camping camping;
+    
     
     public Login() {
         initComponents();
         
         //Inicio controlador del programa y cargo datos iniciales
-        Controlador c = new Controlador();
-        Camping  camping = new Camping();
-        //c.cargarClientesIniciales();
+        c = new Controlador();
+        c.cargarDatosIniciales();
         
       
         
@@ -163,7 +161,7 @@ public class Login extends javax.swing.JFrame {
     private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
 
         // TODO add your handling code here:
-        RegistroCliente registro = new RegistroCliente(c, camping);
+        RegistroCliente registro = new RegistroCliente(c);
         registro.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registroActionPerformed
@@ -201,25 +199,21 @@ public class Login extends javax.swing.JFrame {
     private void btnGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenteActionPerformed
         // TODO add your handling code here:
         //Comprobar login gerente
-        arrayGerentes = new ArrayList();
-        Gerente g = new Gerente("admin","admin");
-        arrayGerentes.add(g);
+        
+        
         
         String pass_string = new String (fieldpass.getPassword());
         
-        arrayGerentes.forEach(ger -> {
-            
-            
-            if(ger.getUser().equals(fieldusuario.getText()) && ger.getPass().equals(pass_string)){
-                MenuGerente mGerente = new MenuGerente(c);
-                mGerente.setVisible(true);
-                this.dispose();
-            }else{
-                JOptionPane.showMessageDialog(this,"Los datos introducidos no son correctos.",
+        if(c.comprobarLoginGerente(fieldusuario.getText(), pass_string)){
+            MenuGerente mg = new MenuGerente(c);
+            mg.setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this,"Los datos introducidos no son correctos.",
                         "Alert",JOptionPane.WARNING_MESSAGE);
-                
-            }
-         }); /* Gerente gerente = new Gerente(ge);
+        }
+        
+         /* Gerente gerente = new Gerente(ge);
          gerente.setVisible(true);
          this.dispose();*/
         
@@ -265,14 +259,13 @@ public class Login extends javax.swing.JFrame {
     }
 
     
-    //Array para dar de alta gerentes
-    private ArrayList<Gerente> arrayGerentes;
-    //private Gerente g;
+
+   
     //Array para dar de alta clientes
    
     
     //Clase controladora
-    
+    private Controlador c;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGerente;
     private javax.swing.JLabel campingParty;

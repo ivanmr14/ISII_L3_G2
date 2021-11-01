@@ -4,7 +4,10 @@
  */
 package campingparty;
 
+import Modelo.Camping;
 import Modelo.ClienteDatos;
+import Modelo.Gerente;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import vista.Cliente;
@@ -15,14 +18,31 @@ import vista.Cliente;
  */
 public class Controlador {
     
+    private Camping camping;
+    private ArrayList<Gerente> gerentes;
+    private ArrayList<ClienteDatos> clientes;
     
-     /*public void cargarClientesIniciales(){
-        clienteDatos.add(new ClienteDatos("clienteUno","pass1","11111111a","Cliente Uno","Apellido Uno"));
-        clienteDatos.add(new ClienteDatos("clienteDos","pass2","22222222b","Cliente Dos","Apellido Dos"));
-        clienteDatos.add(new ClienteDatos("clenteTres","pass3","33333333c","Cliente Tres","Apellido Tres"));
-        clienteDatos.add(new ClienteDatos("clienteCuatro","pass4","44444444d","Cliente Cuatro","Apellido Cuatro"));
-        clienteDatos.add(new ClienteDatos("clienteCinco","pass5","55555555e","Cliente Cinco","Apellido Cinco"));
-    }*/
+    public Controlador(){
+        
+        
+    }
+     public void cargarDatosIniciales(){
+        camping.cargarDatosIniciales();
+    }
+     
+     public boolean comprobarLoginGerente(String u, String p){
+         boolean existe = false;
+         gerentes = camping.getGerentes();
+         
+         Gerente ger = new Gerente(u,p);
+            
+         if(gerentes.indexOf(ger)>=0){
+             existe = true;
+         }
+         
+         
+         return existe;
+     }
     
     public void registrarEntrada(Object c){
        /* ClienteDatos cli = (Cliente) c;
@@ -30,12 +50,20 @@ public class Controlador {
     }
     
     public void registrarSalida(Object c){
-        /*Cliente cli = (Cliente) c;
-        clientes.remove(cli);*/
+        
+        ClienteDatos cli = (ClienteDatos) c;
+        camping.registrarSalida(cli);
+        
     }
     
     public void registrarClienteNuevo(ClienteDatos cliente){
        //0 clientesEnElCamping.add(cliente);
+    }
+    
+    public ArrayList getListaClientes(){
+        clientes = camping.getClientes();
+        
+        return clientes;
     }
     
     public void registrarCliente(String dni, String nombre, String apellido, String usuario, String pass){
@@ -54,8 +82,10 @@ public class Controlador {
                 }
             
             //Si todo está en orden añadimos el cliente al array de clientes
-            if(validos){
+                if(validos){
                 clientes.add(cliente);
+                }
+            }
     
     }
             

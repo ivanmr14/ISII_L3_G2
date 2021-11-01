@@ -18,15 +18,13 @@ import javax.swing.JFrame;
 public class RegistroCliente extends javax.swing.JFrame {
 
   
-      public RegistroCliente(Controlador controlador, Camping camping) {
+      public RegistroCliente(Controlador controlador) {
         //clientes = controlador.getListaClientes();
         this.controlador = controlador;
-        this.camping = camping;
         initComponents();
     }
 
       private Controlador controlador;
-      private Camping camping;
     
     /**
      * This method is called from within the constructor to initialize the form.

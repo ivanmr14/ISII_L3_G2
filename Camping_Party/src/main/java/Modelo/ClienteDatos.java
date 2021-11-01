@@ -70,6 +70,10 @@ public class ClienteDatos {
         this.surname = surname;
     }
     
+    public String toString(){
+        return this.user;
+    }
+    
     
     
 }
