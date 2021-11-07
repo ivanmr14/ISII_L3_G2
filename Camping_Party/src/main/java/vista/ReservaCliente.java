@@ -5,19 +5,21 @@
 package vista;
 
 import java.util.Date;
+import campingparty.Controlador;
 
 /**
  *
- * @author MIRENA
+ * @author alex
  */
 public class ReservaCliente extends javax.swing.JFrame {
 
     /**
      * Creates new form ClienteSinReserva
+     * @param c
      */
-    public ReservaCliente() {
+    public ReservaCliente(Controlador c) {
         initComponents();
-        
+        this.controlador = c;
         
         //Reservas iniciales
         
@@ -162,13 +164,13 @@ public class ReservaCliente extends javax.swing.JFrame {
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
         // TODO add your handling code here:
         
-        //Obtengo las dos fechas
-        Date entrada = fechaEntrada.getDate();
-        Date salida  = fechaSalida.getDate();
-        DatosTiendaCampanya tienda = new DatosTiendaCampanya(numeroTiendas, entrada, salida);
+        //Obtengo las dos fechas y numero de tiendas a montar.
+        Date fEntrada = fechaEntrada.getDate();
+        Date fSalida  = fechaSalida.getDate();
+        //Creo la siguiente vista
+        IntroducirDatosTienda tienda = new IntroducirDatosTienda(controlador, Integer.parseInt(numeroTiendas.getText()), fEntrada, fSalida);
         tienda.setVisible(true);
         this.dispose();
-        
     }//GEN-LAST:event_siguienteActionPerformed
 
     private void numeroTiendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numeroTiendasActionPerformed
@@ -189,4 +191,5 @@ public class ReservaCliente extends javax.swing.JFrame {
     private javax.swing.JTextField numeroTiendas;
     private javax.swing.JButton siguiente;
     // End of variables declaration//GEN-END:variables
+    private Controlador controlador;
 }

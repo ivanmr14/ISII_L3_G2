@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * En esta clase que almacena datos de  una reserva de los clientes.
+ * En esta clase que gestiona las reservas las parcelas de los clientes.
  * Incluye un booleano para ver si está reservada y el cliente que
  * la ha reservado
  * 26.10.2021 - Alex
@@ -23,6 +23,7 @@ import java.util.Date;
  * @author alex
  */
 public class Reserva {
+    String parcela;
     Cliente cliente;                        //Cliente que reserva
     Date fechaEntrada, fechaSalida;         //Fechas de la reserva
     int nTiendas;                           //nº de tiendas que va a meter
@@ -33,6 +34,31 @@ public class Reserva {
     public Reserva()
     {
         //Constructor
+    }
+    
+    //Constructor con parámetros
+    public Reserva(String parcela, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos)
+    {
+        
+        //Constructor
+    }
+    
+    //Métodos
+    /**
+     * Método para saber si a parcela a reservar está ocuapada.
+     * 
+     * @param parcelaAComprobar     parcela que quiero comprobar que esté vacia para reservarla
+     * @param fechaEntreada         Fecha de entrada para comprobar si ya está reservada
+     * @param fechaSalida           Fecha de salida  para comprobar si ya está reservada
+     * @return                      Devuelvo un true si está ocupada en esos días.
+     */
+    public boolean estaOcupada(Parcela parcelaAComprobar, Date fechaEntreada, Date fechaSalida)
+    {
+        Boolean ocupada = false;
+        
+        //RELLENAR CON COMPROBACIÓN.
+        
+        return ocupada;
     }
     
     //GETTERS

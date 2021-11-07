@@ -16,6 +16,7 @@ public class Camping {
     
     private ArrayList<ClienteDatos> clientes;
     private ArrayList<Gerente> gerentes;
+    private ArrayList<Parcela> parcelas;
     
     //private ArrayList<Cliente> clientesEnElCamping;
     
@@ -34,6 +35,17 @@ public class Camping {
         
         //Cargo gerente inicial
         gerentes.add(new Gerente("admin","admin"));
+        
+        //Cargo parcelas
+        parcelas.add(new Parcela("A","1",34,14));
+        parcelas.add(new Parcela("A","2",24,15));
+        parcelas.add(new Parcela("A","3",33,11));
+        parcelas.add(new Parcela("B","1",13,17));
+        parcelas.add(new Parcela("B","2",27,19));
+        parcelas.add(new Parcela("B","3",15,13));
+        parcelas.add(new Parcela("C","1",17,9));
+        parcelas.add(new Parcela("C","2",46,24));
+        parcelas.add(new Parcela("C","3",32,12));
     }
     
     public void registrarSalida(ClienteDatos c){

@@ -5,7 +5,6 @@
  */
 package vista;
 
-import Modelo.*;
 import campingparty.Controlador;
 import vista.RegistroCliente;
 import javax.swing.JDialog;
@@ -36,7 +35,8 @@ public class Login extends javax.swing.JFrame {
         
         //Inicio controlador del programa y cargo datos iniciales
         c = new Controlador();
-        c.cargarDatosIniciales();
+        //Cargar datos da error
+        //c.cargarDatosIniciales();
         
       
         
@@ -171,19 +171,18 @@ public class Login extends javax.swing.JFrame {
          * Para quitar el apaño del boton de acceder al menu clientes,
          * comentar las siguientes 3 lineas y descomentar el resto.
          */
-        /*Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente();
         cliente.setVisible(true);
-        this.dispose();*/
+        this.dispose();
                  
         
-        if(fieldusuario.getText().isEmpty() || fieldpass.getPassword().length==0){
-           JOptionPane.showMessageDialog(this,"Debes introducir un usuario y una contraseña.","Alert",JOptionPane.WARNING_MESSAGE); 
-        
-        }
-        else{
-           
-        
-        }
+//        if(fieldusuario.getText().isEmpty() || fieldpass.getPassword().length==0){
+//           JOptionPane.showMessageDialog(this,"Debes introducir un usuario y una contraseña.","Alert",JOptionPane.WARNING_MESSAGE); 
+//        
+//        }
+//        else{
+//           
+//        }
         
       
     

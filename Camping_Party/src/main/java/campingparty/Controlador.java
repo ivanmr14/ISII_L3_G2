@@ -4,10 +4,9 @@
  */
 package campingparty;
 
-import Modelo.Camping;
-import Modelo.ClienteDatos;
-import Modelo.Gerente;
+import Modelo.*;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import vista.Cliente;
@@ -21,6 +20,7 @@ public class Controlador {
     private Camping camping;
     private ArrayList<Gerente> gerentes;
     private ArrayList<ClienteDatos> clientes;
+    private ArrayList<Reserva> reservas;
     
     public Controlador(){
         
@@ -43,6 +43,14 @@ public class Controlador {
          
          return existe;
      }
+    
+    public void nuevaReserva(String parcela, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos){
+        reservas.add(new Reserva(parcela, numTiendas, entrada, salida, nombres, tamanyos));
+    }
+    
+    public boolean estaOcupada(Parcela parcelaAComprobar, Date fechaEntreada, Date fechaSalida){
+        return false; //reserva.estaOcupada( parcelaAComprobar,  fechaEntreada,  fechaSalida);
+    }
     
     public void registrarEntrada(Object c){
        /* ClienteDatos cli = (Cliente) c;

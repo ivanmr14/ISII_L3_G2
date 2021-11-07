@@ -5,6 +5,7 @@
  */
 package vista;
 
+import campingparty.Controlador;
 import vista.Login;
 import vista.ModificarReserva;
 import vista.ReservaCliente;
@@ -23,12 +24,15 @@ public class Cliente extends javax.swing.JFrame {
     }
     
     //CONSTRUCTOR CON ARGUMENTOS
-    public Cliente(String user, String password, String dni, String name, String surname){
-        /*this.user = user;
+    public Cliente(Controlador c, String user, String password, String dni, String name, String surname){
+        /*
+        this.controlador = c;
+        this.user = user;
         this.password = password;
         this.dni = dni;
         this.name = name;
-        this.surname = surname;*/
+        this.surname = surname;
+        */
         initComponents();
     }
 
@@ -137,7 +141,7 @@ public class Cliente extends javax.swing.JFrame {
 
     private void hacerReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hacerReservaActionPerformed
         // TODO add your handling code here:
-        ReservaCliente rc = new ReservaCliente();
+        ReservaCliente rc = new ReservaCliente(controlador);
         rc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_hacerReservaActionPerformed
@@ -180,4 +184,5 @@ public class Cliente extends javax.swing.JFrame {
     private javax.swing.JButton reservarActividad;
     private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
+    private Controlador controlador;
 }
