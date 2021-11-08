@@ -34,7 +34,7 @@ public class Login extends javax.swing.JFrame {
         controlador = new Controlador();
         initComponents();
         //Cargar datos da error
-        //controlador.cargarDatosIniciales();
+        controlador.cargarDatosIniciales();
         
       
         
@@ -169,15 +169,14 @@ public class Login extends javax.swing.JFrame {
          * Para quitar el apaño del boton de acceder al menu clientes,
          * comentar las siguientes 3 lineas y descomentar el resto.
          */
-       
-                 
-        
+        String pass_string1 = new String (fieldpass.getPassword());
+                  
        if(fieldusuario.getText().isEmpty() || fieldpass.getPassword().length==0){
            JOptionPane.showMessageDialog(this,"Debes introducir un usuario y una contraseña.","Alert",JOptionPane.WARNING_MESSAGE);        
        }
         else{
            
-               if(controlador.comprobarExistenciaCliente(fieldusuario.getText(), Arrays.toString(fieldpass.getPassword()))){
+               if(controlador.comprobarExistenciaCliente(fieldusuario.getText(), pass_string1 )){
                    Cliente cliente = new Cliente(controlador);
                     cliente.setVisible(true);
                     this.dispose();

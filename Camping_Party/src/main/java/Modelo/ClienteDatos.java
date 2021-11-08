@@ -17,6 +17,15 @@ public class ClienteDatos {
     private String dni;
     private String name;
     private String surname;
+    private ArrayList<Reserva> reservas;
+
+    public ArrayList<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(ArrayList<Reserva> reservas) {
+        this.reservas = reservas;
+    }
 
     public ClienteDatos(String user, String password, String dni, String name, String surname) {
         this.user = user;

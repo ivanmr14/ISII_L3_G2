@@ -35,7 +35,7 @@ public class Controlador {
      
      public boolean comprobarLoginGerente(String u, String p){
          boolean existe = false;
-         gerentes = camping.getGerentes();
+         /*gerentes = camping.getGerentes();
          
          Gerente ger = new Gerente(u,p);
             
@@ -44,12 +44,18 @@ public class Controlador {
          }
          
          
+         return existe;*/
+         
+         if(camping.comprobarLoginGerente(u,p)){
+             existe = true;
+         }
+         
          return existe;
      }
     
-    public void nuevaReserva(String parcela, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos){
+    /*public void nuevaReserva(String parcela, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos){
         reservas.add(new Reserva(parcela, numTiendas, entrada, salida, nombres, tamanyos));
-    }
+    }*/
     
     public boolean estaOcupada(Parcela parcelaAComprobar, Date fechaEntreada, Date fechaSalida){
         return false; //reserva.estaOcupada( parcelaAComprobar,  fechaEntreada,  fechaSalida);
