@@ -230,7 +230,7 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         // TODO add your handling code here:
         //DatosTiendaCampanya tienda = new DatosTiendaCampanya(ArrayList<String>);
-        Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente(controlador);
         cliente.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_volverActionPerformed
@@ -245,7 +245,7 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
 
         //código de guardar los datos y hacer la reserva bien.
 
-        Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente(controlador);
         cliente.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_finalizarActionPerformed

@@ -25,7 +25,7 @@ public class Camping {
         gerentes = new ArrayList();
     }
     
-    public void cargarDatosIniciales(){
+   public void cargarDatosIniciales(){
         //Cargo clientes iniciales
         clientes.add(new ClienteDatos("clienteUno","pass1","11111111a","Cliente Uno","Apellido Uno"));
         clientes.add(new ClienteDatos("clienteDos","pass2","22222222b","Cliente Dos","Apellido Dos"));
@@ -64,5 +64,29 @@ public class Camping {
 
     public void setClientes(ArrayList<ClienteDatos> clientes) {
         this.clientes = clientes;
+    }
+    
+    public void almacenarClientes(ClienteDatos cliente){
+   
+        clientes.add(cliente);
+ 
+
+    }
+    
+    
+    public boolean comprobarExistenciasCliente(String user, String pass){
+        boolean ok = false;
+        
+       for(ClienteDatos cliente: clientes){
+           if(cliente.getUser().equals(user) && cliente.getPassword().equals(pass)){
+               ok = true;
+           }
+       
+       }
+        
+        
+        
+        return ok;
+    
     }
 }

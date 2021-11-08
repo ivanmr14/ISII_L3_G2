@@ -5,6 +5,7 @@
  */
 package vista;
 
+import campingparty.Controlador;
 import vista.Cliente;
 import javax.swing.JOptionPane;
 
@@ -17,7 +18,10 @@ public class ActividadesCliente extends javax.swing.JFrame {
     /**
      * Creates new form ActividadesCliente
      */
-    public ActividadesCliente() {
+    
+    private Controlador controlador;
+    public ActividadesCliente(Controlador controlador) {
+        this.controlador = controlador;
         initComponents();
     }
 
@@ -128,14 +132,14 @@ public class ActividadesCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
-        Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente(controlador);
         cliente.setVisible(true);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_volverActionPerformed
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         JOptionPane.showMessageDialog(this, "Actividad reservada! A divertirse!");
-        Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente(controlador);
         cliente.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_aceptarActionPerformed

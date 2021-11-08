@@ -177,7 +177,7 @@ public class MenuGerente extends javax.swing.JFrame {
 
     private void btnRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroClienteActionPerformed
         // TODO add your handling code here:
-        ReservaCliente cliente = new ReservaCliente();
+        ReservaCliente cliente = new ReservaCliente(controlador);
         cliente.setVisible(true);
     }//GEN-LAST:event_btnRegistroClienteActionPerformed
 

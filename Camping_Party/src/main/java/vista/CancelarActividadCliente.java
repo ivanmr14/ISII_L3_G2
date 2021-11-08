@@ -4,6 +4,7 @@
  */
 package vista;
 
+import campingparty.Controlador;
 import vista.Cliente;
 import javax.swing.JOptionPane;
 
@@ -16,7 +17,10 @@ public class CancelarActividadCliente extends javax.swing.JFrame {
     /**
      * Creates new form CancelarActividadCliente
      */
-    public CancelarActividadCliente() {
+    
+    private Controlador controlador;
+    public CancelarActividadCliente(Controlador controlador) {
+        this.controlador = controlador;
         initComponents();
     }
 
@@ -109,14 +113,14 @@ public class CancelarActividadCliente extends javax.swing.JFrame {
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(this, "Actividad Cancelada con éxito");
-        Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente(controlador);
         cliente.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
         // TODO add your handling code here:
-        Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente(controlador);
         cliente.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_volverActionPerformed

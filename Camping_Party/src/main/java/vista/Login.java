@@ -12,11 +12,7 @@ import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import javax.swing.JOptionPane;
 
-import javax.swing.JOptionPane;
-
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,15 +24,17 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     
+    private Controlador controlador;
     
     
     public Login() {
-        initComponents();
+        
         
         //Inicio controlador del programa y cargo datos iniciales
-        c = new Controlador();
+        controlador = new Controlador();
+        initComponents();
         //Cargar datos da error
-        //c.cargarDatosIniciales();
+        //controlador.cargarDatosIniciales();
         
       
         
@@ -161,8 +159,8 @@ public class Login extends javax.swing.JFrame {
     private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
 
         // TODO add your handling code here:
-        RegistroCliente registro = new RegistroCliente(c);
-        registro.setVisible(true);
+        RegistroCliente registrocliente = new RegistroCliente(controlador);
+        registrocliente.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registroActionPerformed
 
@@ -171,18 +169,25 @@ public class Login extends javax.swing.JFrame {
          * Para quitar el apaño del boton de acceder al menu clientes,
          * comentar las siguientes 3 lineas y descomentar el resto.
          */
-        Cliente cliente = new Cliente();
-        cliente.setVisible(true);
-        this.dispose();
+       
                  
         
-//        if(fieldusuario.getText().isEmpty() || fieldpass.getPassword().length==0){
-//           JOptionPane.showMessageDialog(this,"Debes introducir un usuario y una contraseña.","Alert",JOptionPane.WARNING_MESSAGE); 
-//        
-//        }
-//        else{
-//           
-//        }
+       if(fieldusuario.getText().isEmpty() || fieldpass.getPassword().length==0){
+           JOptionPane.showMessageDialog(this,"Debes introducir un usuario y una contraseña.","Alert",JOptionPane.WARNING_MESSAGE);        
+       }
+        else{
+           
+               if(controlador.comprobarExistenciaCliente(fieldusuario.getText(), Arrays.toString(fieldpass.getPassword()))){
+                   Cliente cliente = new Cliente(controlador);
+                    cliente.setVisible(true);
+                    this.dispose();
+               }
+               else{
+                   JOptionPane.showMessageDialog(this,"Error: Usuario o contraseña incorrectos","Alert",JOptionPane.WARNING_MESSAGE);
+               }
+                
+          
+       }
         
       
     
@@ -203,8 +208,8 @@ public class Login extends javax.swing.JFrame {
         
         String pass_string = new String (fieldpass.getPassword());
         
-        if(c.comprobarLoginGerente(fieldusuario.getText(), pass_string)){
-            MenuGerente mg = new MenuGerente(c);
+        if(controlador.comprobarLoginGerente(fieldusuario.getText(), pass_string)){
+            MenuGerente mg = new MenuGerente(controlador);
             mg.setVisible(true);
             this.dispose();
         }else{
@@ -263,8 +268,7 @@ public class Login extends javax.swing.JFrame {
     //Array para dar de alta clientes
    
     
-    //Clase controladora
-    private Controlador c;
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGerente;
     private javax.swing.JLabel campingParty;

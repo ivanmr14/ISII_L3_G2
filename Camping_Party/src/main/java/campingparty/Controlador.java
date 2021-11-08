@@ -23,7 +23,10 @@ public class Controlador {
     private ArrayList<Reserva> reservas;
     
     public Controlador(){
-        
+        camping = new Camping();
+        gerentes = new ArrayList<Gerente>();
+        clientes = new ArrayList<ClienteDatos>();
+        reservas = new ArrayList<Reserva>();
         
     }
      public void cargarDatosIniciales(){
@@ -76,26 +79,27 @@ public class Controlador {
     
     public void registrarCliente(String dni, String nombre, String apellido, String usuario, String pass){
         ClienteDatos cliente = new ClienteDatos(usuario, pass, dni, nombre, apellido);
-            
-            //comprobamos que los datos introducidos son válidos
-            for (ClienteDatos i : ){
-            
-                if (i.getDNI() == cliente.getDNI()){
-                    JOptionPane.showMessageDialog(new JFrame(), "Ya hay un cliente registrado con el DNI introducido.", "Dialog", JOptionPane.ERROR_MESSAGE);
-                    validos = false;
-                }
-                else if(i.getUser() == cliente.getUser()){
-                    JOptionPane.showMessageDialog(new JFrame(), "Username no está disponible.", "Dialog", JOptionPane.ERROR_MESSAGE);
-                    validos = false;
-                }
-            
-            //Si todo está en orden añadimos el cliente al array de clientes
-                if(validos){
-                clientes.add(cliente);
-                }
-            }
-    
+        
+        camping.almacenarClientes(cliente);   
     }
+    
+    public boolean comprobarExistenciaCliente(String usuario, String pass){
+        
+            boolean ok = false;
+        if(camping.comprobarExistenciasCliente(usuario, pass)){
+            ok = true;
+                
+        
+        }
+        
+        return ok;
+    }
+           
+            
+  
             
     
 }
+
+
+

@@ -16,7 +16,7 @@ import javax.swing.JFrame;
  * @author christian
  */
 public class RegistroCliente extends javax.swing.JFrame {
-
+private  Controlador controlador;
   
       public RegistroCliente(Controlador controlador) {
         //clientes = controlador.getListaClientes();
@@ -24,8 +24,6 @@ public class RegistroCliente extends javax.swing.JFrame {
         initComponents();
     }
 
-      private Controlador controlador;
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -157,35 +155,39 @@ public class RegistroCliente extends javax.swing.JFrame {
         //boolean validos = true;
         
         //Comporbamos que se han completado todos los campos
-        if(dniField.getText() == ""){
+        if("".equals(dniField.getText())){
             JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo DNI.", "Dialog", JOptionPane.ERROR_MESSAGE);
       
         }
-        else if (nameField.getText()==""){
+        else if ("".equals(nameField.getText())){
             JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Nombre.", "Dialog", JOptionPane.ERROR_MESSAGE);
           
         }
-        else if (surnameField.getText() == ""){
+        else if ("".equals(surnameField.getText())){
             JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Apellidos.", "Dialog", JOptionPane.ERROR_MESSAGE);
         
         }
-        else if (passwordField.getText() == ""){
+        else if ("".equals(passwordField.getText())){
             JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Contraseña.", "Dialog", JOptionPane.ERROR_MESSAGE);
          
         }
-        else if (userField.getText() == ""){
+        else if ("".equals(userField.getText())){
             JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Nombre de usuario.", "Dialog", JOptionPane.ERROR_MESSAGE);
           
         }
         else{
             
             
-            controlador.registrarCliente(dniField.getText(), nameField.getText(), surnameField.getText(), userField.getText(), passwordField.getText());
-            
-           
+            controlador.registrarCliente(dniField.getText(), nameField.getText(), surnameField.getText(), userField.getText(), Arrays.toString(passwordField.getPassword()));
+                JOptionPane.showMessageDialog(new JFrame(), "Cliente registrado con éxito", "Alert", JOptionPane.WARNING_MESSAGE);
                 this.dispose();
                 Login login = new Login();
                 login.setVisible(true);
+            
+            
+            
+           
+                
             }
         
         

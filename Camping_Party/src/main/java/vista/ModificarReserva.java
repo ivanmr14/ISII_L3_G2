@@ -4,6 +4,7 @@
  */
 package vista;
 
+import campingparty.Controlador;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,7 +16,10 @@ public class ModificarReserva extends javax.swing.JFrame {
     /**
      * Creates new form ReservaCliente
      */
-    public ModificarReserva() {
+    
+    private Controlador controlador;
+    public ModificarReserva(Controlador controlador) {
+        this.controlador = controlador;
         initComponents();
     }
 
@@ -135,7 +139,7 @@ public class ModificarReserva extends javax.swing.JFrame {
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(this, "Fechas cambiadas con éxito.");
-        Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente(controlador);
         cliente.setVisible(true);
         this.dispose();
         
@@ -146,7 +150,7 @@ public class ModificarReserva extends javax.swing.JFrame {
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         // TODO add your handling code here:
-        Cliente cliente = new Cliente();
+        Cliente cliente = new Cliente(controlador);
         cliente.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed

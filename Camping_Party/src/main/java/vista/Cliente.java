@@ -19,22 +19,12 @@ public class Cliente extends javax.swing.JFrame {
     /**
      * Creates new form Cliente
      */
-    public Cliente() {
+    public Cliente(Controlador controlador) {
+        this.controlador = controlador;
         initComponents();
     }
     
-    //CONSTRUCTOR CON ARGUMENTOS
-    public Cliente(Controlador c, String user, String password, String dni, String name, String surname){
-        /*
-        this.controlador = c;
-        this.user = user;
-        this.password = password;
-        this.dni = dni;
-        this.name = name;
-        this.surname = surname;
-        */
-        initComponents();
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -153,20 +143,20 @@ public class Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void reservarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservarActividadActionPerformed
-        ActividadesCliente actividadescliente = new ActividadesCliente();// TODO add your handling code here:
+        ActividadesCliente actividadescliente = new ActividadesCliente(controlador);// TODO add your handling code here:
         actividadescliente.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_reservarActividadActionPerformed
 
     private void modificarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarReservaActionPerformed
-        ModificarReserva modificarReserva = new ModificarReserva();// TODO add your handling code here:
+        ModificarReserva modificarReserva = new ModificarReserva(controlador);// TODO add your handling code here:
         modificarReserva.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_modificarReservaActionPerformed
 
     private void cancelarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActividadActionPerformed
         // TODO add your handling code here:
-        CancelarActividadCliente cancelar = new CancelarActividadCliente();
+        CancelarActividadCliente cancelar = new CancelarActividadCliente(controlador);
         cancelar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelarActividadActionPerformed
