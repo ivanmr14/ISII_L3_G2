@@ -177,11 +177,11 @@ private  Controlador controlador;
         }
         else{
             
-            
-            controlador.registrarCliente(dniField.getText(), nameField.getText(), surnameField.getText(), userField.getText(), Arrays.toString(passwordField.getPassword()));
-                JOptionPane.showMessageDialog(new JFrame(), "Cliente registrado con éxito", "Alert", JOptionPane.WARNING_MESSAGE);
+             String pass_string = new String (passwordField.getPassword());
+            controlador.registrarCliente(dniField.getText(), nameField.getText(), surnameField.getText(), userField.getText(), pass_string);
+                JOptionPane.showMessageDialog(new JFrame(), "Cliente"+nameField.getText() +" registrado con éxito\n"+ "usuario: " + controlador.devolverUsuario(nameField.getText()) +"\n"+"Contraseña: "+controlador.devolverPass(userField.getText()), "Alert", JOptionPane.WARNING_MESSAGE);
                 this.dispose();
-                Login login = new Login();
+                Login login = new Login(controlador);
                 login.setVisible(true);
             
             
@@ -207,7 +207,7 @@ private  Controlador controlador;
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         // TODO add your handling code here:
-        Login login = new Login();
+        Login login = new Login(controlador);
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed

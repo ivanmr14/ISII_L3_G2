@@ -192,7 +192,7 @@ public class MenuGerente extends javax.swing.JFrame {
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
         // TODO add your handling code here:
-        Login login = new Login();
+        Login login = new Login(controlador);
         login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_salirActionPerformed

@@ -11,6 +11,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import java.util.Arrays;
+import Modelo.Camping;
 
 
 
@@ -25,16 +26,15 @@ public class Login extends javax.swing.JFrame {
      */
     
     private Controlador controlador;
+  
     
-    
-    public Login() {
+    public Login(Controlador controlador) {
+        this.controlador = controlador;
+        //controlador.cargarDatosIniciales();
         
-        
-        //Inicio controlador del programa y cargo datos iniciales
-        controlador = new Controlador();
+            
+        //Inicio controlador del programa y cargo datos iniciales      
         initComponents();
-        //Cargar datos da error
-        controlador.cargarDatosIniciales();
         
       
         
@@ -56,7 +56,6 @@ public class Login extends javax.swing.JFrame {
         registro = new javax.swing.JButton();
         fieldpass = new javax.swing.JPasswordField();
         entrar = new javax.swing.JButton();
-        btnGerente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,13 +93,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        btnGerente.setText("Gerente");
-        btnGerente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGerenteActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,10 +113,6 @@ public class Login extends javax.swing.JFrame {
                         .addGap(95, 95, 95)
                         .addComponent(entrar)))
                 .addGap(0, 95, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnGerente)
-                .addGap(175, 175, 175))
             .addGroup(layout.createSequentialGroup()
                 .addGap(101, 101, 101)
                 .addComponent(campingParty)
@@ -143,9 +131,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(etPass)
                     .addComponent(fieldpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addComponent(btnGerente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(63, 63, 63)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registro)
                     .addComponent(entrar))
@@ -169,23 +155,27 @@ public class Login extends javax.swing.JFrame {
          * Para quitar el apaño del boton de acceder al menu clientes,
          * comentar las siguientes 3 lineas y descomentar el resto.
          */
-        String pass_string1 = new String (fieldpass.getPassword());
+        String pass_string = new String (fieldpass.getPassword());
                   
        if(fieldusuario.getText().isEmpty() || fieldpass.getPassword().length==0){
            JOptionPane.showMessageDialog(this,"Debes introducir un usuario y una contraseña.","Alert",JOptionPane.WARNING_MESSAGE);        
        }
         else{
            
-               if(controlador.comprobarExistenciaCliente(fieldusuario.getText(), pass_string1 )){
-                   Cliente cliente = new Cliente(controlador);
-                    cliente.setVisible(true);
+            if(controlador.comprobarExistenciaCliente(fieldusuario.getText(), pass_string )){
+                Cliente cliente = new Cliente(controlador);
+                cliente.setVisible(true);
+                this.dispose();
+            }
+            else{
+                if(controlador.comprobarLoginGerente(fieldusuario.getText(), pass_string)){
+                    MenuGerente mg = new MenuGerente(controlador);
+                    mg.setVisible(true);
                     this.dispose();
-               }
-               else{
+                }else{          
                    JOptionPane.showMessageDialog(this,"Error: Usuario o contraseña incorrectos","Alert",JOptionPane.WARNING_MESSAGE);
-               }
-                
-          
+                }
+            }               
        }
         
       
@@ -199,29 +189,6 @@ public class Login extends javax.swing.JFrame {
         
     }//GEN-LAST:event_registroMouseClicked
 
-    private void btnGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenteActionPerformed
-        // TODO add your handling code here:
-        //Comprobar login gerente
-        
-        
-        
-        String pass_string = new String (fieldpass.getPassword());
-        
-        if(controlador.comprobarLoginGerente(fieldusuario.getText(), pass_string)){
-            MenuGerente mg = new MenuGerente(controlador);
-            mg.setVisible(true);
-            this.dispose();
-        }else{
-            JOptionPane.showMessageDialog(this,"Los datos introducidos no son correctos.",
-                        "Alert",JOptionPane.WARNING_MESSAGE);
-        }
-        
-         /* Gerente gerente = new Gerente(ge);
-         gerente.setVisible(true);
-         this.dispose();*/
-        
-    }//GEN-LAST:event_btnGerenteActionPerformed
-
     private void fieldusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldusuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldusuarioActionPerformed
@@ -229,37 +196,7 @@ public class Login extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
-        });
-    }
 
     
 
@@ -269,7 +206,6 @@ public class Login extends javax.swing.JFrame {
     
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGerente;
     private javax.swing.JLabel campingParty;
     private javax.swing.JButton entrar;
     private javax.swing.JLabel etPass;

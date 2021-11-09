@@ -6,6 +6,7 @@
 package Modelo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import vista.Cliente;
 
 /**
@@ -25,6 +26,7 @@ public class Camping {
         clientes = new ArrayList();
         gerentes = new ArrayList();
         parcelas = new ArrayList();
+        reservas = new ArrayList();
     }
     
    public void cargarDatosIniciales(){
@@ -50,6 +52,7 @@ public class Camping {
         parcelas.add(new Parcela("C","3",32,12,true));
         
         //cargo reservas
+        
       
     }
     
@@ -121,13 +124,17 @@ public class Camping {
         this.clientes = clientes;
     }
     
-    public void almacenarClientes(ClienteDatos cliente){
+    public void almacenarClientes(String dni, String nombre, String apellido, String usuario, String pass){
    
-        clientes.add(cliente);
+        clientes.add(new ClienteDatos(usuario, pass, dni, nombre, apellido));
  
 
     }
     
+    public void nuevaReserva(String parcela, int numTiendas, Date entrada,Date salida,ArrayList nombres,ArrayList tamanyos){
+        reservas.add(new Reserva( parcela, numTiendas, entrada, salida, nombres,tamanyos));
+    
+    }
     
     public boolean comprobarExistenciasCliente(String user, String pass){
         boolean ok = false;
@@ -157,6 +164,34 @@ public class Camping {
         
     
     }
+    
+    
+    public String devolverUsuario(String nombre){
+        String usuario = "";
+        for(ClienteDatos cliente: clientes){
+            if(cliente.getName().equals(nombre)){
+                usuario = cliente.getUser();
+            
+            }
+        
+        }
+        
+        return usuario;
+    }
+    
+     public String devolverPass(String usuario){
+        String aux = "";
+        for(ClienteDatos cliente: clientes){
+            if(cliente.getUser().equals(usuario)){
+                aux = cliente.getPassword();
+            
+            }
+        
+        }
+        
+        return aux;
+    }
+    
         
         
         

@@ -11,9 +11,9 @@
             </goals>
             <properties>
                 <exec.vmArgs></exec.vmArgs>
-                <exec.args>-classpath %classpath vista.Login</exec.args>
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.appArgs></exec.appArgs>
-                <exec.mainClass>campingparty.Login</exec.mainClass>
+                <exec.mainClass>vista.Principal</exec.mainClass>
                 <exec.executable>java</exec.executable>
             </properties>
         </action>
@@ -27,9 +27,12 @@
                 <goal>org.codehaus.mojo:exec-maven-plugin:1.5.0:exec</goal>
             </goals>
             <properties>
-                <exec.args>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address} -classpath %classpath vista.Login</exec.args>
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.executable>java</exec.executable>
                 <jpda.listen>true</jpda.listen>
+                <exec.mainClass>vista.Principal</exec.mainClass>
+                <exec.vmArgs>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
+                <exec.appArgs></exec.appArgs>
             </properties>
         </action>
         <action>
@@ -42,8 +45,11 @@
                 <goal>org.codehaus.mojo:exec-maven-plugin:1.5.0:exec</goal>
             </goals>
             <properties>
-                <exec.args>-classpath %classpath vista.Login</exec.args>
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
                 <exec.executable>java</exec.executable>
+                <exec.mainClass>vista.Principal</exec.mainClass>
+                <exec.vmArgs></exec.vmArgs>
+                <exec.appArgs></exec.appArgs>
             </properties>
         </action>
     </actions>

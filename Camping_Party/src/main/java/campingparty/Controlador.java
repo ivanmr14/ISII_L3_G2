@@ -35,7 +35,8 @@ public class Controlador {
     }
      
     public void nuevaReserva(String parcela, /*ClienteDatos cliente,*/ int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos){
-        reservas.add(reserva = new Reserva( parcela, /*cliente,*/ numTiendas, entrada, salida, nombres, tamanyos));
+        //reservas.add(reserva = new Reserva( parcela, /*cliente,*/ numTiendas, entrada, salida, nombres, tamanyos));
+        camping.nuevaReserva(parcela, numTiendas, entrada, salida, nombres, tamanyos);
     }
      
      public boolean comprobarLoginGerente(String u, String p){
@@ -118,9 +119,9 @@ public class Controlador {
     }
     
     public void registrarCliente(String dni, String nombre, String apellido, String usuario, String pass){
-        ClienteDatos cliente = new ClienteDatos(usuario, pass, dni, nombre, apellido);
+        //ClienteDatos cliente = new ClienteDatos(usuario, pass, dni, nombre, apellido);
         
-        camping.almacenarClientes(cliente);   
+        camping.almacenarClientes(dni, nombre, apellido, usuario, pass);   
     }
     
     public boolean comprobarExistenciaCliente(String usuario, String pass){
@@ -133,6 +134,22 @@ public class Controlador {
         }
         
         return ok;
+    }
+    
+    public String devolverUsuario(String nombre){
+        String usuario ="";
+        usuario = camping.devolverUsuario(nombre);
+        
+        return usuario;
+    }
+    
+    public String devolverPass(String usuario){
+        String pass = "";
+        pass = camping.devolverPass(usuario);
+        
+        
+        return pass;
+       
     }
            
             

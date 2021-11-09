@@ -43,8 +43,8 @@ public class ClienteDatos {
         this.surname = surname;
     }
 
-    public ClienteDatos() {
-    }
+    /*public ClienteDatos() {
+    }*/
     
    
     public String getUser() {
