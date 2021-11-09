@@ -24,10 +24,11 @@ public class Camping {
     public Camping(){
         clientes = new ArrayList();
         gerentes = new ArrayList();
+        parcelas = new ArrayList();
     }
     
    public void cargarDatosIniciales(){
-        //Cargo clientes iniciales
+        //Cargo clientes iniciales   //   user     password    dni         name         surname 
         clientes.add(new ClienteDatos("clienteUno","pass1","11111111a","Cliente Uno","Apellido Uno"));
         clientes.add(new ClienteDatos("clienteDos","pass2","22222222b","Cliente Dos","Apellido Dos"));
         clientes.add(new ClienteDatos("clenteTres","pass3","33333333c","Cliente Tres","Apellido Tres"));
@@ -38,15 +39,15 @@ public class Camping {
        gerentes.add(new Gerente("admin","admin"));
         
         //Cargo parcelas
-        /*parcelas.add(new Parcela("A","1",34,14));
-        parcelas.add(new Parcela("A","2",24,15));
-        parcelas.add(new Parcela("A","3",33,11));
-        parcelas.add(new Parcela("B","1",13,17));
-        parcelas.add(new Parcela("B","2",27,19));
-        parcelas.add(new Parcela("B","3",15,13));
-        parcelas.add(new Parcela("C","1",17,9));
-        parcelas.add(new Parcela("C","2",46,24));
-        parcelas.add(new Parcela("C","3",32,12));*/
+        parcelas.add(new Parcela("A","1",34,14,true));
+        parcelas.add(new Parcela("A","2",24,15,false));
+        parcelas.add(new Parcela("A","3",33,11,true));
+        parcelas.add(new Parcela("B","1",13,17,false));
+        parcelas.add(new Parcela("B","2",27,19,true));
+        parcelas.add(new Parcela("B","3",15,13,false));
+        parcelas.add(new Parcela("C","1",17, 9,true));
+        parcelas.add(new Parcela("C","2",46,24,false));
+        parcelas.add(new Parcela("C","3",32,12,true));
         
         //cargo reservas
       
@@ -56,7 +57,57 @@ public class Camping {
         clientes.remove(c);
     }
     
+   public int numeroDeParcelas(){
+       return parcelas.size();
+   }
    
+    public String getTamanyo(String id){
+        String res = "";
+        for(Parcela p: parcelas){
+            if(p.parcelaID.equals(id)){
+                res = Integer.toString(p.getTamanyoParcela());
+            }
+        }
+        return res;
+    }
+   
+    public String getLuz(String id){
+        String res = "";
+        for(Parcela p: parcelas){
+            if(p.parcelaID.equals(id)){
+                if(p.getLuz())
+                    res = "Sí";
+                else
+                    res = "No";
+            }
+        }
+       return res;
+    }
+    
+    public String getPrecio(String id){
+        String res = "";
+        for(Parcela p: parcelas){
+            if(p.parcelaID.equals(id)){
+                res = ""+p.getPrecioPorDia();
+            }
+        }
+       return res;
+    }
+    
+   
+   public ArrayList<String> getPosicionesX(){
+       ArrayList<String> aux = new ArrayList<String>();
+       for(Parcela p: parcelas)
+            aux.add(p.getPosicionX());
+       return aux;
+   }
+   
+   public ArrayList<String> getPosicionesY(){
+       ArrayList<String> aux = new ArrayList<String>();
+       for(Parcela p: parcelas)
+            aux.add(p.getPosicionY());
+       return aux;
+   }
 
     public ArrayList<ClienteDatos> getClientes() {
         return clientes;

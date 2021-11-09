@@ -24,7 +24,7 @@ import java.util.Date;
  */
 public class Reserva {
     String parcela;
-    ClienteDatos cliente;                        //Cliente que reserva
+    ClienteDatos cliente;                   //Cliente que reserva
     Date fechaEntrada, fechaSalida;         //Fechas de la reserva
     int nTiendas;                           //nº de tiendas que va a meter
     ArrayList<TiendaCampanya> tiendas;      //Tiendas que va a meter
@@ -36,8 +36,16 @@ public class Reserva {
         //Constructor
     }
     
-    //Constructor con parámetros
-    public Reserva(String parcela, ClienteDatos cliente, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos)
+    /**  Constructor con parámetros
+     * 
+     * @param parcelaID
+     * @param numTiendas
+     * @param entrada
+     * @param salida
+     * @param nombres
+     * @param tamanyos 
+     */
+    public Reserva(String parcelaID,/* ClienteDatos cliente,*/ int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos)
     {
         
         //Constructor

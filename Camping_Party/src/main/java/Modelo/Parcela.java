@@ -19,17 +19,18 @@ public class Parcela {
     String posicionY = "";      //Posición y son 2 numeros        ej: 02
     int tamanyoParcela;
     float precioPorDia;
+    boolean luz;
     //Boolean reservada; //esto lo decidirá un metodo de la clase reserva en el modelo.
     //Cliente cliente = null;
     
     //Constructor
-    public Parcela(String posX, String posY, int tamanyoParcela, float precioPorDia)
+    public Parcela(String posX, String posY, int tamanyoParcela, float precioPorDia, boolean luz)
     {
         setPosicion(posX, posY);
         parcelaID = posX + posY+"";
         this.tamanyoParcela = tamanyoParcela;
         this.precioPorDia = precioPorDia;
-        
+        this.luz = luz;
     }
     
     //Carga parcelas iniciales
@@ -61,6 +62,10 @@ public class Parcela {
         this.precioPorDia = precio;
     }
     
+    public void setLuz(boolean b){
+        this.luz = b;
+    }
+    
 //    public void setCliente(Cliente client)
 //    {
 //        this.cliente = client;
@@ -68,29 +73,33 @@ public class Parcela {
     
     //GETTERS
     
-    public String GetParcelaID()
+    public String getParcelaID()
     {
         return this.parcelaID;
     }
     
-    public String GetPosicionX()
+    public String getPosicionX()
     {
         return this.posicionX;
     }
     
-    public String GetPosicionY()
+    public String getPosicionY()
     {
         return this.posicionY;
     }
     
-    public int GetTamanyoParcela()
+    public int getTamanyoParcela()
     {
         return this.tamanyoParcela;
     }
     
-    public float GetPrecioPorDia()
+    public float getPrecioPorDia()
     {
         return this.precioPorDia;
+    }
+    
+    public boolean getLuz(){
+        return this.luz;
     }
     
 //    public Cliente GetCliente()

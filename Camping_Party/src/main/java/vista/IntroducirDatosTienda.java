@@ -166,13 +166,13 @@ public class IntroducirDatosTienda extends javax.swing.JFrame {
 
         //Compruebo si hay tienda siguiente
         if(numTiendas < tiendaActual)
-        {
+        {   //Si ya no faltan tiendas envío datos a la siguiente vista.
             SeleccionarParcelas parcelas = new SeleccionarParcelas(controlador, numTiendas, entrada, salida, nombres, tamanyos);
             parcelas.setVisible(true);
             this.dispose();
         }
         else
-        {
+        {   //Si faltan tiendas reseteo valores
             nombre.setText(null);
             tamanyo.setText(null);
             nombre.requestFocus();

@@ -21,6 +21,7 @@ public class Controlador {
     private ArrayList<Gerente> gerentes;
     private ArrayList<ClienteDatos> clientes;
     private ArrayList<Reserva> reservas;
+    private Reserva reserva;
     
     public Controlador(){
         camping = new Camping();
@@ -31,6 +32,10 @@ public class Controlador {
     }
      public void cargarDatosIniciales(){
         camping.cargarDatosIniciales();
+    }
+     
+    public void nuevaReserva(String parcela, /*ClienteDatos cliente,*/ int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos){
+        reservas.add(reserva = new Reserva( parcela, /*cliente,*/ numTiendas, entrada, salida, nombres, tamanyos));
     }
      
      public boolean comprobarLoginGerente(String u, String p){
@@ -56,6 +61,35 @@ public class Controlador {
     /*public void nuevaReserva(String parcela, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos){
         reservas.add(new Reserva(parcela, numTiendas, entrada, salida, nombres, tamanyos));
     }*/
+    
+     
+    public int numeroDeParcelas(){
+        return camping.numeroDeParcelas();
+    }
+     
+    public ArrayList<String> getPosicionesX(){
+        return camping.getPosicionesX();
+    }
+    
+    public ArrayList<String> getPosicionesY(){
+        return camping.getPosicionesY();
+    }
+    
+    public String getTamanyo(String id){
+        return camping.getTamanyo(id);
+    }
+    
+    public String getLuz(String id){
+        return camping.getLuz(id);
+    }
+    
+    public String getPrecio(String id){
+        return camping.getPrecio(id);
+    }
+    
+    public String getOcupada(String id){
+        return "Libre";//reserva.estaOcupada(id);
+    }
     
     public boolean estaOcupada(Parcela parcelaAComprobar, Date fechaEntreada, Date fechaSalida){
         return false; //reserva.estaOcupada( parcelaAComprobar,  fechaEntreada,  fechaSalida);

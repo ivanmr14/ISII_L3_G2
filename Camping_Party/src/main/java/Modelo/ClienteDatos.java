@@ -27,6 +27,14 @@ public class ClienteDatos {
         this.reservas = reservas;
     }
 
+    /**
+     * 
+     * @param user
+     * @param password
+     * @param dni
+     * @param name
+     * @param surname 
+     */
     public ClienteDatos(String user, String password, String dni, String name, String surname) {
         this.user = user;
         this.password = password;
