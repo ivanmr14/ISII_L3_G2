@@ -53,11 +53,15 @@ public class Camping {
         
         //cargo reservas
         
+        reservas.add(new Reserva("1",3));
+        reservas.add(new Reserva("2",5));
+        reservas.add(new Reserva("3",2));
+        reservas.add(new Reserva("4",1));
       
     }
     
-    public void registrarSalida(ClienteDatos c){
-        clientes.remove(c);
+    public void registrarSalida(Reserva re){
+        reservas.remove(re);
     }
     
    public int numeroDeParcelas(){
@@ -118,6 +122,10 @@ public class Camping {
     
     public ArrayList<Gerente> getGerentes(){
         return gerentes;
+    }
+    
+    public ArrayList<Reserva> getReservas(){
+        return reservas;
     }
 
     public void setClientes(ArrayList<ClienteDatos> clientes) {

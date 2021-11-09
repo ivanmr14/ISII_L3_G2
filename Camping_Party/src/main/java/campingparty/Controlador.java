@@ -101,10 +101,10 @@ public class Controlador {
         clientesDatos.add(cli);*/
     }
     
-    public void registrarSalida(Object c){
+    public void registrarSalida(Object re){
         
-        ClienteDatos cli = (ClienteDatos) c;
-        camping.registrarSalida(cli);
+        Reserva r = (Reserva) re;
+        camping.registrarSalida(r);
         
     }
     
@@ -116,6 +116,12 @@ public class Controlador {
         clientes = camping.getClientes();
         
         return clientes;
+    }
+    
+    public ArrayList getReservas(){
+        reservas = camping.getReservas();
+        
+        return reservas;
     }
     
     public void registrarCliente(String dni, String nombre, String apellido, String usuario, String pass){

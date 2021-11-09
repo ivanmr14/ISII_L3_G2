@@ -23,15 +23,15 @@ public class RegistrarSalida extends javax.swing.JFrame {
         initComponents();
         this.controlador = c;
         
-        clientes = controlador.getListaClientes();
+        reservas = controlador.getReservas();
         DefaultListModel listaAux = new DefaultListModel<>();
         
         //Recoger y mostrar los clientes en el JList
-        for(Object cli: clientes){
-            listaAux.addElement((Object)cli);
+        for(Object r: reservas){
+            listaAux.addElement((Object)r);
         }
         
-        listaClientes.setModel(listaAux);
+        listaReservas.setModel(listaAux);
     }
 
     /**
@@ -46,7 +46,7 @@ public class RegistrarSalida extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        listaClientes = new javax.swing.JList();
+        listaReservas = new javax.swing.JList();
         labelRegistrarSalida = new javax.swing.JLabel();
         btnAtras = new javax.swing.JButton();
         btnRegistrarSalida = new javax.swing.JButton();
@@ -54,7 +54,7 @@ public class RegistrarSalida extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registrar Salida");
 
-        jScrollPane1.setViewportView(listaClientes);
+        jScrollPane1.setViewportView(listaReservas);
 
         labelRegistrarSalida.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         labelRegistrarSalida.setText("Registrar Salida");
@@ -80,16 +80,16 @@ public class RegistrarSalida extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(102, 102, 102)
                         .addComponent(btnAtras)
                         .addGap(47, 47, 47)
                         .addComponent(btnRegistrarSalida))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(117, 117, 117)
-                        .addComponent(labelRegistrarSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(labelRegistrarSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -97,8 +97,8 @@ public class RegistrarSalida extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(31, Short.MAX_VALUE)
                 .addComponent(labelRegistrarSalida)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAtras)
@@ -117,17 +117,17 @@ public class RegistrarSalida extends javax.swing.JFrame {
 
     private void btnRegistrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarSalidaActionPerformed
         // TODO add your handling code here:
-        controlador.registrarSalida(listaClientes.getSelectedValue());
+        controlador.registrarSalida(listaReservas.getSelectedValue());
         this.dispose();
     }//GEN-LAST:event_btnRegistrarSalidaActionPerformed
 
-    private ArrayList clientes;
+    private ArrayList reservas;
     private Controlador controlador;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnRegistrarSalida;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelRegistrarSalida;
-    private javax.swing.JList listaClientes;
+    private javax.swing.JList listaReservas;
     // End of variables declaration//GEN-END:variables
 }

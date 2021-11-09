@@ -51,6 +51,12 @@ public class Reserva {
         //Constructor
     }
     
+    //Constructor para cargar datos iniciales de prueba
+    public Reserva(String parcelaID, int numParcelas){
+        this.parcela = parcelaID;
+        this.nParcelas = numParcelas;
+    }
+    
     //Métodos
     /**
      * Método para saber si a parcela a reservar está ocuapada.
@@ -146,5 +152,10 @@ public class Reserva {
     public void eliminaParcela( Parcela nuevaParcela)
     {
         this.parcelas.remove(nuevaParcela);
+    }
+    
+    //Sobreescribo el metodo toString para mostrar los datos especificos en los jList
+    public String toString(){
+        return "ID: "+this.parcela+" | Num.Parcelas: "+this.nParcelas;
     }
 }
