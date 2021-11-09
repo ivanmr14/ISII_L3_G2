@@ -96,9 +96,8 @@ public class Controlador {
         return false; //reserva.estaOcupada( parcelaAComprobar,  fechaEntreada,  fechaSalida);
     }
     
-    public void registrarEntrada(Object c){
-       /* ClienteDatos cli = (Cliente) c;
-        clientesDatos.add(cli);*/
+    public void registrarEntrada(Reserva reserva){
+       camping.registrarEntrada(reserva);
     }
     
     public void registrarSalida(Object re){

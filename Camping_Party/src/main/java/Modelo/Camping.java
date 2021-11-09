@@ -64,6 +64,13 @@ public class Camping {
         reservas.remove(re);
     }
     
+    public void registrarEntrada(Reserva re){
+        for(Reserva r : reservas){
+            reservas.remove((Object)re);
+            reservas.add(re);
+        }
+    }
+    
    public int numeroDeParcelas(){
        return parcelas.size();
    }

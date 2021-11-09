@@ -50,6 +50,7 @@ public class MenuGerente extends javax.swing.JFrame {
         jList2 = new javax.swing.JList<>();
         btnRegistrarSalida = new javax.swing.JButton();
         btnRegistroActividad = new javax.swing.JButton();
+        btnRegistrarEntrada = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,14 +110,17 @@ public class MenuGerente extends javax.swing.JFrame {
             }
         });
 
+        btnRegistrarEntrada.setText("Registrar Entrada");
+        btnRegistrarEntrada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarEntradaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(salir)
-                .addGap(346, 346, 346))
             .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addComponent(jLabel2)
@@ -124,23 +128,30 @@ public class MenuGerente extends javax.swing.JFrame {
                 .addComponent(actividades)
                 .addGap(103, 103, 103))
             .addGroup(layout.createSequentialGroup()
-                .addGap(255, 255, 255)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(btnRegistroCliente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRegistrarSalida)
-                .addGap(115, 115, 115)
-                .addComponent(btnRegistroActividad)
-                .addGap(82, 82, 82))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(255, 255, 255)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(btnRegistroCliente)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRegistrarEntrada)
+                        .addGap(51, 51, 51)
+                        .addComponent(btnRegistrarSalida)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRegistroActividad)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(salir)
+                .addGap(346, 346, 346))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,7 +176,8 @@ public class MenuGerente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistroCliente)
                     .addComponent(btnRegistrarSalida)
-                    .addComponent(btnRegistroActividad))
+                    .addComponent(btnRegistroActividad)
+                    .addComponent(btnRegistrarEntrada))
                 .addGap(48, 48, 48)
                 .addComponent(salir)
                 .addGap(46, 46, 46))
@@ -209,6 +221,12 @@ public class MenuGerente extends javax.swing.JFrame {
         fronton.setVisible(true);
     }//GEN-LAST:event_btnRegistroActividadActionPerformed
 
+    private void btnRegistrarEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEntradaActionPerformed
+        // TODO add your handling code here:
+        RegistrarEntrada entrada = new RegistrarEntrada(controlador);
+        entrada.setVisible(true);
+    }//GEN-LAST:event_btnRegistrarEntradaActionPerformed
+
     
    
     private String user;
@@ -216,6 +234,7 @@ public class MenuGerente extends javax.swing.JFrame {
     private Controlador controlador;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel actividades;
+    private javax.swing.JButton btnRegistrarEntrada;
     private javax.swing.JButton btnRegistrarSalida;
     private javax.swing.JButton btnRegistroActividad;
     private javax.swing.JButton btnRegistroCliente;
