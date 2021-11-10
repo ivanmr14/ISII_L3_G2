@@ -153,7 +153,7 @@ public class ActividadesCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_volverActionPerformed
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        ArrayList<String> stringaux = new ArrayList();
+      
         if(piscina.isSelected()){
             controlador.anyadirActividadCliente("piscina",comboPiscina.getSelectedItem().toString(), dni);
            
@@ -167,11 +167,10 @@ public class ActividadesCliente extends javax.swing.JFrame {
            
         }
         
+      
         
-        stringaux = controlador.devolverActividadesClientes(dni);
         
-        
-         JOptionPane.showMessageDialog(this, "Actividad "+stringaux.get(0)+" reservada! A divertirse!");
+         JOptionPane.showMessageDialog(this, "Actividad reservada! A divertirse!");
         
         
         Cliente cliente = new Cliente(controlador, dni);

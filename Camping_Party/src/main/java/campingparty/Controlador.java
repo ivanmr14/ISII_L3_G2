@@ -173,14 +173,13 @@ public class Controlador {
     
     }
     
-    public ArrayList<String> devolverActividadesClientes(String dni){
-            ArrayList<String> res = new ArrayList<String>();
-           res= camping.devolverActividadesClientes(dni);
-           
-           return res;
+    public ArrayList devolverActividadesClientes(String dni){     
+           ArrayList<Actividad> actividadesaux = null;
+           actividadesaux = camping.devolverActividadesClientes(dni);
+           return actividadesaux;
     }
     
-    public void borrarActividad(String cancelada, String dni){
+    public void borrarActividad(Actividad cancelada, String dni){
         camping.borrarActividad(cancelada, dni);
     }
             

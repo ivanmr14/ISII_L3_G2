@@ -4,6 +4,7 @@
  */
 package vista;
 
+import Modelo.Actividad;
 import campingparty.Controlador;
 import java.awt.List;
 import java.util.ArrayList;
@@ -24,37 +25,28 @@ public class CancelarActividadCliente extends javax.swing.JFrame {
     
     private Controlador controlador;
     private String dni;
-    
+    private ArrayList actividades;
   
     public CancelarActividadCliente(Controlador controlador) {
         this.controlador = controlador;
          DefaultListModel<String> listModel = new DefaultListModel<String>(); 
         initComponents();
-        ArrayList<String> actividades = new ArrayList<String>();
-       actividades= controlador.devolverActividadesClientes(dni);
-        
-        for(String s: actividades){
-            listModel.addElement(s);
-            jList1.setModel(listModel);
- 
-        }
+     
     }
 
     public CancelarActividadCliente(Controlador controlador, String dni) {
         this.controlador = controlador;
         this.dni = dni;
          initComponents();
-         DefaultListModel<String> listModel = new DefaultListModel<String>(); 
-       
-          ArrayList<String> actividades = new ArrayList<String>();
-       actividades= controlador.devolverActividadesClientes(dni);
+        actividades = controlador.devolverActividadesClientes(dni);
+        DefaultListModel listaAux = new DefaultListModel<>();
         
-        for(String s: actividades){
-            listModel.addElement(s);
-            jList1.setModel(listModel);
- 
+        //Recoger y mostrar los clientes en el JList
+        for(Object r: actividades){
+            listaAux.addElement((Object)r);
         }
         
+        jList1.setModel(listaAux);
         
         
       
@@ -159,14 +151,14 @@ public class CancelarActividadCliente extends javax.swing.JFrame {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
-        String cancelada = new String();
+        Object cancelada ;
         
         cancelada = jList1.getSelectedValue();
        
-        int canceladaindex = jList1.getSelectedIndex();
+       // int canceladaindex = jList1.getSelectedIndex();
         
-        controlador.borrarActividad(cancelada, dni);
-        jList1.remove(canceladaindex);
+        controlador.borrarActividad((Actividad)cancelada, dni);
+       // jList1.remove(canceladaindex);
         
         JOptionPane.showMessageDialog(this, "Actividad Cancelada con éxito");
         Cliente cliente = new Cliente(controlador, dni);

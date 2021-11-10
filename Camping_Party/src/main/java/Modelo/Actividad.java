@@ -28,6 +28,10 @@ public class Actividad {
         
         
     }
+    @Override
+    public String toString(){
+        return nombre +" " + horario;
+    }
 
     public String getNombre() {
         return nombre;

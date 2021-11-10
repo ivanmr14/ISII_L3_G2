@@ -38,6 +38,8 @@ public class ClienteDatos {
         actividades = new ArrayList<Actividad>();
     }
 
+    
+
     public ArrayList<Actividad> getActividades() {
         return actividades;
     }
