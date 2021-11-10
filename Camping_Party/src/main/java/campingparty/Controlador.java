@@ -180,8 +180,8 @@ public class Controlador {
            return res;
     }
     
-    public void borrarActividad(String cancelada){
-        camping.borrarActividad(cancelada);
+    public void borrarActividad(String cancelada, String dni){
+        camping.borrarActividad(cancelada, dni);
     }
             
   

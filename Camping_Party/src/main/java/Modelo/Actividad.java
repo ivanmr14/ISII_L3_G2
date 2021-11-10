@@ -44,5 +44,9 @@ public class Actividad {
     public void setHorario(String horario) {
         this.horario = horario;
     }
+
+    public ArrayList<ClienteDatos> getClientes() {
+        return clientes;
+    }
     
 }

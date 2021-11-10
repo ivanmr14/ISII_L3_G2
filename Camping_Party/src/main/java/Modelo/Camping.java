@@ -263,11 +263,49 @@ public class Camping {
       
       }
       
-      public void borrarActividad(String cancelada){
+      public void borrarActividad(String cancelada, String dni){
+        ArrayList<Actividad> actaux = new ArrayList<Actividad>();
+        ArrayList<ClienteDatos> clientesaux = new ArrayList<ClienteDatos>();
       
-        String[] parts = cancelada.split(".");
+        //Divido el string en dos partes para sacar el Nombre y el horario
+        String[] parts = cancelada.split(" ");
         String part1 = parts[0]; // 004
         String part2 = parts[1]; // 034556
+        
+       //busco en mi array de clientes el que tiene ese DNI y saco sus actividades
+       for(ClienteDatos cliente: clientes){
+           if(cliente.getDni().equals(dni)){
+               actaux = cliente.getActividades();
+           }
+       }
+       
+       //de las actividades del cliente elegido busco aquellas que tienen
+       //ese nombre y horario y las elimino de la lista de actividades
+       //del cliente
+       for(Actividad act: actaux){
+           if(act.getNombre().equals(part1) && act.getHorario().equals(part2)){
+                actaux.remove(act);
+           }
+       
+       }
+       
+       //busco en el array de actividades que tengo almacenadas en el modelo
+       //y saco la lista de clientes que tiene
+       for(Actividad actt: actividades){
+          if(actt.getNombre().equals(part1) && actt.getHorario().equals(part2)){
+              clientesaux = actt.getClientes();
+          }
+       }
+       
+       //de esa lista de clientes por actividad busco por el dni el cliente 
+       //que cancela la actividad y lo elimino de la lista de clientes
+       for(ClienteDatos clientess: clientesaux){
+           if(clientess.getDni().equals(dni)){
+               clientesaux.remove(clientess);
+           }
+       
+       }
+        
       
       }
     

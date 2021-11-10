@@ -160,8 +160,14 @@ public class CancelarActividadCliente extends javax.swing.JFrame {
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
         String cancelada = new String();
+        
         cancelada = jList1.getSelectedValue();
-        controlador.borrarActividad(cancelada);
+       
+        int canceladaindex = jList1.getSelectedIndex();
+        
+        controlador.borrarActividad(cancelada, dni);
+        jList1.remove(canceladaindex);
+        
         JOptionPane.showMessageDialog(this, "Actividad Cancelada con éxito");
         Cliente cliente = new Cliente(controlador, dni);
         cliente.setVisible(true);
