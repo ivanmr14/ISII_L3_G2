@@ -19,9 +19,17 @@ public class Cliente extends javax.swing.JFrame {
     /**
      * Creates new form Cliente
      */
+    private String dni;
     public Cliente(Controlador controlador) {
         this.controlador = controlador;
         initComponents();
+    }
+
+    Cliente(Controlador controlador, String dni) {
+        this.controlador=controlador;
+        this.dni = dni;
+         initComponents();
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
@@ -143,7 +151,7 @@ public class Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void reservarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservarActividadActionPerformed
-        ActividadesCliente actividadescliente = new ActividadesCliente(controlador);// TODO add your handling code here:
+        ActividadesCliente actividadescliente = new ActividadesCliente(controlador, dni);// TODO add your handling code here:
         actividadescliente.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_reservarActividadActionPerformed
@@ -156,7 +164,7 @@ public class Cliente extends javax.swing.JFrame {
 
     private void cancelarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActividadActionPerformed
         // TODO add your handling code here:
-        CancelarActividadCliente cancelar = new CancelarActividadCliente(controlador);
+        CancelarActividadCliente cancelar = new CancelarActividadCliente(controlador, dni);
         cancelar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelarActividadActionPerformed

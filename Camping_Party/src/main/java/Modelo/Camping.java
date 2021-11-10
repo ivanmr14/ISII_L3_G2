@@ -19,6 +19,7 @@ public class Camping {
     private ArrayList<Gerente> gerentes;
     private ArrayList<Parcela> parcelas;
     private ArrayList<Reserva> reservas;
+    private ArrayList<Actividad> actividades;
     
     //private ArrayList<Cliente> clientesEnElCamping;
     
@@ -27,6 +28,7 @@ public class Camping {
         gerentes = new ArrayList();
         parcelas = new ArrayList();
         reservas = new ArrayList();
+        actividades = new ArrayList();
     }
     
    public void cargarDatosIniciales(){
@@ -36,6 +38,7 @@ public class Camping {
         clientes.add(new ClienteDatos("clenteTres","pass3","33333333c","Cliente Tres","Apellido Tres"));
         clientes.add(new ClienteDatos("clienteCuatro","pass4","44444444d","Cliente Cuatro","Apellido Cuatro"));
         clientes.add(new ClienteDatos("clienteCinco","pass5","55555555e","Cliente Cinco","Apellido Cinco"));
+        clientes.add(new ClienteDatos("misge","1234","112","Mirena","Gerova"));
         
         //Cargo gerente inicial
        gerentes.add(new Gerente("admin","admin"));
@@ -206,6 +209,67 @@ public class Camping {
         
         return aux;
     }
+     
+      public String devolverDni(String usuario){
+        String aux = "";
+        for(ClienteDatos cliente: clientes){
+            if(cliente.getUser().equals(usuario)){
+                aux = cliente.getDni();
+            
+            }
+        
+        }
+        
+        return aux;
+    }
+     
+     public void anyadirActividadCliente(String nombre, String horario, String dni){
+         Actividad actividad = new Actividad(nombre,horario);
+         for(ClienteDatos cliente: clientes){
+            if(cliente.getDni().equals(dni)){
+               cliente.addActividad(actividad); 
+                ClienteDatos clienteaux = new ClienteDatos(cliente.getUser(),cliente.getPassword(), dni, cliente.getName(), cliente.getSurname());
+                 actividad.addCliente(clienteaux);
+                 
+            }
+         }
+         actividades.add(actividad);
+        
+        
+         
+        
+         
+     
+     }
+     
+      public ArrayList<String> devolverActividadesClientes(String dni){
+                ArrayList<Actividad> actividadaux = new ArrayList<Actividad>();
+                ArrayList<String> stringres = new ArrayList<String>();
+                for(ClienteDatos cliente:clientes){
+                   if(cliente.getDni().equals(dni)){
+                       actividadaux = cliente.getActividades();
+                       
+                   }
+                }
+                
+                for(Actividad act: actividadaux){
+                    String saux = new String();
+                    saux = act.getNombre()+" "+act.getHorario();
+                    stringres.add(saux);
+                    
+                }
+                
+                return stringres;
+      
+      }
+      
+      public void borrarActividad(String cancelada){
+      
+        String[] parts = cancelada.split(".");
+        String part1 = parts[0]; // 004
+        String part2 = parts[1]; // 034556
+      
+      }
     
         
         

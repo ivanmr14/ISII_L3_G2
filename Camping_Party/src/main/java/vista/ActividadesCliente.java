@@ -6,6 +6,7 @@
 package vista;
 
 import campingparty.Controlador;
+import java.util.ArrayList;
 import vista.Cliente;
 import javax.swing.JOptionPane;
 
@@ -19,10 +20,19 @@ public class ActividadesCliente extends javax.swing.JFrame {
      * Creates new form ActividadesCliente
      */
     
+    private String dni;
     private Controlador controlador;
     public ActividadesCliente(Controlador controlador) {
         this.controlador = controlador;
         initComponents();
+    }
+
+   public ActividadesCliente(Controlador controlador, String dni) {
+        this.controlador = controlador;
+        this.dni = dni;
+        initComponents();
+        
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -37,12 +47,12 @@ public class ActividadesCliente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         volver = new javax.swing.JButton();
         aceptar = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        piscina = new javax.swing.JRadioButton();
+        comboPiscina = new javax.swing.JComboBox<>();
+        fronton = new javax.swing.JRadioButton();
+        comboFronton = new javax.swing.JComboBox<>();
+        club = new javax.swing.JRadioButton();
+        comboClub = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,17 +73,22 @@ public class ActividadesCliente extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton1.setText("Piscina");
+        piscina.setText("Piscina");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Martes 17:00-18:00", "Miercoles 9:00-10:00" }));
+        comboPiscina.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Martes-17:00-18:00", "Miercoles-9:00-10:00" }));
 
-        jRadioButton2.setText("Frontón");
+        fronton.setText("Frontón");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes 17:00-18:00", "Sábado 9:00-10:00" }));
+        comboFronton.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lunes-17:00-18:00", "Sábado-9:00-10:00" }));
 
-        jRadioButton3.setText("Club Social");
+        club.setText("Club Social");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Viernes 17:00-18:00", "Jueves 9:00-10:00" }));
+        comboClub.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Viernes-17:00-18:00", "Jueves-9:00-10:00" }));
+        comboClub.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboClubActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,15 +97,15 @@ public class ActividadesCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(170, 170, 170)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton1)
+                    .addComponent(club)
+                    .addComponent(fronton)
+                    .addComponent(piscina)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(comboFronton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboPiscina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboClub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(109, 109, 109)
@@ -109,17 +124,17 @@ public class ActividadesCliente extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addComponent(jLabel1)
                 .addGap(37, 37, 37)
-                .addComponent(jRadioButton1)
+                .addComponent(piscina)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboPiscina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(jRadioButton2)
+                .addComponent(fronton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboFronton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
-                .addComponent(jRadioButton3)
+                .addComponent(club)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(comboClub, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(aceptar)
@@ -138,23 +153,50 @@ public class ActividadesCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_volverActionPerformed
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
-        JOptionPane.showMessageDialog(this, "Actividad reservada! A divertirse!");
-        Cliente cliente = new Cliente(controlador);
+        ArrayList<String> stringaux = new ArrayList();
+        if(piscina.isSelected()){
+            controlador.anyadirActividadCliente("piscina",comboPiscina.getSelectedItem().toString(), dni);
+           
+        }
+        if(fronton.isSelected()){
+            controlador.anyadirActividadCliente("fronton",comboFronton.getSelectedItem().toString(), dni);
+           
+        }
+        if(club.isSelected()){
+            controlador.anyadirActividadCliente("club Social",comboClub.getSelectedItem().toString(), dni);
+           
+        }
+        
+        
+        stringaux = controlador.devolverActividadesClientes(dni);
+        
+        
+         JOptionPane.showMessageDialog(this, "Actividad "+stringaux.get(0)+" reservada! A divertirse!");
+        
+        
+        Cliente cliente = new Cliente(controlador, dni);
         cliente.setVisible(true);
         this.dispose();
+        
+        
+        
     }//GEN-LAST:event_aceptarActionPerformed
+
+    private void comboClubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboClubActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboClubActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JRadioButton club;
+    private javax.swing.JComboBox<String> comboClub;
+    private javax.swing.JComboBox<String> comboFronton;
+    private javax.swing.JComboBox<String> comboPiscina;
+    private javax.swing.JRadioButton fronton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton piscina;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,6 +21,7 @@ public class Controlador {
     private ArrayList<Gerente> gerentes;
     private ArrayList<ClienteDatos> clientes;
     private ArrayList<Reserva> reservas;
+    private ArrayList<Actividad> actividades;
     private Reserva reserva;
     
     public Controlador(){
@@ -28,6 +29,7 @@ public class Controlador {
         gerentes = new ArrayList<Gerente>();
         clientes = new ArrayList<ClienteDatos>();
         reservas = new ArrayList<Reserva>();
+        actividades = new ArrayList<Actividad>();
         
     }
      public void cargarDatosIniciales(){
@@ -156,7 +158,31 @@ public class Controlador {
         return pass;
        
     }
+    
+    public String devolverDni(String usuario){
+        String dni = "";
+        dni = camping.devolverDni(usuario);
+        
+        
+        return dni;
+       
+    }
+    
+    public void anyadirActividadCliente(String nombre, String horario, String dni){
+            camping.anyadirActividadCliente(nombre, horario, dni);
+    
+    }
+    
+    public ArrayList<String> devolverActividadesClientes(String dni){
+            ArrayList<String> res = new ArrayList<String>();
+           res= camping.devolverActividadesClientes(dni);
            
+           return res;
+    }
+    
+    public void borrarActividad(String cancelada){
+        camping.borrarActividad(cancelada);
+    }
             
   
             

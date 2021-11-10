@@ -163,7 +163,7 @@ public class Login extends javax.swing.JFrame {
         else{
            
             if(controlador.comprobarExistenciaCliente(fieldusuario.getText(), pass_string )){
-                Cliente cliente = new Cliente(controlador);
+                Cliente cliente = new Cliente(controlador, controlador.devolverDni(fieldusuario.getText()));
                 cliente.setVisible(true);
                 this.dispose();
             }

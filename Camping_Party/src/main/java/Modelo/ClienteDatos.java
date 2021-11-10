@@ -18,15 +18,9 @@ public class ClienteDatos {
     private String name;
     private String surname;
     private ArrayList<Reserva> reservas;
-
-    public ArrayList<Reserva> getReservas() {
-        return reservas;
-    }
-
-    public void setReservas(ArrayList<Reserva> reservas) {
-        this.reservas = reservas;
-    }
-
+    private ArrayList<Actividad> actividades;
+    
+    
     /**
      * 
      * @param user
@@ -41,7 +35,25 @@ public class ClienteDatos {
         this.dni = dni;
         this.name = name;
         this.surname = surname;
+        actividades = new ArrayList<Actividad>();
     }
+
+    public ArrayList<Actividad> getActividades() {
+        return actividades;
+    }
+
+    public ArrayList<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(ArrayList<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+
+    public void addActividad(Actividad actividad){
+        actividades.add(actividad);
+    }
+    
 
     /*public ClienteDatos() {
     }*/
