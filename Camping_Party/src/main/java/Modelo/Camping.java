@@ -149,8 +149,8 @@ public class Camping {
 
     }
     
-    public void nuevaReserva(String parcela, int numTiendas, Date entrada,Date salida,ArrayList nombres,ArrayList tamanyos){
-        reservas.add(new Reserva( parcela, numTiendas, entrada, salida, nombres,tamanyos));
+    public void nuevaReserva(String parcela, int numTiendas, Date entrada,Date salida,ArrayList nombres,ArrayList tamanyos, int numParcelas){
+        reservas.add(new Reserva( parcela, numTiendas, entrada, salida, nombres,tamanyos, numParcelas));
     
     }
     

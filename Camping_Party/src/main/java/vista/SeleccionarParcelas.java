@@ -35,6 +35,8 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
     boolean ocupada = false;
     private BufferedImage image;
     private String id;
+    private boolean esCliente;
+    private int numParcelas;
     
     
     
@@ -45,13 +47,15 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
      * @param entrada
      * @param salida
      */
-    public SeleccionarParcelas(Controlador c, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos){
+    public SeleccionarParcelas(Controlador c, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, boolean esC){
         this.controlador = c;
         this.numTiendas = numTiendas;
         this.entrada = entrada;
         this.salida = salida;
         this.nombres = nombres;
         this.tamanyos = tamanyos;
+        this.esCliente = esC;
+        this.numParcelas = 0;
         initComponents();
         anyadirParcelasAVista();
         
@@ -288,16 +292,29 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
     private void finalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarActionPerformed
         // TODO add your handling code here:
         
-        //Guardar parcela:
-        controlador.nuevaReserva(id, numTiendas, entrada, salida, nombres, tamanyos);
+        
         
         JOptionPane.showMessageDialog(this, "Reserva Realizada con éxito");
 
         //código de guardar los datos y hacer la reserva bien.
-
-        Cliente cliente = new Cliente(controlador);
-        cliente.setVisible(true);
-        this.dispose();
+        if(esCliente){
+            
+            //TODO Pasar el cliente al metodo nuevaReserva
+            
+            //Guardar parcela:
+            numParcelas = controlador.getNumParcelas() + 1;
+            controlador.nuevaReserva(id, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
+            Cliente cliente = new Cliente(controlador);
+            cliente.setVisible(true);
+            controlador.setNumParcelas(0);
+            this.dispose();
+        }else{
+            //Guardar parcela:
+            numParcelas = controlador.getNumParcelas() + 1;
+            controlador.nuevaReserva(id, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
+            controlador.setNumParcelas(0);
+            this.dispose();
+        }
     }//GEN-LAST:event_finalizarActionPerformed
 
     private void comboNumerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboNumerosActionPerformed
@@ -322,9 +339,9 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Poner parcela anterior como ocupada
         ///????
-        
+        controlador.aumentarNumParcelas();
         //Guardar parcela:
-        controlador.nuevaReserva(id, numTiendas, entrada, salida, nombres, tamanyos);
+        controlador.nuevaReserva(id, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
     }//GEN-LAST:event_anyadirParcelaActionPerformed
 
     private void comboLetrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboLetrasActionPerformed

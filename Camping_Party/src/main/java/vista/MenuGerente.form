@@ -162,7 +162,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnRegistroCliente">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nuevo cliente sin reserva"/>
+        <Property name="text" type="java.lang.String" value="Nueva entrada sin reserva"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistroClienteActionPerformed"/>

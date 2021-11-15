@@ -139,7 +139,7 @@ public class Cliente extends javax.swing.JFrame {
 
     private void hacerReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hacerReservaActionPerformed
         // TODO add your handling code here:
-        ReservaCliente rc = new ReservaCliente(controlador);
+        ReservaCliente rc = new ReservaCliente(controlador, true);
         rc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_hacerReservaActionPerformed

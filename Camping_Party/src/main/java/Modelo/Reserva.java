@@ -45,8 +45,13 @@ public class Reserva {
      * @param nombres
      * @param tamanyos 
      */
-    public Reserva(String parcelaID,/* ClienteDatos cliente,*/ int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos)
+    public Reserva(String parcelaID,/* ClienteDatos cliente,*/ int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas)
     {
+        this.parcela = parcelaID;
+        this.nTiendas = numTiendas;
+        this.fechaEntrada = entrada;
+        this.fechaSalida = salida;
+        this.nParcelas = numParcelas;
         
         //Constructor
     }
@@ -55,6 +60,7 @@ public class Reserva {
     public Reserva(String parcelaID, int numParcelas){
         this.parcela = parcelaID;
         this.nParcelas = numParcelas;
+        
     }
     
     //Métodos

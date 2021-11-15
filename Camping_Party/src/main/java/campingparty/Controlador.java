@@ -23,6 +23,7 @@ public class Controlador {
     private ArrayList<Reserva> reservas;
     private ArrayList<Actividad> actividades;
     private Reserva reserva;
+    private int numParcelas;
     
     public Controlador(){
         camping = new Camping();
@@ -30,15 +31,18 @@ public class Controlador {
         clientes = new ArrayList<ClienteDatos>();
         reservas = new ArrayList<Reserva>();
         actividades = new ArrayList<Actividad>();
+        numParcelas = 0;
         
     }
      public void cargarDatosIniciales(){
         camping.cargarDatosIniciales();
     }
      
-    public void nuevaReserva(String parcela, /*ClienteDatos cliente,*/ int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos){
+    public void nuevaReserva(String parcela, /*ClienteDatos cliente,*/ int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas){
         //reservas.add(reserva = new Reserva( parcela, /*cliente,*/ numTiendas, entrada, salida, nombres, tamanyos));
-        camping.nuevaReserva(parcela, numTiendas, entrada, salida, nombres, tamanyos);
+        reservas = camping.getReservas();
+        String idParcela = Integer.toString(reservas.size() + 1);
+        camping.nuevaReserva(idParcela, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
     }
      
      public boolean comprobarLoginGerente(String u, String p){
@@ -143,6 +147,10 @@ public class Controlador {
         return ok;
     }
     
+    public int getNumParcelas(){
+        return this.numParcelas;
+    }
+    
     public String devolverUsuario(String nombre){
         String usuario ="";
         usuario = camping.devolverUsuario(nombre);
@@ -181,6 +189,14 @@ public class Controlador {
     
     public void borrarActividad(Actividad cancelada, String dni){
         camping.borrarActividad(cancelada, dni);
+    }
+
+    public void aumentarNumParcelas() {
+        this.numParcelas++;
+    }
+    
+    public void setNumParcelas(int numPar){
+        this.numParcelas = numPar;
     }
             
   

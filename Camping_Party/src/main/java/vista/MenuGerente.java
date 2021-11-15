@@ -77,7 +77,7 @@ public class MenuGerente extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
-        btnRegistroCliente.setText("Nuevo cliente sin reserva");
+        btnRegistroCliente.setText("Nueva entrada sin reserva");
         btnRegistroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistroClienteActionPerformed(evt);
@@ -189,7 +189,7 @@ public class MenuGerente extends javax.swing.JFrame {
 
     private void btnRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroClienteActionPerformed
         // TODO add your handling code here:
-        ReservaCliente cliente = new ReservaCliente(controlador);
+        ReservaCliente cliente = new ReservaCliente(controlador, false);
         cliente.setVisible(true);
     }//GEN-LAST:event_btnRegistroClienteActionPerformed
 

@@ -22,6 +22,7 @@ public class IntroducirDatosTienda extends javax.swing.JFrame {
     Date entrada;
     Date salida;
     Controlador controlador;
+    private boolean esCliente;
     
     /**
      * Creates new form DatosTiendaCampaña
@@ -30,7 +31,7 @@ public class IntroducirDatosTienda extends javax.swing.JFrame {
      * @param entrada
      * @param salida
      */
-    public IntroducirDatosTienda(Controlador c, int numTiendas, Date entrada, Date salida) {
+    public IntroducirDatosTienda(Controlador c, int numTiendas, Date entrada, Date salida, boolean esC) {
         this.controlador = c;
         this.numTiendas = numTiendas;
         this.entrada = entrada;
@@ -38,6 +39,7 @@ public class IntroducirDatosTienda extends javax.swing.JFrame {
         initComponents();
         titulo.setText("Tienda de campaña " + tiendaActual);
         nombre.requestFocus();
+        this.esCliente = esC;
         
         //Cargar parcelas en vista
     }
@@ -167,7 +169,7 @@ public class IntroducirDatosTienda extends javax.swing.JFrame {
         //Compruebo si hay tienda siguiente
         if(numTiendas < tiendaActual)
         {   //Si ya no faltan tiendas envío datos a la siguiente vista.
-            SeleccionarParcelas parcelas = new SeleccionarParcelas(controlador, numTiendas, entrada, salida, nombres, tamanyos);
+            SeleccionarParcelas parcelas = new SeleccionarParcelas(controlador, numTiendas, entrada, salida, nombres, tamanyos, esCliente);
             parcelas.setVisible(true);
             this.dispose();
         }
@@ -187,7 +189,7 @@ public class IntroducirDatosTienda extends javax.swing.JFrame {
     }//GEN-LAST:event_nombreActionPerformed
 
 
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel nom;
     private javax.swing.JTextField nombre;

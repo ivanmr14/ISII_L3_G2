@@ -17,9 +17,10 @@ public class ReservaCliente extends javax.swing.JFrame {
      * Creates new form ClienteSinReserva
      * @param c
      */
-    public ReservaCliente(Controlador c) {
+    public ReservaCliente(Controlador c, boolean esC) {
         initComponents();
         this.controlador = c;
+        this.esCliente = esC;
         
         //Reservas iniciales
         
@@ -176,7 +177,7 @@ public class ReservaCliente extends javax.swing.JFrame {
         Date fEntrada = fechaEntrada.getDate();
         Date fSalida  = fechaSalida.getDate();
         //Creo la siguiente vista
-        IntroducirDatosTienda tienda = new IntroducirDatosTienda(controlador, Integer.parseInt(numeroTiendas.getText()), fEntrada, fSalida);
+        IntroducirDatosTienda tienda = new IntroducirDatosTienda(controlador, Integer.parseInt(numeroTiendas.getText()), fEntrada, fSalida, esCliente);
         tienda.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_siguienteActionPerformed
@@ -205,4 +206,5 @@ public class ReservaCliente extends javax.swing.JFrame {
     private javax.swing.JButton siguiente;
     // End of variables declaration//GEN-END:variables
     private Controlador controlador;
+    private boolean esCliente;
 }
