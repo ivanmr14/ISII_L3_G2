@@ -23,15 +23,15 @@ public class RegistrarSalida extends javax.swing.JFrame {
         initComponents();
         this.controlador = c;
         
-        reservas = controlador.getReservas();
+        entradas = controlador.getEntradas();
         DefaultListModel listaAux = new DefaultListModel<>();
         
         //Recoger y mostrar los clientes en el JList
-        for(Object r: reservas){
+        for(Object r: entradas){
             listaAux.addElement((Object)r);
         }
         
-        listaReservas.setModel(listaAux);
+        listaEntradas.setModel(listaAux);
     }
 
     /**
@@ -46,7 +46,7 @@ public class RegistrarSalida extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        listaReservas = new javax.swing.JList();
+        listaEntradas = new javax.swing.JList();
         labelRegistrarSalida = new javax.swing.JLabel();
         btnAtras = new javax.swing.JButton();
         btnRegistrarSalida = new javax.swing.JButton();
@@ -54,7 +54,7 @@ public class RegistrarSalida extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Registrar Salida");
 
-        jScrollPane1.setViewportView(listaReservas);
+        jScrollPane1.setViewportView(listaEntradas);
 
         labelRegistrarSalida.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         labelRegistrarSalida.setText("Registrar Salida");
@@ -117,17 +117,17 @@ public class RegistrarSalida extends javax.swing.JFrame {
 
     private void btnRegistrarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarSalidaActionPerformed
         // TODO add your handling code here:
-        controlador.registrarSalida(listaReservas.getSelectedValue());
+        controlador.registrarSalida(listaEntradas.getSelectedValue());
         this.dispose();
     }//GEN-LAST:event_btnRegistrarSalidaActionPerformed
 
-    private ArrayList reservas;
+    private ArrayList entradas;
     private Controlador controlador;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
     private javax.swing.JButton btnRegistrarSalida;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelRegistrarSalida;
-    private javax.swing.JList listaReservas;
+    private javax.swing.JList listaEntradas;
     // End of variables declaration//GEN-END:variables
 }

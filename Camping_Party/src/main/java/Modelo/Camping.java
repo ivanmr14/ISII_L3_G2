@@ -21,6 +21,7 @@ public class Camping {
     private ArrayList<Parcela> parcelas;
     private ArrayList<Reserva> reservas;
     private ArrayList actividades;
+    private ArrayList<Reserva> entradas;
     
     //private ArrayList<Cliente> clientesEnElCamping;
     
@@ -30,6 +31,7 @@ public class Camping {
         parcelas = new ArrayList();
         reservas = new ArrayList();
         actividades = new ArrayList();
+        entradas = new ArrayList();
     }
     
    public void cargarDatosIniciales(){
@@ -90,14 +92,14 @@ public class Camping {
    }
    
     public void registrarSalida(Reserva re){
-        reservas.remove(re);
+        entradas.remove(re);
     }
     
     public void registrarEntrada(Reserva re){
-        for(Reserva r : reservas){
-            reservas.remove((Object)re);
-            reservas.add(re);
-        }
+        
+        reservas.remove(re);
+        entradas.add(re);
+        
     }
     
    public int numeroDeParcelas(){
@@ -163,6 +165,10 @@ public class Camping {
     public ArrayList<Reserva> getReservas(){
         return reservas;
     }
+    
+    public ArrayList<Reserva> getEntradas(){
+        return entradas;
+    }
 
     public void setClientes(ArrayList<ClienteDatos> clientes) {
         this.clientes = clientes;
@@ -177,6 +183,11 @@ public class Camping {
     
     public void nuevaReserva(String parcela, int numTiendas, Date entrada,Date salida,ArrayList nombres,ArrayList tamanyos, int numParcelas){
         reservas.add(new Reserva( parcela, numTiendas, entrada, salida, nombres,tamanyos, numParcelas));
+    
+    }
+    
+    public void nuevaEntrada(String parcela, int numTiendas, Date entrada,Date salida,ArrayList nombres,ArrayList tamanyos, int numParcelas){
+        entradas.add(new Reserva( parcela, numTiendas, entrada, salida, nombres,tamanyos, numParcelas));
     
     }
     

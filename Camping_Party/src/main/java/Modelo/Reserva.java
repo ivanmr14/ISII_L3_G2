@@ -45,7 +45,10 @@ public class Reserva {
      * @param nombres
      * @param tamanyos 
      */
-    public Reserva(String parcelaID,/* ClienteDatos cliente,*/ int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas)
+    
+    
+    //Constructor para entradas sin reserva
+    public Reserva(String parcelaID, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas)
     {
         this.parcela = parcelaID;
         this.nTiendas = numTiendas;
@@ -53,9 +56,14 @@ public class Reserva {
         this.fechaSalida = salida;
         this.nParcelas = numParcelas;
         
-        //Constructor
+     
     }
     
+    //Constructor con cliente
+     public Reserva(String parcelaID, ClienteDatos cliente, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas)
+    {
+        //TODO completar...
+    }
     //Constructor para cargar datos iniciales de prueba
     public Reserva(String parcelaID, int numParcelas){
         this.parcela = parcelaID;

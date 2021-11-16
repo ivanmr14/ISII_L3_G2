@@ -123,12 +123,11 @@ public class RegistrarEntrada extends javax.swing.JFrame {
     private void btnRegistrarEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEntradaActionPerformed
         // TODO add your handling code here:
         //controlador.registrarEntrada(listaClientes.getSelectedValue());
-        Date fecha = new Date();
-        Reserva reserva = (Reserva)listaReservas.getSelectedValue();
+        //Date fecha = new Date();
+        Object reserva = listaReservas.getSelectedValue();
         
-        reserva.setFechaEntrada(fecha);
+        
         controlador.registrarEntrada(reserva);
-        
         this.dispose();
     }//GEN-LAST:event_btnRegistrarEntradaActionPerformed
 

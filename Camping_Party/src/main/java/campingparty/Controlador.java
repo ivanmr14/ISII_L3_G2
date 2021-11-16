@@ -24,6 +24,7 @@ public class Controlador {
     private ArrayList<Actividad> actividadesLista;
     private Reserva reserva;
     private int numParcelas;
+    private ArrayList<Reserva> entradas;
     
     public Controlador(){
         camping = new Camping();
@@ -31,6 +32,7 @@ public class Controlador {
         clientes = new ArrayList<ClienteDatos>();
         reservas = new ArrayList<Reserva>();
         actividadesLista = new ArrayList<Actividad>();
+        entradas = new ArrayList<Reserva>();
         numParcelas = 0;
         
     }
@@ -43,6 +45,12 @@ public class Controlador {
         reservas = camping.getReservas();
         String idParcela = Integer.toString(reservas.size() + 1);
         camping.nuevaReserva(idParcela, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
+    }
+    
+    public void nuevaEntrada(String parcela, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas){
+        
+        String idParcela = Integer.toString(reservas.size() + 1);
+        camping.nuevaEntrada(idParcela, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
     }
      
      public boolean comprobarLoginGerente(String u, String p){
@@ -106,8 +114,10 @@ public class Controlador {
         return false; //reserva.estaOcupada( parcelaAComprobar,  fechaEntreada,  fechaSalida);
     }
     
-    public void registrarEntrada(Reserva reserva){
-       camping.registrarEntrada(reserva);
+    public void registrarEntrada(Object reserva){
+       Reserva r = (Reserva) reserva;
+       //r.setFechaEntrada(fecha);
+       camping.registrarEntrada(r);
     }
     
     public void registrarSalida(Object re){
@@ -131,6 +141,12 @@ public class Controlador {
         reservas = camping.getReservas();
         
         return reservas;
+    }
+    
+    public ArrayList getEntradas(){
+        entradas = camping.getEntradas();
+        
+        return entradas;
     }
     
     public ArrayList getActividades(){

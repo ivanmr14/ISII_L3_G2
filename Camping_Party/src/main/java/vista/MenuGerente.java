@@ -42,6 +42,17 @@ public class MenuGerente extends javax.swing.JFrame {
         
         jList2.setModel(lista);
         
+        
+        reservas = controlador.getReservas();
+        DefaultListModel listaAux = new DefaultListModel<>();
+        
+        //Recoger y mostrar los clientes en el JList
+        for(Object r: reservas){
+            listaAux.addElement((Object)r);
+        }
+        
+        listaReservas.setModel(listaAux);
+        
     }    
     
 
@@ -59,7 +70,7 @@ public class MenuGerente extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         actividades = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaReservas = new javax.swing.JList<>();
         btnRegistroCliente = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
@@ -85,12 +96,12 @@ public class MenuGerente extends javax.swing.JFrame {
         actividades.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         actividades.setText("Actividades");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        listaReservas.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Resrva 1", "Resrva 2", "Resrva 3", "Resrva 4", "Resrva 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listaReservas);
 
         btnRegistroCliente.setText("Nueva entrada sin reserva");
         btnRegistroCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -243,7 +254,7 @@ public class MenuGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistrarEntradaActionPerformed
 
     
-   
+    private ArrayList reservas;
     private String user;
     private String pass;
     private ArrayList actividadesLista;
@@ -256,10 +267,10 @@ public class MenuGerente extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistroCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList<String> listaReservas;
     private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }

@@ -294,7 +294,7 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
         
         
         
-        JOptionPane.showMessageDialog(this, "Reserva Realizada con éxito");
+        
 
         //código de guardar los datos y hacer la reserva bien.
         if(esCliente){
@@ -307,12 +307,14 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
             Cliente cliente = new Cliente(controlador);
             cliente.setVisible(true);
             controlador.setNumParcelas(0);
+            JOptionPane.showMessageDialog(this, "Reserva Realizada con éxito");
             this.dispose();
         }else{
             //Guardar parcela:
             numParcelas = controlador.getNumParcelas() + 1;
-            controlador.nuevaReserva(id, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
+            controlador.nuevaEntrada(id, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
             controlador.setNumParcelas(0);
+            JOptionPane.showMessageDialog(this, "Entrada Realizada con éxito. Bienvenid@");
             this.dispose();
         }
     }//GEN-LAST:event_finalizarActionPerformed
