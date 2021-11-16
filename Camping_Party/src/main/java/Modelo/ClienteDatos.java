@@ -19,6 +19,7 @@ public class ClienteDatos {
     private String surname;
     private ArrayList<Reserva> reservas;
     private ArrayList<Actividad> actividades;
+    private boolean sancionado = false;
     
     
     /**
@@ -36,6 +37,14 @@ public class ClienteDatos {
         this.name = name;
         this.surname = surname;
         actividades = new ArrayList<Actividad>();
+    }
+
+    public boolean isSancionado() {
+        return sancionado;
+    }
+
+    public void setSancionado(boolean sancionado) {
+        this.sancionado = sancionado;
     }
 
     

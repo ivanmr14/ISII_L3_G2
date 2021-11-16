@@ -6,17 +6,31 @@ package vista;
 
 import javax.swing.JOptionPane;
 
+import Modelo.Camping;
+import campingparty.Controlador;
+import vista.Login;
+import vista.RegistrarSalida;
+import vista.ReservaCliente;
+import vista.ActividadVista;
+import javax.swing.JTabbedPane;
+import Modelo.Actividad;
+import Modelo.ClienteDatos;
+
 /**
  *
  * @author MIRENA
  */
-public class Fronton extends javax.swing.JFrame {
+public class ActividadVista extends javax.swing.JFrame {
 
     /**
-     * Creates new form Fronton
+     * Creates new form ActividadVista
      */
-    public Fronton() {
+    
+    public ActividadVista(Controlador controlador, Actividad actividad) {
         initComponents();
+        this.controlador = controlador;
+        
+        jLabel1.setText(actividad.getNombre());
     }
 
     /**
@@ -50,7 +64,7 @@ public class Fronton extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Fronton");
+        jLabel1.setText("Actividad");
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Jugador 1", "Jugador 2", "Jugador 3", "Jugador 4", "Jugador 5" };
@@ -148,6 +162,10 @@ public class Fronton extends javax.swing.JFrame {
 
     private void sancionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sancionarActionPerformed
         // TODO add your handling code here:
+        ClienteDatos cliente = (ClienteDatos)(Object)jList1.getSelectedValue();
+        
+        cliente.setSancionado(true);
+        controlador.sancionar(cliente);
         JOptionPane.showMessageDialog(this, "Cliente sancionado");
         
     }//GEN-LAST:event_sancionarActionPerformed
@@ -157,8 +175,7 @@ public class Fronton extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_volverActionPerformed
 
-
-
+    Controlador controlador;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton comenzar;
     private javax.swing.JLabel jLabel1;

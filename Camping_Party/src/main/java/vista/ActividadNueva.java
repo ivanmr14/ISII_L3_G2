@@ -4,7 +4,7 @@
  */
 package vista;
 
-import vista.Fronton;
+import vista.ActividadVista;
 import javax.swing.JOptionPane;
 
 /**
@@ -187,7 +187,7 @@ public class ActividadNueva extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Fronton fronton = new Fronton ();
+        ActividadVista fronton = new ActividadVista ();
         fronton.setVisible(true);
         this.dispose();
         

@@ -10,8 +10,12 @@ import campingparty.Controlador;
 import vista.Login;
 import vista.RegistrarSalida;
 import vista.ReservaCliente;
-import vista.Fronton;
 import javax.swing.JTabbedPane;
+import vista.ActividadVista;
+import Modelo.Actividad;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import campingparty.Controlador;
 
 /**
  *
@@ -26,6 +30,17 @@ public class MenuGerente extends javax.swing.JFrame {
     public MenuGerente(Controlador c) {
         initComponents();
         this.controlador = c;
+        
+        
+        DefaultListModel lista = new DefaultListModel();
+        
+        
+        actividadesLista = controlador.getActividades();
+        for(Object o: actividadesLista){
+            lista.addElement((Object)o);
+        }
+        
+        jList2.setModel(lista);
         
     }    
     
@@ -195,11 +210,11 @@ public class MenuGerente extends javax.swing.JFrame {
 
     private void jList2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList2MouseClicked
         // TODO add your handling code here:
-        if(jList2.getSelectedValue().toString()=="Fronton"){
-            Fronton fronton = new Fronton();
-            fronton.setVisible(true);
-            this.dispose();
-        }
+        
+        ActividadVista actividad = new ActividadVista(controlador, (Actividad)(Object) jList2.getSelectedValue());
+        actividad.setVisible(true);
+        this.dispose();
+        
     }//GEN-LAST:event_jList2MouseClicked
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
@@ -217,8 +232,8 @@ public class MenuGerente extends javax.swing.JFrame {
 
     private void btnRegistroActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActividadActionPerformed
         // TODO add your handling code here:
-        Fronton fronton = new Fronton();
-        fronton.setVisible(true);
+        ActividadVista actividad = new ActividadVista(controlador, (Actividad)(Object) jList2.getSelectedValue());
+        actividad.setVisible(true);
     }//GEN-LAST:event_btnRegistroActividadActionPerformed
 
     private void btnRegistrarEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarEntradaActionPerformed
@@ -231,6 +246,7 @@ public class MenuGerente extends javax.swing.JFrame {
    
     private String user;
     private String pass;
+    private ArrayList actividadesLista;
     private Controlador controlador;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel actividades;

@@ -13,7 +13,7 @@ import campingparty.Controlador;
 import vista.Login;
 import vista.RegistrarSalida;
 import vista.ReservaCliente;
-import vista.Fronton;
+import vista.ActividadVista;
 import javax.swing.JTabbedPane;
 import Modelo.*;
 

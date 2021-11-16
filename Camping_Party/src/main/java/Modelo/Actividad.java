@@ -37,6 +37,10 @@ public class Actividad {
         return nombre;
     }
 
+    public void setClientes(ArrayList<ClienteDatos> clientes) {
+        this.clientes = clientes;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

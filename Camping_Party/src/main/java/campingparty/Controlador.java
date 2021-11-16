@@ -21,7 +21,7 @@ public class Controlador {
     private ArrayList<Gerente> gerentes;
     private ArrayList<ClienteDatos> clientes;
     private ArrayList<Reserva> reservas;
-    private ArrayList<Actividad> actividades;
+    private ArrayList<Actividad> actividadesLista;
     private Reserva reserva;
     private int numParcelas;
     
@@ -30,7 +30,7 @@ public class Controlador {
         gerentes = new ArrayList<Gerente>();
         clientes = new ArrayList<ClienteDatos>();
         reservas = new ArrayList<Reserva>();
-        actividades = new ArrayList<Actividad>();
+        actividadesLista = new ArrayList<Actividad>();
         numParcelas = 0;
         
     }
@@ -68,7 +68,11 @@ public class Controlador {
     /*public void nuevaReserva(String parcela, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos){
         reservas.add(new Reserva(parcela, numTiendas, entrada, salida, nombres, tamanyos));
     }*/
-    
+     
+     
+    public void sancionar(ClienteDatos cliente){
+        camping.sancionar(cliente);
+    }
      
     public int numeroDeParcelas(){
         return camping.numeroDeParcelas();
@@ -127,6 +131,11 @@ public class Controlador {
         reservas = camping.getReservas();
         
         return reservas;
+    }
+    
+    public ArrayList getActividades(){
+        actividadesLista = camping.getActividades();
+        return actividadesLista;
     }
     
     public void registrarCliente(String dni, String nombre, String apellido, String usuario, String pass){

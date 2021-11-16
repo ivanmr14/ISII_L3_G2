@@ -8,6 +8,7 @@ package Modelo;
 import java.util.ArrayList;
 import java.util.Date;
 import vista.Cliente;
+import Modelo.Actividad;
 
 /**
  *
@@ -19,7 +20,7 @@ public class Camping {
     private ArrayList<Gerente> gerentes;
     private ArrayList<Parcela> parcelas;
     private ArrayList<Reserva> reservas;
-    private ArrayList<Actividad> actividades;
+    private ArrayList actividades;
     
     //private ArrayList<Cliente> clientesEnElCamping;
     
@@ -41,7 +42,7 @@ public class Camping {
         clientes.add(new ClienteDatos("misge","1234","112","Mirena","Gerova"));
         
         //Cargo gerente inicial
-       gerentes.add(new Gerente("admin","admin"));
+        gerentes.add(new Gerente("admin","admin"));
         
         //Cargo parcelas
         parcelas.add(new Parcela("A","1",34,14,true));
@@ -60,9 +61,34 @@ public class Camping {
         reservas.add(new Reserva("2",5));
         reservas.add(new Reserva("3",2));
         reservas.add(new Reserva("4",1));
-      
+        
+        //cargo actividades
+        
+        Actividad actividad1 = new Actividad("Fronton", "Lunes 11:00-13:00");
+        Actividad actividad2 = new Actividad("Natacion", "Lunes 14:00-17:00");
+        actividad1.addCliente(new ClienteDatos("clienteUno","pass1","11111111a","Cliente Uno","Apellido Uno"));
+        actividad1.addCliente(new ClienteDatos("clienteDos","pass2","22222222b","Cliente Dos","Apellido Dos"));
+        actividad2.addCliente(new ClienteDatos("clienteCinco","pass5","55555555e","Cliente Cinco","Apellido Cinco"));
+        actividades.add(actividad1);
+        actividades.add(actividad2);      
     }
     
+    public void sancionar(ClienteDatos cliente){
+        
+        for (Object a : actividades){
+            Actividad acv = (Actividad) a;
+            for (ClienteDatos c : acv.getClientes()){
+                actividades.remove((Object)c);
+                actividades.add(c);
+            }
+        }
+        
+    }
+   
+   public ArrayList getActividades(){
+       return this.actividades;
+   }
+   
     public void registrarSalida(Reserva re){
         reservas.remove(re);
     }
