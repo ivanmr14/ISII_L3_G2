@@ -5,7 +5,6 @@
  */
 package Modelo;
 
-import vista.Cliente;
 import java.util.ArrayList;
 //import com.toedter.calendar.JCalendar;
 import java.util.Date;
@@ -24,6 +23,7 @@ import java.util.Date;
  */
 public class Reserva {
     String parcela;
+    ArrayList<String> parcelasID;
     ClienteDatos cliente;                   //Cliente que reserva
     Date fechaEntrada, fechaSalida;         //Fechas de la reserva
     int nTiendas;                           //nº de tiendas que va a meter
@@ -39,12 +39,53 @@ public class Reserva {
     /**  Constructor con parámetros
      * 
      * @param parcelaID
+     * @param cliente
      * @param numTiendas
      * @param entrada
      * @param salida
      * @param nombres
      * @param tamanyos 
+     * @param numParcelas 
      */
+    public Reserva(String parcelaID, ClienteDatos cliente, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas)
+    {
+        this.parcela = parcelaID;
+        this.nTiendas = numTiendas;
+        this.fechaEntrada = entrada;
+        this.fechaSalida = salida;
+        this.nParcelas = numParcelas;
+    }
+    
+    /**
+     * Constructor con parcelaSSS en plural
+     * Alex - 16.11.2021
+     * 
+     * @param parcelas
+     * @param parcelasIDt
+     * @param numTiendas
+     * @param entrada
+     * @param salida
+     * @param nombres
+     * @param tamanyos
+     * @param numParcelas 
+     */
+    public Reserva(ArrayList<Parcela> parcelas, ArrayList<String> parcelasIDt, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas)
+    {
+        //Guardo datos
+        this.parcelasID = parcelasIDt;
+        this.nTiendas = numTiendas;
+        this.fechaEntrada = entrada;
+        this.fechaSalida = salida;
+        this.nParcelas = numParcelas;
+        tiendas = new ArrayList();
+        
+        //Construyo tiendas de campaña
+        for(int i=0; i<nombres.size(); ++i)
+            tiendas.add(new TiendaCampanya((String)nombres.get(i),(Integer)tamanyos.get(i)));
+        
+        //Guardo la lista de parcelas.
+        this.parcelas = parcelas;
+    }
     
     
     //Constructor para entradas sin reserva
@@ -59,11 +100,7 @@ public class Reserva {
      
     }
     
-    //Constructor con cliente
-     public Reserva(String parcelaID, ClienteDatos cliente, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas)
-    {
-        //TODO completar...
-    }
+
     //Constructor para cargar datos iniciales de prueba
     public Reserva(String parcelaID, int numParcelas){
         this.parcela = parcelaID;
@@ -71,23 +108,23 @@ public class Reserva {
         
     }
     
-    //Métodos
-    /**
-     * Método para saber si a parcela a reservar está ocuapada.
-     * 
-     * @param parcelaAComprobar     parcela que quiero comprobar que esté vacia para reservarla
-     * @param fechaEntreada         Fecha de entrada para comprobar si ya está reservada
-     * @param fechaSalida           Fecha de salida  para comprobar si ya está reservada
-     * @return                      Devuelvo un true si está ocupada en esos días.
-     */
-    public boolean estaOcupada(Parcela parcelaAComprobar, Date fechaEntreada, Date fechaSalida)
-    {
-        Boolean ocupada = false;
-        
-        //RELLENAR CON COMPROBACIÓN.
-        
-        return ocupada;
-    }
+//    //Métodos
+//    /**
+//     * Método para saber si a parcela a reservar está ocuapada.
+//     * 
+//     * @param parcelaAComprobar     parcela que quiero comprobar que esté vacia para reservarla
+//     * @param fechaEntreada         Fecha de entrada para comprobar si ya está reservada
+//     * @param fechaSalida           Fecha de salida  para comprobar si ya está reservada
+//     * @return                      Devuelvo un true si está ocupada en esos días.
+//     */
+//    public boolean estaOcupada(Parcela parcelaAComprobar, Date fechaEntreada, Date fechaSalida)
+//    {
+//        Boolean ocupada = false;
+//        
+//        //RELLENAR CON COMPROBACIÓN.
+//        
+//        return ocupada;
+//    }
     
     //GETTERS
     
@@ -169,6 +206,7 @@ public class Reserva {
     }
     
     //Sobreescribo el metodo toString para mostrar los datos especificos en los jList
+    @Override
     public String toString(){
         return "ID: "+this.parcela+" | Num.Parcelas: "+this.nParcelas;
     }

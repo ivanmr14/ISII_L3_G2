@@ -178,7 +178,7 @@ public class IntroducirDatosTienda extends javax.swing.JFrame {
             nombre.setText(null);
             tamanyo.setText(null);
             nombre.requestFocus();
-            titulo.setText("Tienda de campaña" + tiendaActual);
+            titulo.setText("Tienda de campaña " + tiendaActual);
         }
         
         

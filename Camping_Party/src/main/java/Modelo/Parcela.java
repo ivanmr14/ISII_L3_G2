@@ -33,6 +33,8 @@ public class Parcela {
         this.luz = luz;
     }
     
+    public Parcela(){}
+    
     //Carga parcelas iniciales
     public void cargarParcelasIniciales(){
         

@@ -42,6 +42,7 @@ public class Camping {
         clientes.add(new ClienteDatos("clienteCuatro","pass4","44444444d","Cliente Cuatro","Apellido Cuatro"));
         clientes.add(new ClienteDatos("clienteCinco","pass5","55555555e","Cliente Cinco","Apellido Cinco"));
         clientes.add(new ClienteDatos("misge","1234","112","Mirena","Gerova"));
+        clientes.add(new ClienteDatos("alex","alex","123","alex","alexllido"));
         
         //Cargo gerente inicial
         gerentes.add(new Gerente("admin","admin"));
@@ -87,6 +88,41 @@ public class Camping {
         
     }
    
+    /**
+     * Método que devuelve una lista de reservas que contienen la parcela
+     * con la id pasada por parámetro.
+     *      Objetivo: Comparar las fechas para hacer las nuevas reservas
+     * Alex - 16.11.2021
+     * 
+     * @param id
+     * @return 
+     */
+    public ArrayList<Reserva> reservasDeParcela(String id)
+    {
+        ArrayList<Reserva> res  = new ArrayList<Reserva>();
+        ArrayList<Parcela> parc = new ArrayList<Parcela>();
+        boolean anyade = false;
+        
+        for(Reserva r: reservas)        //recorro reservas
+        {
+            anyade = false;
+            //Obtengo parcelas a comprobar
+            parc = r.getParcelas();
+            if(parc!=null)
+            for(Parcela p: parc)        //recorro parcelas reservadas
+            {
+                if(p.parcelaID.equals(id))   //Si es mi parcela guardo la reserva
+                    anyade = true;      //para comparar las fechas
+            }
+            
+            if(anyade) res.add(r);
+            
+            anyade = false;
+        }
+        
+        return res;
+    }
+    
    public ArrayList getActividades(){
        return this.actividades;
    }
@@ -153,6 +189,36 @@ public class Camping {
             aux.add(p.getPosicionY());
        return aux;
    }
+   
+   /**
+    * Devuelve todas las IDs de las parcelas existentes en una lista.
+    * Alex - 16.11.2021
+    * 
+    * @return 
+    */
+   public ArrayList<String> getIDs(){
+       ArrayList<String> aux = new ArrayList<String>();
+       for(Parcela p: parcelas)
+            aux.add(p.getParcelaID());
+       return aux;
+   }
+   
+   /**
+    * Esta función devuelve una parcela con el id que se le pasa por parametro.
+    * Alex - 16.11.2021
+    * 
+    * @param id
+    * @return 
+    */
+   public Parcela getPardela(String id)
+   {
+       Parcela res = new Parcela();
+        for(Parcela p: parcelas)
+           if (p.getParcelaID().equals(id))
+               res = p;
+               
+        return res;
+   }
 
     public ArrayList<ClienteDatos> getClientes() {
         return clientes;
@@ -181,9 +247,25 @@ public class Camping {
 
     }
     
-    public void nuevaReserva(String parcela, int numTiendas, Date entrada,Date salida,ArrayList nombres,ArrayList tamanyos, int numParcelas){
-        reservas.add(new Reserva( parcela, numTiendas, entrada, salida, nombres,tamanyos, numParcelas));
-    
+    /**
+     * Este método crea una reserva con los datos pasados por parámetro.Alex - 16.11.2021
+     *
+     * @param parcelaID
+     * @param numTiendas
+     * @param entrada
+     * @param salida
+     * @param nombres
+     * @param tamanyos
+     * @param numParcelas 
+     */
+    public void nuevaReserva(ArrayList<String> parcelaID, int numTiendas, Date entrada,Date salida,ArrayList nombres,ArrayList tamanyos, int numParcelas){
+        //Transformo la lista de las parcelasID a parcelas
+        ArrayList<Parcela> parcelasT = new ArrayList<>();
+        for(String p: parcelaID)
+        {
+            parcelasT.add(this.getPardela(p));
+        }
+        reservas.add(new Reserva(parcelasT, parcelaID, numTiendas, entrada, salida, nombres,tamanyos, numParcelas));
     }
     
     public void nuevaEntrada(String parcela, int numTiendas, Date entrada,Date salida,ArrayList nombres,ArrayList tamanyos, int numParcelas){

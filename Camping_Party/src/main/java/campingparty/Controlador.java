@@ -36,42 +36,96 @@ public class Controlador {
         numParcelas = 0;
         
     }
-     public void cargarDatosIniciales(){
+    
+    public void cargarDatosIniciales(){
         camping.cargarDatosIniciales();
     }
-     
-    public void nuevaReserva(String parcela, /*ClienteDatos cliente,*/ int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas){
-        //reservas.add(reserva = new Reserva( parcela, /*cliente,*/ numTiendas, entrada, salida, nombres, tamanyos));
-        reservas = camping.getReservas();
-        String idParcela = Integer.toString(reservas.size() + 1);
-        camping.nuevaReserva(idParcela, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
+    
+    /**
+     * Esta función comprueba si la parcela con identificador id está
+     * ocupada entre la fecha entrada y la fecha salida
+     * 
+     *      Devuelve true  si    está ocupada
+     *      Devuelve false si NO está ocupada
+     * 
+     * Alex - 16.11.2021
+     * 
+     * @param id        identificador de la parcela
+     * @param entrada   Fecha de entrada para hacer la reserva
+     * @param salida    Fecha de salida  para hacer la reserva
+     * @return 
+     */
+    public boolean parcelaOcupada(String id, Date entrada, Date salida)
+    {
+        Boolean ocupada = false;
+        ArrayList<Reserva> reser = new ArrayList<Reserva>();
+        Date fechaIni, fechaFin;
+        
+        //obtener reservas de id
+        reser = camping.reservasDeParcela(id);
+        
+        //comprobar si hay alguna fecha de entrada o salida entre mis fechas
+        for(Reserva r: reser)
+        {
+            fechaIni = r.getFechaEntrada();
+            fechaFin = r.getFechaSalida();
+            if( fechaIni.before(entrada) && fechaFin.before(entrada) )   //    if |    |   
+                ocupada = false;
+            if( fechaIni.after(salida) && fechaFin.after(salida) )     //       |    | if 
+                ocupada = false;
+            if( (!fechaIni.before(entrada) && !fechaIni.after(salida)) ||
+                (!fechaFin.before(entrada) && !fechaFin.after(salida))     )   //       | if |       o    i  |  f |      o      | i  |  f
+                ocupada = true;
+            if( fechaIni.before(entrada) && fechaFin.after(salida) )     //    i  |    |  f
+                ocupada = true;
+        }
+        
+        return ocupada;
     }
     
+    public void nuevaReserva(ArrayList<String> parcelas, /*ClienteDatos cliente,*/ int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas){
+        //reservas.add(reserva = new Reserva( parcela, /*cliente,*/ numTiendas, entrada, salida, nombres, tamanyos));
+        camping.nuevaReserva(parcelas, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
+    }
+    
+    /**
+     *  QUIENQUIERA QUE HAYA HECHO ESTO LO HA HECHO MAL Y LO TIENE QUE REHACER
+     *          ANTES DE REHACERLO QUE SE MIRE COMO FUNCIONA LA CLASE PARCELA
+     *          //Con cariño Alex <3
+     * 
+     * @param parcela
+     * @param numTiendas
+     * @param entrada
+     * @param salida
+     * @param nombres
+     * @param tamanyos
+     * @param numParcelas 
+     */
     public void nuevaEntrada(String parcela, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas){
         
         String idParcela = Integer.toString(reservas.size() + 1);
         camping.nuevaEntrada(idParcela, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
     }
      
-     public boolean comprobarLoginGerente(String u, String p){
-         boolean existe = false;
-         /*gerentes = camping.getGerentes();
-         
-         Gerente ger = new Gerente(u,p);
-            
-         if(gerentes.indexOf(ger)>=0){
-             existe = true;
-         }
-         
-         
-         return existe;*/
-         
-         if(camping.comprobarLoginGerente(u,p)){
-             existe = true;
-         }
-         
-         return existe;
-     }
+    public boolean comprobarLoginGerente(String u, String p){
+        boolean existe = false;
+        /*gerentes = camping.getGerentes();
+
+        Gerente ger = new Gerente(u,p);
+
+        if(gerentes.indexOf(ger)>=0){
+            existe = true;
+        }
+
+
+        return existe;*/
+
+        if(camping.comprobarLoginGerente(u,p)){
+            existe = true;
+        }
+
+        return existe;
+    }
     
     /*public void nuevaReserva(String parcela, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos){
         reservas.add(new Reserva(parcela, numTiendas, entrada, salida, nombres, tamanyos));
@@ -94,6 +148,10 @@ public class Controlador {
         return camping.getPosicionesY();
     }
     
+    public ArrayList<String> getIDs(){
+        return camping.getIDs();
+    }
+    
     public String getTamanyo(String id){
         return camping.getTamanyo(id);
     }
@@ -106,9 +164,9 @@ public class Controlador {
         return camping.getPrecio(id);
     }
     
-    public String getOcupada(String id){
-        return "Libre";//reserva.estaOcupada(id);
-    }
+//    public String getOcupada(String id){
+//        return "Libre";//reserva.estaOcupada(id);
+//    }
     
     public boolean estaOcupada(Parcela parcelaAComprobar, Date fechaEntreada, Date fechaSalida){
         return false; //reserva.estaOcupada( parcelaAComprobar,  fechaEntreada,  fechaSalida);

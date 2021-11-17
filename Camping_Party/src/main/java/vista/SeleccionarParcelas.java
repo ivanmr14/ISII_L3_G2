@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.awt.Graphics;
+import Images.Imagen;
 
 
 
@@ -34,9 +35,10 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
     private ArrayList coordY;
     boolean ocupada = false;
     private BufferedImage image;
-    private String id;
+    private ArrayList<String> id;
     private boolean esCliente;
     private int numParcelas;
+    private ArrayList<String> ocupade;
     
     
     
@@ -56,8 +58,16 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
         this.tamanyos = tamanyos;
         this.esCliente = esC;
         this.numParcelas = 0;
+        ocupade = new ArrayList();
+        id = new ArrayList();
         initComponents();
         anyadirParcelasAVista();
+        anyadirParcela.setEnabled(true);
+        finalizar.setEnabled(true);
+        mostrarOcupada.setText("Libre");
+        
+//        Imagen im = new Imagen(imagenParcelas);
+//        imagenParcelas.add(im).repaint();
         
         
         
@@ -81,14 +91,17 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
     
     
     
+    
     private void anyadirParcelasAVista(){
         int tam = controlador.numeroDeParcelas();
-        ArrayList<String> x = controlador.getPosicionesX();
-        ArrayList<String> y = controlador.getPosicionesY();
+        ArrayList<String> id = controlador.getIDs();
         for(int i=0; i<tam; i++)
         {
-            comboLetras.addItem(x.get(i));
-            comboNumeros.addItem(y.get(i));
+            if(!controlador.parcelaOcupada(id.get(i),entrada,salida))
+            {
+                comboParcelas.addItem(id.get(i));
+                ocupade.add("Libre");
+            }
         }
     }
         
@@ -106,12 +119,11 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        comboLetras = new javax.swing.JComboBox<>();
+        comboParcelas = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         volver = new javax.swing.JButton();
         finalizar = new javax.swing.JButton();
         anyadirParcela = new javax.swing.JButton();
-        comboNumeros = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -127,9 +139,9 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Parcelas disponibles");
 
-        comboLetras.addActionListener(new java.awt.event.ActionListener() {
+        comboParcelas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboLetrasActionPerformed(evt);
+                comboParcelasActionPerformed(evt);
             }
         });
 
@@ -153,12 +165,6 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
         anyadirParcela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 anyadirParcelaActionPerformed(evt);
-            }
-        });
-
-        comboNumeros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboNumerosActionPerformed(evt);
             }
         });
 
@@ -209,34 +215,32 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(comboLetras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel4)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(128, 128, 128)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(mostrarLuz)
+                                            .addComponent(mostrarTamanyo)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addComponent(comboParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(imagenParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel4))
                                         .addGap(59, 59, 59)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(mostrarOcupada)
-                                            .addComponent(mostrarPrecio))
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(comboNumeros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(59, 59, 59)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(mostrarLuz)
-                                                    .addComponent(mostrarTamanyo))))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(imagenParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                            .addComponent(mostrarPrecio)))
+                                    .addComponent(jLabel2))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(106, 106, 106))
         );
         layout.setVerticalGroup(
@@ -249,9 +253,7 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(comboLetras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboNumeros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(comboParcelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -291,85 +293,77 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
 
     private void finalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarActionPerformed
         // TODO add your handling code here:
-        
-        
-        
-        
 
         //código de guardar los datos y hacer la reserva bien.
-        if(esCliente){
+        if(esCliente){ //parte de alex
             
-            //TODO Pasar el cliente al metodo nuevaReserva
+            //Creo reserva con las parcelas.
+            numParcelas = controlador.getNumParcelas() + 1;     //No se para que es esto
+            id.add((String)comboParcelas.getSelectedItem());    //Obtengo Id de la parcela a añadir
+            controlador.nuevaReserva(id, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);  //Creo nueva reserva
             
-            //Guardar parcela:
-            numParcelas = controlador.getNumParcelas() + 1;
-            controlador.nuevaReserva(id, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
+            //Informo del resultado de la transacción y cierro la ventana.
+            JOptionPane.showMessageDialog(this, "Reserva Realizada con éxito");
+            
+            //Abro la vista del cliente de nuevo.
             Cliente cliente = new Cliente(controlador);
             cliente.setVisible(true);
-            controlador.setNumParcelas(0);
-            JOptionPane.showMessageDialog(this, "Reserva Realizada con éxito");
+            controlador.setNumParcelas(0);      //No se para que es esto
+            
             this.dispose();
-        }else{
+        }else{ //Parte de ivan creo
             //Guardar parcela:
             numParcelas = controlador.getNumParcelas() + 1;
-            controlador.nuevaEntrada(id, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
+            //controlador.nuevaEntrada(id, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
             controlador.setNumParcelas(0);
             JOptionPane.showMessageDialog(this, "Entrada Realizada con éxito. Bienvenid@");
             this.dispose();
         }
     }//GEN-LAST:event_finalizarActionPerformed
 
-    private void comboNumerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboNumerosActionPerformed
-        // TODO add your handling code here:
-        
-        //actualizar datos de la vista.
-        
-        //obtener ambos combobox
-        String x = (String)comboLetras.getSelectedItem();
-        String y = (String)comboNumeros.getSelectedItem();
-        //juntarlos para conseguir el id
-        id = x+y;
-        //Buscar la parcela
-        //obtener y mostrar datos.
-        mostrarTamanyo.setText(controlador.getTamanyo(id));
-            mostrarLuz.setText(controlador.getLuz(id));
-         mostrarPrecio.setText(controlador.getPrecio(id));
-        mostrarOcupada.setText(controlador.getOcupada(id));
-    }//GEN-LAST:event_comboNumerosActionPerformed
-
     private void anyadirParcelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anyadirParcelaActionPerformed
-        // TODO add your handling code here:
-        //Poner parcela anterior como ocupada
-        ///????
+
+        id.add((String)comboParcelas.getSelectedItem());        //Añado una parcela para la reserva actual
+        ocupade.set(comboParcelas.getSelectedIndex(),"Ocupada");//Pongo parcela añadida como ocupada para no añadirla de nuevo
+        
+        ///Esto de augmentar numero no se que hace
         controlador.aumentarNumParcelas();
-        //Guardar parcela:
-        controlador.nuevaReserva(id, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
+        anyadirParcela.setEnabled(false);
+        finalizar.setEnabled(false);
+        mostrarOcupada.setText("Ocupada");
     }//GEN-LAST:event_anyadirParcelaActionPerformed
 
-    private void comboLetrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboLetrasActionPerformed
+    private void comboParcelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboParcelasActionPerformed
         // TODO add your handling code here:
         
         //actualizar datos de la vista.
         
-        //obtener ambos combobox
-        String x = (String)comboLetras.getSelectedItem();
-        String y = (String)comboNumeros.getSelectedItem();
-        //juntarlos para conseguir el id
-        id = x+y;
+        //obtener id de combobox
+        String id = (String)comboParcelas.getSelectedItem();
         //Buscar la parcela
         //obtener y mostrar datos.
         mostrarTamanyo.setText(controlador.getTamanyo(id));
             mostrarLuz.setText(controlador.getLuz(id));
          mostrarPrecio.setText(controlador.getPrecio(id));
-        mostrarOcupada.setText(controlador.getOcupada(id));
-    }//GEN-LAST:event_comboLetrasActionPerformed
+        if (ocupade != null && !ocupade.isEmpty())
+            id = (String)ocupade.get(comboParcelas.getSelectedIndex());
+        mostrarOcupada.setText(id);
+        if(id.equals("Libre"))
+        {
+            anyadirParcela.setEnabled(true);
+            finalizar.setEnabled(true);
+        } else
+        {
+            anyadirParcela.setEnabled(false);
+            finalizar.setEnabled(false);
+        }    
+    }//GEN-LAST:event_comboParcelasActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton anyadirParcela;
-    private javax.swing.JComboBox<String> comboLetras;
-    private javax.swing.JComboBox<String> comboNumeros;
+    private javax.swing.JComboBox<String> comboParcelas;
     private javax.swing.JButton finalizar;
     private javax.swing.JPanel imagenParcelas;
     private javax.swing.JLabel jLabel1;
