@@ -72,7 +72,6 @@ public class ActividadNueva extends javax.swing.JFrame {
 
         jLabel2.setText("Lista de coontrincantes");
 
-        nombreGanador.setText("jTextField1");
         nombreGanador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreGanadorActionPerformed(evt);
@@ -123,7 +122,7 @@ public class ActividadNueva extends javax.swing.JFrame {
                         .addGap(241, 241, 241)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(nombreGanador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(nombreGanador, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(167, 167, 167)
                         .addComponent(jLabel4))
