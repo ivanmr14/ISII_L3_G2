@@ -38,7 +38,7 @@ public class ActividadNueva extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        nombreGanador = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         fin = new javax.swing.JButton();
@@ -72,10 +72,10 @@ public class ActividadNueva extends javax.swing.JFrame {
 
         jLabel2.setText("Lista de coontrincantes");
 
-        jTextField1.setText("jTextField1");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        nombreGanador.setText("jTextField1");
+        nombreGanador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                nombreGanadorActionPerformed(evt);
             }
         });
 
@@ -123,7 +123,7 @@ public class ActividadNueva extends javax.swing.JFrame {
                         .addGap(241, 241, 241)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(nombreGanador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(167, 167, 167)
                         .addComponent(jLabel4))
@@ -164,7 +164,7 @@ public class ActividadNueva extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreGanador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fin)
@@ -176,13 +176,21 @@ public class ActividadNueva extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void nombreGanadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreGanadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_nombreGanadorActionPerformed
 
+    /**
+     * El gerente anota el nombre del ganador para que
+     * quede constancia de su victoria.
+     * Alex - 16.11.2021
+     * 
+     * @param evt 
+     */
     private void finActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finActionPerformed
         // TODO add your handling code here:
-         JOptionPane.showMessageDialog(this, "Fin del juego. Ganadores: ");
+        String gannador = nombreGanador.getText();
+         JOptionPane.showMessageDialog(this, "Fin del juego. Ganadores: " + gannador);
     }//GEN-LAST:event_finActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -209,7 +217,7 @@ public class ActividadNueva extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField nombreGanador;
     private javax.swing.JButton seleccionar;
     // End of variables declaration//GEN-END:variables
 }
