@@ -314,7 +314,7 @@ public class SeleccionarParcelas extends javax.swing.JFrame {
         }else{ //Parte de ivan creo
             //Guardar parcela:
             numParcelas = controlador.getNumParcelas() + 1;
-            //controlador.nuevaEntrada(id, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
+            controlador.nuevaEntrada(id, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
             controlador.setNumParcelas(0);
             JOptionPane.showMessageDialog(this, "Entrada Realizada con éxito. Bienvenid@");
             this.dispose();

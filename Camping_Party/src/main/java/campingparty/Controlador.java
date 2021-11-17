@@ -112,14 +112,14 @@ public class Controlador {
      * @param numTiendas
      * @param entrada
      * @param salida
-     * @param nombres
+     * @param nombresS
      * @param tamanyos
      * @param numParcelas 
      */
-    public void nuevaEntrada(String parcela, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas){
-        
-        String idParcela = Integer.toString(reservas.size() + 1);
-        camping.nuevaEntrada(idParcela, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);
+    public void nuevaEntrada(ArrayList<String> parcelas, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas){
+        reservas = camping.getReservas();
+        String idParcela = Integer.toString((reservas.size() + 1));
+        camping.nuevaEntrada(parcelas, numTiendas, entrada, salida, nombres, tamanyos, numParcelas,idParcela);
     }
      
     public boolean comprobarLoginGerente(String u, String p){

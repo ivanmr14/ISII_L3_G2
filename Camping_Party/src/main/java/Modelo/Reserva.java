@@ -87,7 +87,27 @@ public class Reserva {
         this.parcelas = parcelas;
     }
     
+    //Constructor sin cliente
+    public Reserva(ArrayList<Parcela> parcelas, ArrayList<String> parcelasIDt, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas, String idP)
+    {
+        //Guardo datos
+        this.parcelasID = parcelasIDt;
+        this.nTiendas = numTiendas;
+        this.fechaEntrada = entrada;
+        this.fechaSalida = salida;
+        this.nParcelas = numParcelas;
+        tiendas = new ArrayList();
+        
+        //Construyo tiendas de campaña
+        for(int i=0; i<nombres.size(); ++i)
+            tiendas.add(new TiendaCampanya((String)nombres.get(i),(Integer)tamanyos.get(i)));
+        
+        //Guardo la lista de parcelas.
+        this.parcelas = parcelas;
+        this.parcela = idP;
+    }
     
+    /*
     //Constructor para entradas sin reserva
     public Reserva(String parcelaID, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas)
     {
@@ -100,10 +120,12 @@ public class Reserva {
      
     }
     
+    */
+    
 
     //Constructor para cargar datos iniciales de prueba
-    public Reserva(String parcelaID, int numParcelas){
-        this.parcela = parcelaID;
+    public Reserva(String parcelasIDt, int numParcelas){
+        this.parcela = parcelasIDt;
         this.nParcelas = numParcelas;
         
     }
@@ -208,6 +230,7 @@ public class Reserva {
     //Sobreescribo el metodo toString para mostrar los datos especificos en los jList
     @Override
     public String toString(){
+        
         return "ID: "+this.parcela+" | Num.Parcelas: "+this.nParcelas;
     }
 }

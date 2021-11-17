@@ -296,8 +296,14 @@ public class Camping {
         reservas.add(new Reserva(parcelasT, parcelaID, numTiendas, entrada, salida, nombres,tamanyos, numParcelas));
     }
     
-    public void nuevaEntrada(String parcela, int numTiendas, Date entrada,Date salida,ArrayList nombres,ArrayList tamanyos, int numParcelas){
-        entradas.add(new Reserva( parcela, numTiendas, entrada, salida, nombres,tamanyos, numParcelas));
+    public void nuevaEntrada(ArrayList<String> parcelaID, int numTiendas, Date entrada,Date salida,ArrayList nombres,ArrayList tamanyos, int numParcelas, String idP){
+        ArrayList<Parcela> parcelasT = new ArrayList<>();
+        for(String p: parcelaID)
+        {
+            parcelasT.add(this.getPardela(p));
+        }
+        
+        entradas.add(new Reserva( parcelasT,  parcelaID, numTiendas, entrada, salida, nombres,tamanyos, numParcelas,idP));
     
     }
     
