@@ -6,6 +6,9 @@ package vista;
 
 import campingparty.Controlador;
 import javax.swing.JOptionPane;
+import java.util.Date;
+import java.util.ArrayList;
+import java.text.SimpleDateFormat;
 
 /**
  * Clase que permite la modificación de las reservas hechas por un cliente.
@@ -14,13 +17,38 @@ import javax.swing.JOptionPane;
  * @author alex
  */
 public class ModificarReserva extends javax.swing.JFrame {
-
+    
     private Controlador controlador;
-    public ModificarReserva(Controlador controlador) {
+    private ArrayList<Date> fechas;
+    private ArrayList fechasObj;
+    
+    public ModificarReserva(Controlador controlador, String dni) {
         this.controlador = controlador;
+        fechas = new ArrayList();
+        fechasObj = new ArrayList();
+        
         initComponents();
+        
+        //Obtengo fechas a mostrar
+        fechas = controlador.getFecha(dni);
+        fechasObj = controlador.getReservasConDni(dni);
+        
+        SimpleDateFormat smsmsm = new SimpleDateFormat("dd/MM/yyyy");
+        
+        //Muestro fechas:
+        String s;
+        for(Date d: fechas)
+        {
+            s = smsmsm.format(d);
+            mostrarReservas.addItem(s);
+        }
     }
 
+    
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,9 +65,8 @@ public class ModificarReserva extends javax.swing.JFrame {
         fechaEntrada = new com.toedter.calendar.JDateChooser();
         fechaSalida = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        mostrarReservas = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
+        mostrarReservas = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,15 +91,14 @@ public class ModificarReserva extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Selecciona otras fechas");
 
-        mostrarReservas.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Reserva 24/02/2022", "Reserva 23/03/2022" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(mostrarReservas);
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Mis Reservas");
+
+        mostrarReservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarReservasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,17 +121,15 @@ public class ModificarReserva extends javax.swing.JFrame {
                             .addComponent(aceptar))
                         .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(1, 1, 1))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(jLabel4)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(mostrarReservas, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(141, 141, 141)
+                            .addComponent(jLabel3))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(124, 124, 124)
+                            .addComponent(jLabel4))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -113,9 +137,9 @@ public class ModificarReserva extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(29, 29, 29)
+                .addComponent(mostrarReservas, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -138,6 +162,10 @@ public class ModificarReserva extends javax.swing.JFrame {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
+        
+        //obtener reserva y modificarla
+        controlador.ModificarReservaAux(fechasObj.get(mostrarReservas.getSelectedIndex()),fechaEntrada.getDate(),fechaSalida.getDate());
+        
         JOptionPane.showMessageDialog(this, "Fechas cambiadas con éxito.");
         Cliente cliente = new Cliente(controlador);
         cliente.setVisible(true);
@@ -155,6 +183,10 @@ public class ModificarReserva extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed
 
+    private void mostrarReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarReservasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mostrarReservasActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -166,7 +198,6 @@ public class ModificarReserva extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> mostrarReservas;
+    private javax.swing.JComboBox<String> mostrarReservas;
     // End of variables declaration//GEN-END:variables
 }

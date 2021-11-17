@@ -87,6 +87,34 @@ public class Camping {
         }
         
     }
+    
+    /**
+     * Función que te devuelve la lista de fechas en als que
+     * el usuario con dni pasado por parámetro tiene una reserva.
+     * @param dni
+     * @return 
+     */
+    public ArrayList<Date> getFecha(String dni){
+        ArrayList<Date> res = new ArrayList();
+        
+        //Recorro todas las reservas
+        for(Reserva r: reservas)
+            if(r.cliente.getDni().equals(dni)) //Me quedo con las fechas de inicio de las que son mias
+                res.add(r.fechaEntrada);
+        
+        return res;
+    }
+    
+    public ArrayList getReservasConDni(String dni){
+        ArrayList<Reserva> res = new ArrayList();
+        
+        //Recorro todas las reservas
+        for(Reserva r: reservas)
+            if(r.cliente.getDni().equals(dni)) //Me quedo con las fechas de inicio de las que son mias
+                res.add(r);
+        
+        return res;
+    }
    
     /**
      * Método que devuelve una lista de reservas que contienen la parcela

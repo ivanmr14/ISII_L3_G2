@@ -83,6 +83,21 @@ public class Controlador {
         return ocupada;
     }
     
+    
+    public ArrayList<Date> getFecha(String dni){
+        return camping.getFecha(dni);
+    }
+    
+    public ArrayList getReservasConDni(String dni){
+        return camping.getReservasConDni(dni);
+    }
+    
+    public void ModificarReservaAux(Object ro,Date entrada,Date salida){
+        Reserva r = (Reserva) ro;
+        r.setFechaEntrada(entrada);
+        r.setFechaSalida(salida);
+    }
+    
     public void nuevaReserva(ArrayList<String> parcelas, /*ClienteDatos cliente,*/ int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas){
         //reservas.add(reserva = new Reserva( parcela, /*cliente,*/ numTiendas, entrada, salida, nombres, tamanyos));
         camping.nuevaReserva(parcelas, numTiendas, entrada, salida, nombres, tamanyos, numParcelas);

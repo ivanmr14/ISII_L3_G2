@@ -157,7 +157,7 @@ public class Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_reservarActividadActionPerformed
 
     private void modificarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarReservaActionPerformed
-        ModificarReserva modificarReserva = new ModificarReserva(controlador);// TODO add your handling code here:
+        ModificarReserva modificarReserva = new ModificarReserva(controlador,dni);// TODO add your handling code here:
         modificarReserva.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_modificarReservaActionPerformed
