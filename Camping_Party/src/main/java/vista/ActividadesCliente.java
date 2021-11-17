@@ -6,6 +6,7 @@
 package vista;
 
 import campingparty.Controlador;
+import campingparty.DAO;
 import java.util.ArrayList;
 import vista.Cliente;
 import javax.swing.JOptionPane;
@@ -22,6 +23,7 @@ public class ActividadesCliente extends javax.swing.JFrame {
     
     private String dni;
     private Controlador controlador;
+    private DAO dao;
     public ActividadesCliente(Controlador controlador) {
         this.controlador = controlador;
         initComponents();
@@ -33,6 +35,13 @@ public class ActividadesCliente extends javax.swing.JFrame {
         initComponents();
         
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    ActividadesCliente(Controlador controlador, String dni, DAO dao) {
+       this.controlador = controlador;
+        this.dni = dni;
+        this.dao =dao;
+        initComponents();
     }
 
     /**
@@ -156,14 +165,17 @@ public class ActividadesCliente extends javax.swing.JFrame {
       
         if(piscina.isSelected()){
             controlador.anyadirActividadCliente("piscina",comboPiscina.getSelectedItem().toString(), dni);
+            dao.insertarEnTabla("piscina");
            
         }
         if(fronton.isSelected()){
             controlador.anyadirActividadCliente("fronton",comboFronton.getSelectedItem().toString(), dni);
+            dao.insertarEnTabla("fronton");
            
         }
         if(club.isSelected()){
             controlador.anyadirActividadCliente("club Social",comboClub.getSelectedItem().toString(), dni);
+            dao.insertarEnTabla("club");
            
         }
         

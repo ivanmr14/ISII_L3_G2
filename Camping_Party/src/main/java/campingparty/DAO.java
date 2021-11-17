@@ -29,6 +29,23 @@ public class DAO {
     
     }
     
+    public void insertarEnTabla(String id){
+        ResultSet resultado1 = null;
+        ResultSet resultados2 = null;
+        try {
+            //int id = 10; // Valor a insertar
+            Statement s = conexionBD.createStatement();
+            // Operación SQL sobre la base de datos
+            String con = "INSERT INTO actividad (nombre) VALUES ('" + id + "')";
+            PreparedStatement preparedStmt = conexionBD.prepareStatement(con);
+            preparedStmt.executeUpdate();
+        }
+        catch(Exception e){ // Error al realizar la operación
+            System.out.println("No se ha completado la operación");
+        }
+    
+    }
+    
     public void realizarConsulta(){
         ResultSet resultados = null;
         try {

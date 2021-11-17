@@ -81,7 +81,7 @@ public class Principal extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         dao.realizarConsulta();
-        Login login = new Login(controlador);
+        Login login = new Login(controlador, dao);
         login.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnLoginActionPerformed

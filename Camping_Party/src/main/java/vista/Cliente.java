@@ -6,6 +6,7 @@
 package vista;
 
 import campingparty.Controlador;
+import campingparty.DAO;
 import vista.Login;
 import vista.ModificarReserva;
 import vista.ReservaCliente;
@@ -20,6 +21,7 @@ public class Cliente extends javax.swing.JFrame {
      * Creates new form Cliente
      */
     private String dni;
+    private DAO dao;
     public Cliente(Controlador controlador) {
         this.controlador = controlador;
         initComponents();
@@ -30,6 +32,13 @@ public class Cliente extends javax.swing.JFrame {
         this.dni = dni;
          initComponents();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    Cliente(Controlador controlador, String devolverDni, DAO dao) {
+         this.controlador=controlador;
+        this.dni = dni;
+        this.dao = dao;
+         initComponents();
     }
     
     
@@ -151,7 +160,7 @@ public class Cliente extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void reservarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservarActividadActionPerformed
-        ActividadesCliente actividadescliente = new ActividadesCliente(controlador, dni);// TODO add your handling code here:
+        ActividadesCliente actividadescliente = new ActividadesCliente(controlador, dni, dao);// TODO add your handling code here:
         actividadescliente.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_reservarActividadActionPerformed

@@ -26,6 +26,7 @@ public class Login extends javax.swing.JFrame {
      */
     
     private Controlador controlador;
+    private DAO dao;
    // private DAO dao;
   
     
@@ -40,6 +41,12 @@ public class Login extends javax.swing.JFrame {
         
       
         
+    }
+
+    Login(Controlador controlador, DAO dao) {
+       this.controlador=controlador;
+       this.dao=dao;
+       initComponents();
     }
 
     /**
@@ -165,7 +172,7 @@ public class Login extends javax.swing.JFrame {
         else{
            
             if(controlador.comprobarExistenciaCliente(fieldusuario.getText(), pass_string )){
-                Cliente cliente = new Cliente(controlador, controlador.devolverDni(fieldusuario.getText()));
+                Cliente cliente = new Cliente(controlador, controlador.devolverDni(fieldusuario.getText()), dao);
                 cliente.setVisible(true);
                 this.dispose();
             }
