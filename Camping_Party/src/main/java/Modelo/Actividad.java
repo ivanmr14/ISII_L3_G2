@@ -36,6 +36,10 @@ public class Actividad {
     public String getNombre() {
         return nombre;
     }
+    
+    public void borrarCliente(ClienteDatos c){
+        clientes.remove(c);
+    }
 
     public void setClientes(ArrayList<ClienteDatos> clientes) {
         this.clientes = clientes;

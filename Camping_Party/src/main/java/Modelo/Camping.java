@@ -419,6 +419,7 @@ public class Camping {
            if(cliente.getDni().equals(dni)){
                actaux = cliente.getActividades();
                actaux.remove(cancelada);
+               cancelada.borrarCliente(cliente);
            }
        }
       
