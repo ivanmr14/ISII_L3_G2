@@ -5,7 +5,7 @@
  */
 package vista;
 
-import campingparty.Controlador;
+import campingparty.*;
 import vista.RegistroCliente;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -26,10 +26,12 @@ public class Login extends javax.swing.JFrame {
      */
     
     private Controlador controlador;
+   // private DAO dao;
   
     
     public Login(Controlador controlador) {
         this.controlador = controlador;
+        
         //controlador.cargarDatosIniciales();
         
             

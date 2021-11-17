@@ -4,7 +4,7 @@
  */
 package vista;
 
-import campingparty.Controlador;
+import campingparty.*;
 
 /**
  *
@@ -18,9 +18,11 @@ public class Principal extends javax.swing.JFrame {
      */
     
     private Controlador controlador;
+    private DAO dao;
     public Principal() {
         controlador = new Controlador();
         controlador.cargarDatosIniciales();
+        dao = new DAO();
         initComponents();
     }
 
@@ -78,6 +80,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        dao.realizarConsulta();
         Login login = new Login(controlador);
         login.setVisible(true);
         this.setVisible(false);
