@@ -6,7 +6,7 @@
 package vista;
 
 import campingparty.*;
-import vista.RegistroCliente;
+import vista.RegistroClienteYGerente;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
@@ -154,7 +154,7 @@ public class Login extends javax.swing.JFrame {
     private void registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroActionPerformed
 
         // TODO add your handling code here:
-        RegistroCliente registrocliente = new RegistroCliente(controlador);
+        RegistroClienteYGerente registrocliente = new RegistroClienteYGerente(controlador);
         registrocliente.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registroActionPerformed

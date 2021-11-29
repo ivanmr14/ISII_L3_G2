@@ -104,9 +104,6 @@ public class Controlador {
     }
     
     /**
-     *  QUIENQUIERA QUE HAYA HECHO ESTO LO HA HECHO MAL Y LO TIENE QUE REHACER
-     *          ANTES DE REHACERLO QUE SE MIRE COMO FUNCIONA LA CLASE PARCELA
-     *          //Con cariño Alex <3
      * 
      * @param parcela
      * @param numTiendas
@@ -294,6 +291,10 @@ public class Controlador {
         camping.borrarActividad(cancelada, dni);
     }
 
+    public void addGerentes(String user, String pass){
+        camping.addGerentes(user, pass);
+    }
+    
     public void aumentarNumParcelas() {
         this.numParcelas++;
     }

@@ -15,10 +15,10 @@ import javax.swing.JFrame;
  *
  * @author christian
  */
-public class RegistroCliente extends javax.swing.JFrame {
+public class RegistroClienteYGerente extends javax.swing.JFrame {
 private  Controlador controlador;
   
-      public RegistroCliente(Controlador controlador) {
+      public RegistroClienteYGerente(Controlador controlador) {
         //clientes = controlador.getListaClientes();
         this.controlador = controlador;
         initComponents();
@@ -47,6 +47,7 @@ private  Controlador controlador;
         cancelar = new javax.swing.JButton();
         aceptar = new javax.swing.JButton();
         passwordField = new javax.swing.JPasswordField();
+        checkGerente = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +79,13 @@ private  Controlador controlador;
             }
         });
 
+        checkGerente.setText("    Gerente");
+        checkGerente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkGerenteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,13 +110,17 @@ private  Controlador controlador;
                         .addGap(58, 58, 58))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addComponent(cancelar)
                                 .addGap(135, 135, 135)
-                                .addComponent(aceptar)))
+                                .addComponent(aceptar))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(89, 89, 89))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(checkGerente)
+                .addGap(192, 192, 192))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,7 +147,9 @@ private  Controlador controlador;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(checkGerente)
+                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelar)
                     .addComponent(aceptar))
@@ -149,46 +163,49 @@ private  Controlador controlador;
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
         
-        
-        //Cliente cliente = new Cliente(userField.getText(),passwordField.getText(),dniField.getText(),nameField.getText(),surnameField.getText());
-        //boolean validos = true;
-        //boolean validos = true;
-        
-        //Comporbamos que se han completado todos los campos
-        if("".equals(dniField.getText())){
-            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo DNI.", "Dialog", JOptionPane.ERROR_MESSAGE);
-      
-        }
-        else if ("".equals(nameField.getText())){
-            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Nombre.", "Dialog", JOptionPane.ERROR_MESSAGE);
-          
-        }
-        else if ("".equals(surnameField.getText())){
-            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Apellidos.", "Dialog", JOptionPane.ERROR_MESSAGE);
-        
-        }
-        else if ("".equals(passwordField.getText())){
-            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Contraseña.", "Dialog", JOptionPane.ERROR_MESSAGE);
-         
-        }
-        else if ("".equals(userField.getText())){
-            JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Nombre de usuario.", "Dialog", JOptionPane.ERROR_MESSAGE);
-          
-        }
-        else{
-            
-             String pass_string = new String (passwordField.getPassword());
-            controlador.registrarCliente(dniField.getText(), nameField.getText(), surnameField.getText(), userField.getText(), pass_string);
-                JOptionPane.showMessageDialog(new JFrame(), "Cliente"+nameField.getText() +" registrado con éxito\n"+ "usuario: " + controlador.devolverUsuario(nameField.getText()) +"\n"+"Contraseña: "+controlador.devolverPass(userField.getText()), "Alert", JOptionPane.WARNING_MESSAGE);
-                this.dispose();
-                Login login = new Login(controlador);
-                login.setVisible(true);
-            
-            
-            
-           
-                
+        //FUNCIÓN DEL PATRÓN FACTORY
+        if (!checkGerente.isSelected()){
+            //Cliente cliente = new Cliente(userField.getText(),passwordField.getText(),dniField.getText(),nameField.getText(),surnameField.getText());
+            //boolean validos = true;
+            //boolean validos = true;
+
+            //Comporbamos que se han completado todos los campos
+            if("".equals(dniField.getText())){
+                JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo DNI.", "Dialog", JOptionPane.ERROR_MESSAGE);
+
             }
+            else if ("".equals(nameField.getText())){
+                JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Nombre.", "Dialog", JOptionPane.ERROR_MESSAGE);
+
+            }
+            else if ("".equals(surnameField.getText())){
+                JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Apellidos.", "Dialog", JOptionPane.ERROR_MESSAGE);
+
+            }
+            else if ("".equals(passwordField.getText())){
+                JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Contraseña.", "Dialog", JOptionPane.ERROR_MESSAGE);
+
+            }
+            else if ("".equals(userField.getText())){
+                JOptionPane.showMessageDialog(new JFrame(), "Rellene el campo Nombre de usuario.", "Dialog", JOptionPane.ERROR_MESSAGE);
+
+            }
+            else{
+
+                 String pass_string = new String (passwordField.getPassword());
+                controlador.registrarCliente(dniField.getText(), nameField.getText(), surnameField.getText(), userField.getText(), pass_string);
+                    JOptionPane.showMessageDialog(new JFrame(), "Cliente"+nameField.getText() +" registrado con éxito\n"+ "usuario: " + controlador.devolverUsuario(nameField.getText()) +"\n"+"Contraseña: "+controlador.devolverPass(userField.getText()), "Alert", JOptionPane.WARNING_MESSAGE);
+                    this.dispose();
+                    Login login = new Login(controlador);
+                    login.setVisible(true);
+            }
+        } else {
+            controlador.addGerentes(userField.getText(), passwordField.getText());
+            JOptionPane.showMessageDialog(new JFrame(), "Gerente registrado con éxito\n" + "usuario: " + userField.getText(), "Alert", JOptionPane.WARNING_MESSAGE);
+            this.dispose();
+            Login login = new Login(controlador);
+            login.setVisible(true);
+        }
         
         
         //comprobamos que los datos introducidos son válidos
@@ -212,6 +229,10 @@ private  Controlador controlador;
         this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed
 
+    private void checkGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkGerenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkGerenteActionPerformed
+
 
     
    
@@ -219,6 +240,7 @@ private  Controlador controlador;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aceptar;
     private javax.swing.JButton cancelar;
+    private javax.swing.JCheckBox checkGerente;
     private javax.swing.JTextField dniField;
     private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;

@@ -268,6 +268,17 @@ public class Camping {
         this.clientes = clientes;
     }
     
+    /**
+     * Esta función crea un nuevo gerente
+     * Alex - 29.11.2021
+     * 
+     * @param user
+     * @param pass 
+     */
+    public void addGerentes(String user, String pass) {
+        this.gerentes.add(new Gerente(user, pass));
+    }
+    
     public void almacenarClientes(String dni, String nombre, String apellido, String usuario, String pass){
    
         clientes.add(new ClienteDatos(usuario, pass, dni, nombre, apellido));
