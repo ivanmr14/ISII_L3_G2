@@ -121,6 +121,11 @@ public class Controlador {
         String idParcela = Integer.toString((reservas.size() + 1));
         camping.nuevaEntrada(parcelas, numTiendas, entrada, salida, nombres, tamanyos, numParcelas,idParcela);
     }
+    
+    public void actualizarActividadEnBD(String id, String horaDia, String actividad)
+    {
+        actualizarActividadEnBD(id, horaDia, actividad);
+    }
      
     public boolean comprobarLoginGerente(String u, String p){
         boolean existe = false;

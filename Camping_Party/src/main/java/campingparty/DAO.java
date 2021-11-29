@@ -46,6 +46,36 @@ public class DAO {
     
     }
     
+    /**
+     * Esta función realiza una modificación en la base de
+     * datos para modificar algún campo de una actividad.
+     * Alex - 29.11.2021
+     * 
+     * @param id 
+     * @param horaYDia 
+     * @param actividad 
+     */
+    public void actualizarActividadEnBD(String id, String horaYDia, String actividad){
+        try {
+            //Me conecto a la base de datos.
+            Statement s = conexionBD.createStatement();
+            
+            //Genero la operación SQL para la base de datos
+            String query = "UPDATE actividad\n   SET horayDia = " + horaYDia +
+                         "\n   SET actividad = " + actividad +
+                         "WHERE id = " + id + ";";
+            
+            //Envío la query al la base de datos.
+            PreparedStatement preparedStmt = conexionBD.prepareStatement(query);
+            preparedStmt.executeUpdate();
+        }
+        catch(Exception e){     //Fallo durante la operación
+            System.out.println("No se ha actualizar la actividad.");
+        }
+    
+    }
+    
+    
     public void realizarConsulta(){
         ResultSet resultados = null;
         try {
