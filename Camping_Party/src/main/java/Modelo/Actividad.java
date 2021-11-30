@@ -12,15 +12,29 @@ import vista.Cliente;
  * @author MIRENA
  */
 public class Actividad {
+    
+    private String id;
     private String nombre;
     private String horario;
     private ArrayList<ClienteDatos> clientes;
 
+     public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+    
     public Actividad(String nombre, String horario) {
         this.nombre = nombre;
         this.horario = horario;
         clientes = new ArrayList<ClienteDatos>();
    
+    }
+    
+    public Actividad(){
+        clientes = new ArrayList<ClienteDatos>();
     }
     
     public void addCliente(ClienteDatos cliente){

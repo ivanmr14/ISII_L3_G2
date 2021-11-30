@@ -5,8 +5,11 @@
 package campingparty;
 
 
+import Modelo.Actividad;
+import Modelo.ClienteDatos;
 import java.sql.*;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.TimeZone;
 
 /**
@@ -24,7 +27,7 @@ public class DAO {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conexionBD = DriverManager.getConnection(bd,"root","Mirena992108");     
         } catch(Exception e){
-            System.out.println("Erro de conexión" + e.getMessage());
+            System.out.println("Error de conexión" + e.getMessage());
         }
     
     }
@@ -75,6 +78,48 @@ public class DAO {
     
     }
     
+    /**
+     * Esta función realiza una consulta de actividad a la base de
+     * datos.
+     * Christian - 30.11.2021
+     * 
+     * @param id 
+     * 
+     * 
+     */
+    public Actividad consultarActividadEnBD(String id_actividad){
+        
+        Actividad a = new Actividad();
+        a.setId(id_actividad);
+        
+        try {
+            
+            Statement s = conexionBD.createStatement();
+            ResultSet res = null;
+            
+            
+            String query = "SELECT *\n FROM actividad\n WHERE id = " + id_actividad + ";";
+            res = s.executeQuery(query);
+            
+            
+            while(res.next()){
+
+                
+                String nombre = res.getString("nombre");
+                String horario = res.getString("horario");
+                ArrayList<ClienteDatos> clientes = (ArrayList)res.getArray("lista_clientes");
+                a.setNombre(nombre);
+                a.setHorario(horario);
+                a.setClientes(clientes);
+            }
+        }
+        catch(Exception e){     //Fallo durante la operación
+            System.out.println("No se ha consultar la actividad.");
+        }
+        
+        return a;
+        
+    }   
     
     public void realizarConsulta(){
         ResultSet resultados = null;
