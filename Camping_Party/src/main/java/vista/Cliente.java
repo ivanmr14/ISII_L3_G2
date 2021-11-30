@@ -34,7 +34,7 @@ public class Cliente extends javax.swing.JFrame {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    Cliente(Controlador controlador, String devolverDni, DAO dao) {
+    Cliente(Controlador controlador, String dni, DAO dao) {
          this.controlador=controlador;
         this.dni = dni;
         this.dao = dao;
@@ -173,7 +173,7 @@ public class Cliente extends javax.swing.JFrame {
 
     private void cancelarActividadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActividadActionPerformed
         // TODO add your handling code here:
-        CancelarActividadCliente cancelar = new CancelarActividadCliente(controlador, dni);
+        CancelarActividadCliente cancelar = new CancelarActividadCliente(controlador, dni, dao);
         cancelar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelarActividadActionPerformed

@@ -165,17 +165,19 @@ public class ActividadesCliente extends javax.swing.JFrame {
       
         if(piscina.isSelected()){
             controlador.anyadirActividadCliente("piscina",comboPiscina.getSelectedItem().toString(), dni);
-            dao.insertarEnTabla("piscina");
+            dao.insertarEnTabla("piscina", comboPiscina.getSelectedItem().toString(), dni);
            
         }
         if(fronton.isSelected()){
             controlador.anyadirActividadCliente("fronton",comboFronton.getSelectedItem().toString(), dni);
-            dao.insertarEnTabla("fronton");
+            dao.insertarEnTabla("fronton",comboFronton.getSelectedItem().toString(), dni );
            
         }
         if(club.isSelected()){
             controlador.anyadirActividadCliente("club Social",comboClub.getSelectedItem().toString(), dni);
-            dao.insertarEnTabla("club");
+            dao.insertarEnTabla("club", comboClub.getSelectedItem().toString(), dni);
+            
+            
            
         }
         

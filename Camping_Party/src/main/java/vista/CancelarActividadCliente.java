@@ -6,6 +6,7 @@ package vista;
 
 import Modelo.Actividad;
 import campingparty.Controlador;
+import campingparty.DAO;
 import java.awt.List;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
@@ -25,7 +26,8 @@ public class CancelarActividadCliente extends javax.swing.JFrame {
     
     private Controlador controlador;
     private String dni;
-    private ArrayList actividades;
+    private ArrayList<String> actividades;
+    private DAO dao;
   
     public CancelarActividadCliente(Controlador controlador) {
         this.controlador = controlador;
@@ -42,8 +44,38 @@ public class CancelarActividadCliente extends javax.swing.JFrame {
         DefaultListModel listaAux = new DefaultListModel<>();
         
         //Recoger y mostrar los clientes en el JList
-        for(Object r: actividades){
+        for(String r: actividades){
+            listaAux.addElement(r);
+        }
+        
+        jList1.setModel(listaAux);
+        
+        
+      
+        
+        
+        
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public CancelarActividadCliente(Controlador controlador, String dni, DAO dao) {
+        this.controlador = controlador;
+        this.dni = dni;
+        this.dao = dao;
+         initComponents();
+        //actividades = controlador.devolverActividadesClientes(dni);
+        actividades = dao.devolverActividadesCliente(dni);
+        DefaultListModel listaAux = new DefaultListModel<>();
+        
+        //Recoger y mostrar los clientes en el JList
+        /*for(Object r: actividades){
             listaAux.addElement((Object)r);
+        }
+        
+        jList1.setModel(listaAux);*/
+        
+        for(Object r: actividades){
+            listaAux.addElement(r);
         }
         
         jList1.setModel(listaAux);
@@ -72,6 +104,7 @@ public class CancelarActividadCliente extends javax.swing.JFrame {
         volver = new javax.swing.JButton();
         aceptar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        nombre = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,6 +140,13 @@ public class CancelarActividadCliente extends javax.swing.JFrame {
 
         jLabel2.setText("Elige una actividad para cancelar:");
 
+        nombre.setText("Personalizar nombre");
+        nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -114,20 +154,26 @@ public class CancelarActividadCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(87, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(volver)
-                                .addGap(104, 104, 104)
-                                .addComponent(aceptar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel2)))
-                        .addGap(105, 105, 105))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addComponent(jLabel2)))
+                                .addGap(105, 105, 105))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(157, 157, 157)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(volver)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(aceptar)
+                            .addGap(59, 59, 59)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(157, 157, 157))))
+                        .addComponent(nombre)
+                        .addGap(139, 139, 139))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,7 +184,9 @@ public class CancelarActividadCliente extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(14, 14, 14)
+                .addComponent(nombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(volver)
                     .addComponent(aceptar))
@@ -151,17 +199,21 @@ public class CancelarActividadCliente extends javax.swing.JFrame {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
-        Object cancelada ;
         
-        cancelada = jList1.getSelectedValue();
+        
+       char cancelada = jList1.getSelectedValue().charAt(0);
+        int canceladae = Character.getNumericValue(cancelada);
+       
        
        // int canceladaindex = jList1.getSelectedIndex();
         
-        controlador.borrarActividad((Actividad)cancelada, dni);
+        //controlador.borrarActividad((Actividad)cancelada, dni);
+        dao.eliminarActividdad(canceladae);
+       
        // jList1.remove(canceladaindex);
         
         JOptionPane.showMessageDialog(this, "Actividad Cancelada con éxito");
-        Cliente cliente = new Cliente(controlador, dni);
+        Cliente cliente = new Cliente(controlador, dni, dao);
         cliente.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_aceptarActionPerformed
@@ -181,6 +233,15 @@ public class CancelarActividadCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jList1ComponentAdded
 
+    private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
+        // TODO add your handling code here:
+        char cancelada = jList1.getSelectedValue().charAt(0);
+        int canceladae = Character.getNumericValue(cancelada);
+        String m = JOptionPane.showInputDialog("Escribe nuevo nombre");
+        dao.actualizarActividadEnBD(canceladae, m);
+        
+    }//GEN-LAST:event_nombreActionPerformed
+
     //Crear un objeto DefaultListModel
 
 
@@ -192,6 +253,7 @@ public class CancelarActividadCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton nombre;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,6 +19,7 @@ import java.util.TimeZone;
 public class DAO {
     
     Connection conexionBD;
+    private int cont=0;
 
     public DAO() {
          String bd = "jdbc:mysql://localhost/practicais2?serverTimezone=" + TimeZone.getDefault().getID();
@@ -32,20 +33,41 @@ public class DAO {
     
     }
     
-    public void insertarEnTabla(String id){
-        ResultSet resultado1 = null;
-        ResultSet resultados2 = null;
+    
+    public void insertarEnTabla(String id, String horario, String dni){
+        cont++;
+       
         try {
             //int id = 10; // Valor a insertar
             Statement s = conexionBD.createStatement();
             // Operación SQL sobre la base de datos
-            String con = "INSERT INTO actividad (nombre) VALUES ('" + id + "')";
+            String con = "INSERT INTO actividad (nombre, horario, cliente) VALUES ('"+ id + "', '"+ horario +"', '"+ dni +"')";
+           PreparedStatement preparedStmt = conexionBD.prepareStatement(con);
+            preparedStmt.executeUpdate();
+        }
+        catch(Exception e){ // Error al realizar la operación
+            //System.out.println("No se ha completado insertar en tabla");
+            System.err.println(e.getMessage());
+        }
+        
+        
+    
+    }
+    
+       public void realizarOperacion(){
+        ResultSet resultados2 = null;
+        try {
+            int id = 10; // Valor a insertar
+            Statement s = conexionBD.createStatement();
+            // Operación SQL sobre la base de datos
+            String con = "INSERT INTO prueba (id_prueba) VALUES ('" + id + "')";
             PreparedStatement preparedStmt = conexionBD.prepareStatement(con);
             preparedStmt.executeUpdate();
         }
         catch(Exception e){ // Error al realizar la operación
             System.out.println("No se ha completado la operación");
         }
+    
     
     }
     
@@ -58,15 +80,14 @@ public class DAO {
      * @param horaYDia 
      * @param actividad 
      */
-    public void actualizarActividadEnBD(String id, String horaYDia, String actividad){
+    public void actualizarActividadEnBD(int id, String n){
         try {
             //Me conecto a la base de datos.
             Statement s = conexionBD.createStatement();
             
             //Genero la operación SQL para la base de datos
-            String query = "UPDATE actividad\n   SET horayDia = " + horaYDia +
-                         "\n   SET actividad = " + actividad +
-                         "WHERE id = " + id + ";";
+            String query = "UPDATE actividad SET nombre = '" + n +"' WHERE id_actividad = " + id +" ";
+                        
             
             //Envío la query al la base de datos.
             PreparedStatement preparedStmt = conexionBD.prepareStatement(query);
@@ -74,6 +95,7 @@ public class DAO {
         }
         catch(Exception e){     //Fallo durante la operación
             System.out.println("No se ha actualizar la actividad.");
+            System.err.println(e);
         }
     
     }
@@ -119,7 +141,25 @@ public class DAO {
         
         return a;
         
-    }   
+    }  
+    
+    public void eliminarActividdad (int id_actividad){
+         try {
+            //Me conecto a la base de datos.
+            Statement s = conexionBD.createStatement();
+            
+            //Genero la operación SQL para la base de datos
+            String query = "DELETE FROM actividad WHERE id_actividad = '" + id_actividad + "'";
+            
+            //Envío la query al la base de datos.
+            PreparedStatement preparedStmt = conexionBD.prepareStatement(query);
+            preparedStmt.executeUpdate();
+        }
+        catch(Exception e){     //Fallo durante la operación
+            System.out.println("No se ha eliminado la actividad.");
+        }
+    
+    }
     
     public void realizarConsulta(){
         ResultSet resultados = null;
@@ -138,23 +178,45 @@ public class DAO {
             System.out.println("Error en la petición a la BD");
         }
     }
-    
-    public void realizarOperacion(){
-        ResultSet resultados2 = null;
+
+    public ArrayList<String> devolverActividadesCliente(String dni) {
+        ResultSet res = null;
+        ArrayList<String> aux = new ArrayList<String>();
+        //String str;
         try {
-            int id = 10; // Valor a insertar
+            String con;
             Statement s = conexionBD.createStatement();
-            // Operación SQL sobre la base de datos
-            String con = "INSERT INTO prueba (id_prueba) VALUES ('" + id + "')";
-            PreparedStatement preparedStmt = conexionBD.prepareStatement(con);
-            preparedStmt.executeUpdate();
+            // Consulta SQL
+            con = "SELECT * FROM actividad WHERE cliente = '"+dni+"'";
+            res = s.executeQuery(con);
+            
+             while(res.next()){
+
+                String id = res.getString("id_actividad");
+                String nombre = res.getString("nombre");
+                String horario = res.getString("horario");
+                //String cliente = res.getString("cliente");
+                String straux = id+" "+nombre+" "+horario;
+               
+                
+                aux.add(straux);
+                
+                
+                
+            }
+            
+        } catch (Exception e) { // Error en al realizar la consulta
+            System.out.println("Error en la devolucion de las actividades ");
         }
-        catch(Exception e){ // Error al realizar la operación
-            System.out.println("No se ha completado la operación");
-        }
-    
-    
-    }
+        
+       
+      
+        
+        return aux;
+  
+}
+        
+ 
   
     
 }
