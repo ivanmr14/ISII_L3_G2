@@ -23,6 +23,7 @@ public class CampingTest {
 
     @Test
     public void testSancionar() {
+       
     }
 
     @Test
@@ -123,6 +124,13 @@ public class CampingTest {
 
     @Test
     public void testComprobarLoginGerente() {
+       String user = "admin";
+       String pass = "admin";
+        
+       Camping camping = new Camping();
+       camping.cargarDatosIniciales();
+       assertTrue(camping.comprobarLoginGerente(user, pass));
+       
     }
 
     @Test
