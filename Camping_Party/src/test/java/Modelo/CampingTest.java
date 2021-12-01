@@ -29,6 +29,7 @@ public class CampingTest {
     @Test
     public void testSancionar() {
         boolean sancionado = false;
+        
         ClienteDatos cliente = new ClienteDatos("clienteUno","pass1","11111111a","Cliente Uno","Apellido Uno");
         Actividad actividadTest = new Actividad("actividadTest", "Lunes 11:00-13:00");
         actividadTest.addCliente(cliente);
