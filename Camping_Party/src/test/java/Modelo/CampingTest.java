@@ -28,7 +28,20 @@ public class CampingTest {
 
     @Test
     public void testSancionar() {
-       
+        boolean sancionado = false;
+        ClienteDatos cliente = new ClienteDatos("clienteUno","pass1","11111111a","Cliente Uno","Apellido Uno");
+        Actividad actividadTest = new Actividad("actividadTest", "Lunes 11:00-13:00");
+        actividadTest.addCliente(cliente);
+        
+        ArrayList acts = camping.getActividades();
+        acts.add(actividadTest);
+        camping.setActividades(acts);
+                
+        
+        camping.sancionar(cliente);
+        //TODO get cliente y hacer sancionado = cliente.getSancionado();
+        
+        assertTrue(sancionado);
     }
 
     @Test
@@ -68,12 +81,26 @@ public class CampingTest {
     public void testGetTamanyo() {
     }
 
+    /**             Hecho
+     * Compruebo el correcto funcinamiento de comprobar si hay
+     * luz en una parcela.
+     * Alex - 1.12.2021
+     */
     @Test
     public void testGetLuz() {
+        //assertTrue("Sí".equals(camping.getLuz("A1")));
+        assertEquals(camping.getLuz("A1"), "Sí");
+        //assertTrue("No".equals(camping.getLuz("A2")));
     }
 
+    /**             Hecho
+     * Compruebo el correcto funcinamiento de obtener
+     * el precio de una parcela.
+     * Alex - 1.12.2021
+     */
     @Test
     public void testGetPrecio() {
+        assertEquals(camping.getPrecio("A1"),"14.0");
     }
 
     @Test

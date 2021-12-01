@@ -23,9 +23,28 @@ public class Camping {
     private ArrayList actividades;
     private ArrayList<Reserva> entradas;
     
+    public void setGerentes(ArrayList<Gerente> gerentes){
+        this.gerentes = gerentes;
+    }
+
+    public void setParcelas(ArrayList<Parcela> parcelas) {
+        this.parcelas = parcelas;
+    }
+
+    public void setReservas(ArrayList<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+
+    public void setActividades(ArrayList actividades) {
+        this.actividades = actividades;
+    }
+
     //private ArrayList<Cliente> clientesEnElCamping;
-    
-    public Camping(){
+    public void setEntradas(ArrayList<Reserva> entradas) {
+        this.entradas = entradas;
+    }
+
+    public Camping() {
         clientes = new ArrayList();
         gerentes = new ArrayList();
         parcelas = new ArrayList();
@@ -86,12 +105,23 @@ public class Camping {
     
     public void sancionar(ClienteDatos cliente){
         
+        /*
         for (Object a : actividades){
             Actividad acv = (Actividad) a;
             for (ClienteDatos c : acv.getClientes()){
                 actividades.remove((Object)c);
                 actividades.add(c);
             }
+        }
+        */
+        
+        for (Object c : clientes){
+            
+            if(c == cliente){
+                clientes.remove(c);//borramos el cliente sin sancionar
+                cliente.setSancionado(true);
+                clientes.add(cliente);//añadimos el mismo cliente pwero sancionado
+            }  
         }
         
     }
