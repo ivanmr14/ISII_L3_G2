@@ -5,8 +5,10 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
 
 /**
  *
@@ -17,6 +19,7 @@ public class CampingTest {
     public CampingTest() {
        camping = new Camping();
        camping.cargarDatosIniciales();
+       
     }
 
     @Test
@@ -46,6 +49,11 @@ public class CampingTest {
 
     @Test
     public void testRegistrarSalida() {
+        
+        int entradas = camping.getEntradas().size();
+        camping.registrarSalida(camping.getEntradas().get(0));
+        int salidaRegistrada = camping.getEntradas().size();
+        assertNotSame(entradas, salidaRegistrada);
     }
 
     @Test
@@ -162,11 +170,25 @@ public class CampingTest {
 
     @Test
     public void testAnyadirActividadCliente() {
+        camping.anyadirActividadCliente("piscina", "Lunes 8:30-9:30", "112");
+        ArrayList<Actividad> actividades = null;
+       actividades = camping.devolverActividadesClientes("112");
+        int tamanyo = actividades.size();
+        
+       System.out.println(tamanyo);
+       assertTrue(tamanyo!=0);
+        
     }
 
     @Test
     public void testDevolverActividadesClientes() {
-        assertTrue(true);
+        camping.anyadirActividadCliente("piscina", "Lunes 8:30-9:30", "112");
+        ArrayList<Actividad> actividades = null;
+       actividades = camping.devolverActividadesClientes("112");
+        int tamanyo = actividades.size();
+        
+       System.out.println(tamanyo);
+       assertTrue(tamanyo!=0);
     }
 
     @Test
