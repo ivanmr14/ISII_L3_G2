@@ -200,15 +200,29 @@ public class CancelarActividadCliente extends javax.swing.JFrame {
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
         
+        if(jList1.getSelectedValue().charAt(1)==' '){
+            char cancelada= jList1.getSelectedValue().charAt(0);
+            int canceladae = Character.getNumericValue(cancelada);
+            dao.eliminarActividdad(canceladae);
+           
+        }
+        else{
         
-       char cancelada = jList1.getSelectedValue().charAt(0);
-        int canceladae = Character.getNumericValue(cancelada);
+            String s = new StringBuilder().append(jList1.getSelectedValue().charAt(0)).append(jList1.getSelectedValue().charAt(1)).toString();
+            int canceladae = Integer.parseInt(s);
+            dao.eliminarActividdad(canceladae);
+        }
+        
+       //char cancelada = jList1.getSelectedValue().charAt(0);
+        
+        
+        
        
        
        // int canceladaindex = jList1.getSelectedIndex();
         
         //controlador.borrarActividad((Actividad)cancelada, dni);
-        dao.eliminarActividdad(canceladae);
+        
        
        // jList1.remove(canceladaindex);
         
@@ -235,10 +249,21 @@ public class CancelarActividadCliente extends javax.swing.JFrame {
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
         // TODO add your handling code here:
-        char cancelada = jList1.getSelectedValue().charAt(0);
-        int canceladae = Character.getNumericValue(cancelada);
+        
         String m = JOptionPane.showInputDialog("Escribe nuevo nombre");
-        dao.actualizarActividadEnBD(canceladae, m);
+        
+        if(jList1.getSelectedValue().charAt(1)==' '){
+            char cancelada= jList1.getSelectedValue().charAt(0);
+            int canceladae = Character.getNumericValue(cancelada);
+            dao.actualizarActividadEnBD(canceladae, m);
+           
+        }
+        else{
+        
+            String s = new StringBuilder().append(jList1.getSelectedValue().charAt(0)).append(jList1.getSelectedValue().charAt(1)).toString();
+            int canceladae = Integer.parseInt(s);
+           dao.actualizarActividadEnBD(canceladae, m);
+        }
         
     }//GEN-LAST:event_nombreActionPerformed
 
