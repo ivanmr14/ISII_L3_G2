@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -46,6 +47,11 @@ public class CampingTest {
 
     @Test
     public void testRegistrarSalida() {
+        
+        int entradas = camping.getEntradas().size();
+        camping.registrarSalida(camping.getEntradas().get(0));
+        int salidaRegistrada = camping.getEntradas().size();
+        assertNotSame(entradas, salidaRegistrada);
     }
 
     @Test
