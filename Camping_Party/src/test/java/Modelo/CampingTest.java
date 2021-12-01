@@ -18,6 +18,7 @@ public class CampingTest {
     public CampingTest() {
        camping = new Camping();
        camping.cargarDatosIniciales();
+       
     }
 
     @Test
