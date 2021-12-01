@@ -179,6 +179,17 @@ public class CampingTest {
 
     @Test
     public void testBorrarActividad() {
+         camping.anyadirActividadCliente("piscina", "Lunes 8:30-9:30", "112");
+         Actividad a  = new Actividad("piscina", "Lunes 8:30-9:30");
+   
+         camping.borrarActividad(a, "112");
+        ArrayList<Actividad> actividades = null;
+       actividades = camping.devolverActividadesClientes("112");
+        int tamanyo = actividades.size();
+        
+       System.out.println(tamanyo);
+       assertTrue(tamanyo==0);
+        
     }
     
 }
