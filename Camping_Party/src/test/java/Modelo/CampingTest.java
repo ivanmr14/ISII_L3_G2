@@ -156,15 +156,21 @@ public class CampingTest {
 
     @Test
     public void testAnyadirActividadCliente() {
-        
         camping.anyadirActividadCliente("piscina", "Lunes 8:30-9:30", "112");
+        ArrayList<Actividad> actividades = null;
+       actividades = camping.devolverActividadesClientes("112");
+        int tamanyo = actividades.size();
+        
+       System.out.println(tamanyo);
+       assertTrue(tamanyo!=0);
+        
     }
 
     @Test
     public void testDevolverActividadesClientes() {
-        camping.cargarDatosIniciales();
+        camping.anyadirActividadCliente("piscina", "Lunes 8:30-9:30", "112");
         ArrayList<Actividad> actividades = null;
-       actividades = camping.devolverActividadesClientes("11111111a");
+       actividades = camping.devolverActividadesClientes("112");
         int tamanyo = actividades.size();
         
        System.out.println(tamanyo);
