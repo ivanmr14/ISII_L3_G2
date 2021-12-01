@@ -158,6 +158,7 @@ public class CampingTest {
 
     @Test
     public void testDevolverActividadesClientes() {
+        assertTrue(false);
     }
 
     @Test
