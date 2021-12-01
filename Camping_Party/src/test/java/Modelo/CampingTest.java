@@ -19,6 +19,7 @@ public class CampingTest {
     public CampingTest() {
        camping = new Camping();
        camping.cargarDatosIniciales();
+       
     }
 
     @Test
@@ -48,6 +49,11 @@ public class CampingTest {
 
     @Test
     public void testRegistrarSalida() {
+        
+        int entradas = camping.getEntradas().size();
+        camping.registrarSalida(camping.getEntradas().get(0));
+        int salidaRegistrada = camping.getEntradas().size();
+        assertNotSame(entradas, salidaRegistrada);
     }
 
     @Test
