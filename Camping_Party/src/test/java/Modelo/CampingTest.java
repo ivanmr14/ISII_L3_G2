@@ -13,8 +13,10 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author alex
  */
 public class CampingTest {
-    
+    Camping camping;
     public CampingTest() {
+       camping = new Camping();
+       camping.cargarDatosIniciales();
     }
 
     @Test
@@ -23,6 +25,7 @@ public class CampingTest {
 
     @Test
     public void testSancionar() {
+       
     }
 
     @Test
@@ -123,6 +126,12 @@ public class CampingTest {
 
     @Test
     public void testComprobarLoginGerente() {
+       String user = "admin";
+       String pass = "admin";
+        
+       
+       assertTrue(camping.comprobarLoginGerente(user, pass));
+       
     }
 
     @Test
