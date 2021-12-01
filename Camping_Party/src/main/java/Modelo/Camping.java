@@ -84,6 +84,14 @@ public class Camping {
         reservas.add(new Reserva("3",2));
         reservas.add(new Reserva("4",1));
         
+        
+        //cargo entradas
+        
+        entradas.add(new Reserva("1",3));
+        entradas.add(new Reserva("2",5));
+        entradas.add(new Reserva("3",2));
+        entradas.add(new Reserva("4",1));
+        
         //cargo actividades
         
         Actividad actividad1 = new Actividad("Fronton", "Lunes 11:00-13:00");
