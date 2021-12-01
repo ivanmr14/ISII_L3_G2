@@ -5,8 +5,10 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
 
 /**
  *
@@ -148,11 +150,19 @@ public class CampingTest {
 
     @Test
     public void testAnyadirActividadCliente() {
+        
+        camping.anyadirActividadCliente("piscina", "Lunes 8:30-9:30", "112");
     }
 
     @Test
     public void testDevolverActividadesClientes() {
-        assertTrue(false);
+        camping.cargarDatosIniciales();
+        ArrayList<Actividad> actividades = null;
+       actividades = camping.devolverActividadesClientes("11111111a");
+        int tamanyo = actividades.size();
+        
+       System.out.println(tamanyo);
+       assertTrue(tamanyo!=0);
     }
 
     @Test
