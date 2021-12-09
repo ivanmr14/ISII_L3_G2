@@ -79,6 +79,12 @@ public class CampingTest {
 
     @Test
     public void testGetTamanyo() {
+        
+        String test;
+        
+        test = camping.getTamanyo("A1");
+        
+        assertTrue("34".equals(test));
     }
 
     /**             Hecho
