@@ -29,6 +29,12 @@ public class ControladorTest {
     public void testCargarDatosIniciales() {
     }
 
+    /**             Hecho
+     * Compruebo el correcto funcinamiento de comprobar
+     * si una parcela está o no ocupada en el rango entre
+     * dos fechas.
+     * Alex - 9.12.2021
+     */
     @Test
     public void testParcelaOcupada() throws ParseException {
         boolean test;

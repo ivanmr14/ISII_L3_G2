@@ -77,6 +77,11 @@ public class CampingTest {
     public void testNumeroDeParcelas() {
     }
 
+    /**             Hecho
+     * Compruebo el correcto funcinamiento de obtener
+     * el tamaño de una parcela.
+     * Alex - 9.12.2021
+     */
     @Test
     public void testGetTamanyo() {
         
@@ -121,6 +126,11 @@ public class CampingTest {
     public void testGetIDs() {
     }
 
+    /**             Hecho
+     * Compruebo el correcto funcinamiento de obtener
+     * una parcela, el objeto en sí.
+     * Alex - 9.12.2021
+     */
     @Test
     public void testGetPardela() {
         Parcela p1 = camping.parcelas.get(0);
