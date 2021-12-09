@@ -123,6 +123,10 @@ public class CampingTest {
 
     @Test
     public void testGetPardela() {
+        Parcela p1 = camping.parcelas.get(0);
+        Parcela p2 = camping.getPardela("A1");
+        
+        assertSame(p1,p2);
     }
 
     @Test
