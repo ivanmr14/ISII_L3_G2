@@ -93,7 +93,7 @@ public class CampingTest {
      * Alex - 1.12.2021
      */
     @Test
-    public void testGetLuz() {
+    public void testGetLuz() {  //Cualquiera de los asertos comentados tambien valen.
         //assertTrue("Sí".equals(camping.getLuz("A1")));
         assertEquals(camping.getLuz("A1"), "Sí");
         //assertTrue("No".equals(camping.getLuz("A2")));
