@@ -78,8 +78,19 @@ public class CampingTest {
     public void testNumeroDeParcelas() {
     }
 
+    /**             Hecho
+     * Compruebo el correcto funcinamiento de obtener
+     * el tamaño de una parcela.
+     * Alex - 9.12.2021
+     */
     @Test
     public void testGetTamanyo() {
+        
+        String test;
+        
+        test = camping.getTamanyo("A1");
+        
+        assertTrue("34".equals(test));
     }
 
     /**             Hecho
@@ -88,7 +99,7 @@ public class CampingTest {
      * Alex - 1.12.2021
      */
     @Test
-    public void testGetLuz() {
+    public void testGetLuz() {  //Cualquiera de los asertos comentados tambien valen.
         //assertTrue("Sí".equals(camping.getLuz("A1")));
         assertEquals(camping.getLuz("A1"), "Sí");
         //assertTrue("No".equals(camping.getLuz("A2")));
@@ -116,8 +127,17 @@ public class CampingTest {
     public void testGetIDs() {
     }
 
+    /**             Hecho
+     * Compruebo el correcto funcinamiento de obtener
+     * una parcela, el objeto en sí.
+     * Alex - 9.12.2021
+     */
     @Test
     public void testGetPardela() {
+        Parcela p1 = camping.parcelas.get(0);
+        Parcela p2 = camping.getPardela("A1");
+        
+        assertSame(p1,p2);
     }
 
     @Test

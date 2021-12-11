@@ -18,7 +18,7 @@ public class Camping {
     
     private ArrayList<ClienteDatos> clientes;
     private ArrayList<Gerente> gerentes;
-    private ArrayList<Parcela> parcelas;
+    protected ArrayList<Parcela> parcelas;
     private ArrayList<Reserva> reservas;
     private ArrayList actividades;
     private ArrayList<Reserva> entradas;

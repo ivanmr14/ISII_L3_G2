@@ -5,24 +5,49 @@
  */
 package campingparty;
 
+import Modelo.Camping;
+import java.text.ParseException;
+import java.util.Date;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import java.text.SimpleDateFormat;
 
 /**
  *
  * @author alex
  */
 public class ControladorTest {
-    
+    Camping camping;
+    Controlador controlador;
     public ControladorTest() {
+       camping = new Camping();
+       camping.cargarDatosIniciales();
+       controlador = new Controlador();
     }
 
     @Test
     public void testCargarDatosIniciales() {
     }
 
+    /**             Hecho
+     * Compruebo el correcto funcinamiento de comprobar
+     * si una parcela está o no ocupada en el rango entre
+     * dos fechas.
+     * Alex - 9.12.2021
+     */
     @Test
-    public void testParcelaOcupada() {
+    public void testParcelaOcupada() throws ParseException {
+        boolean test;
+        
+        SimpleDateFormat sdfINI = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdfFIN = new SimpleDateFormat("yyyy-MM-dd");
+        
+        Date dateIni = sdfINI.parse("2021-12-04");
+        Date dateFin = sdfFIN.parse("2021-12-04");
+        
+        test = controlador.parcelaOcupada("a1",dateIni,dateFin);
+        
+        assertFalse(test);
     }
 
     @Test
