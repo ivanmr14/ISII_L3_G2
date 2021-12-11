@@ -36,6 +36,7 @@ public class Reserva {
         //Constructor
     }
     
+    
     /**  Constructor con parámetros
      * 
      * @param parcelaID
@@ -87,6 +88,8 @@ public class Reserva {
         this.parcelas = parcelas;
     }
     
+    
+    
     //Constructor sin cliente
     public Reserva(ArrayList<Parcela> parcelas, ArrayList<String> parcelasIDt, int numTiendas, Date entrada, Date salida, ArrayList nombres, ArrayList tamanyos, int numParcelas, String idP)
     {
@@ -130,6 +133,43 @@ public class Reserva {
         
     }
     
+    public String getParcela()
+    {
+        return parcela;
+    }
+
+    public void setParcela(String parcela) {
+        this.parcela = parcela;
+    }
+
+    public ArrayList<String> getParcelasID() {
+        return parcelasID;
+    }
+
+    public void setParcelasID(ArrayList<String> parcelasID) {
+        this.parcelasID = parcelasID;
+    }
+
+    public ClienteDatos getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteDatos cliente) {
+        this.cliente = cliente;
+    }
+
+    public int getnTiendas() {
+        return nTiendas;
+    }
+
+    public void setnTiendas(int nTiendas) {
+        this.nTiendas = nTiendas;
+    }
+
+    public int getnParcelas() {
+        return nParcelas;
+    }
+
 //    //Métodos
 //    /**
 //     * Método para saber si a parcela a reservar está ocuapada.
@@ -147,11 +187,12 @@ public class Reserva {
 //        
 //        return ocupada;
 //    }
-    
     //GETTERS
-    
-    public Date getFechaEntrada()
-    {
+    public void setnParcelas(int nParcelas) {
+        this.nParcelas = nParcelas;
+    }
+
+    public Date getFechaEntrada() {
         return this.fechaEntrada;
     }
     

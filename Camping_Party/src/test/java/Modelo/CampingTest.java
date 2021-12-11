@@ -8,6 +8,7 @@ package Modelo;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
 
 
 /**
@@ -41,6 +42,15 @@ public class CampingTest {
         
         camping.sancionar(cliente);
         //TODO get cliente y hacer sancionado = cliente.getSancionado();
+        ArrayList clientes = new ArrayList();
+        ClienteDatos aux;
+        for (Object cl : clientes){
+            
+                aux = (ClienteDatos) cl;
+                if (aux.getDni() == "11111111a"){
+                    sancionado = aux.isSancionado();
+                }
+        }
         
         assertTrue(sancionado);
     }
@@ -72,7 +82,19 @@ public class CampingTest {
 
     @Test
     public void testRegistrarEntrada() {
-    }
+        //añadimos la reserva de prueba al array de reservas de camping
+        Reserva res = new Reserva("1",8);
+        ArrayList arr = camping.getReservas();
+        arr.add(res);
+        camping.setReservas(arr);
+        
+        //modificamos la reserva, registramos una entrada usandola, y comprobamos q se ha modificado en camping
+        res = new Reserva("1", 9);
+        camping.registrarEntrada(res);
+        ArrayList<String> IDparcelas = new ArrayList();
+        IDparcelas.add("1");
+        assertEquals(res, camping.getReservaID(IDparcelas));
+    }   
 
     @Test
     public void testNumeroDeParcelas() {
@@ -117,6 +139,7 @@ public class CampingTest {
 
     @Test
     public void testGetPosicionesX() {
+        
     }
 
     @Test
@@ -125,6 +148,45 @@ public class CampingTest {
 
     @Test
     public void testGetIDs() {
+        boolean ok = true;
+        ArrayList listaIDS = new ArrayList();
+        ArrayList listaIDSaux = new ArrayList();
+        ArrayList parcelasAux = new ArrayList();
+        Parcela p;
+        
+        //definimos una lista de ids para comprarar
+        listaIDS.add("id1");
+        listaIDS.add("id2");
+        listaIDS.add("id3");
+        
+        //asosciamos dichos ids a parcelas
+        p = new Parcela("A","1",34,14,true);
+        p.forzarSetID("id1");
+        parcelasAux.add(p);
+        
+        p = new Parcela("A","2",24,15,false);
+        p.forzarSetID("id2");
+        parcelasAux.add(p);
+        
+        p = new Parcela("A","3",33,11,true);
+        p.forzarSetID("id3");
+        parcelasAux.add(p);
+        
+        //añadimos las creadas parcelas al camping
+        camping.setParcelas(parcelasAux);
+        
+        //comprobamos que devuelve la cadena de ids esperada
+        listaIDSaux = camping.getIDs();
+        
+        
+        for (int i = 0; i < 3; i++){
+            if (listaIDSaux.get(i) != listaIDS.get(i)){
+                ok = false;
+            }
+        }
+        
+        //miramos si se ha complido el comportamineto esperado
+        assertTrue(ok);
     }
 
     /**             Hecho

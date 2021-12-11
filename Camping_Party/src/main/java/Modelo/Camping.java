@@ -100,7 +100,7 @@ public class Camping {
         actividad1.addCliente(new ClienteDatos("clienteDos","pass2","22222222b","Cliente Dos","Apellido Dos"));
         actividad2.addCliente(new ClienteDatos("clienteCinco","pass5","55555555e","Cliente Cinco","Apellido Cinco"));
         actividades.add(actividad1);
-        actividades.add(actividad2);      
+        actividades.add(actividad2);
     }
     
     public void sancionar(ClienteDatos cliente){
@@ -479,7 +479,17 @@ public class Camping {
       }
     
         
-        
+     public Reserva getReservaID(ArrayList<String> id){
+     
+        Reserva resultado = null;
+         
+        for(Reserva res : reservas){
+            if(res.getParcelasID() == id){
+                resultado = res;
+            }
+        }
+        return resultado;
+    }
         
     
 }

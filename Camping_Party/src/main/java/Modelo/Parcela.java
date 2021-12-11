@@ -42,9 +42,19 @@ public class Parcela {
     
     //SETTERS
     
+    public void setParcelaID(String parcelaID) //está correcto privado
+    {
+        this.parcelaID = parcelaID;
+    }
+
     private void setID() //está correcto privado
     {
         parcelaID = posicionX + posicionY;
+    }
+    
+    //SOLO USAR PARA TESTING
+    public void forzarSetID(String id){
+        parcelaID = id;
     }
     
     public void setPosicion(String posX, String posY)
