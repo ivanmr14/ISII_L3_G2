@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -61,6 +63,17 @@ public class CampingTest {
 
     @Test
     public void testGetReservasConDni() {
+        ArrayList actividades = null;
+        actividades = camping.getReservasConDni("112");
+        //int tamanyo = actividades.size();
+        System.out.println(actividades.size());
+        assertTrue(actividades.size()!=0);
+        
+        
+       
+       
+        
+        
     }
 
     @Test
@@ -232,6 +245,25 @@ public class CampingTest {
 
     @Test
     public void testNuevaReserva() {
+        ArrayList nombres =  new ArrayList();
+        ArrayList tamanyos =  new ArrayList();
+        ArrayList parcelas = new ArrayList();
+        
+        parcelas.add("1");
+        nombres.add("nombre1");
+        tamanyos.add(10);
+        int tamanyo = camping.getReservas().size();
+        System.out.println(tamanyo);
+        
+        camping.nuevaReserva(parcelas, 1,Date.valueOf("01/02/2021") , Date.valueOf("03/02/2021"), nombres, tamanyos, 1);
+        
+        int tamanyonuevo = camping.getReservas().size();
+        System.out.println(tamanyonuevo);
+        
+        assertTrue(tamanyonuevo ==  tamanyo + 1);
+        
+        
+        
     }
 
     @Test
@@ -240,6 +272,8 @@ public class CampingTest {
 
     @Test
     public void testComprobarExistenciasCliente() {
+        
+        assertTrue(camping.comprobarExistenciasCliente("misge", "1234"));
     }
 
     @Test
@@ -290,15 +324,22 @@ public class CampingTest {
     @Test
     public void testBorrarActividad() {
          camping.anyadirActividadCliente("piscina", "Lunes 8:30-9:30", "112");
+         camping.devolverActividadesClientes("112");
          Actividad a  = new Actividad("piscina", "Lunes 8:30-9:30");
-   
+         ArrayList<Actividad> actividades = null;
+         ArrayList<Actividad> actividadesfinal = null;
+         actividades = camping.devolverActividadesClientes("112");
+          int tamanyoinicial = actividades.size();
+      
          camping.borrarActividad(a, "112");
-        ArrayList<Actividad> actividades = null;
-       actividades = camping.devolverActividadesClientes("112");
-        int tamanyo = actividades.size();
+         actividadesfinal = camping.devolverActividadesClientes("112");
+         int tamanyofinal = actividadesfinal.size();
         
-       System.out.println(tamanyo);
-       assertTrue(tamanyo==0);
+       
+       
+      // System.out.println(tamanyoinicial);
+       //System.out.println(tamanyofinal);
+       assertTrue(tamanyofinal==tamanyoinicial-1);
         
     }
     
