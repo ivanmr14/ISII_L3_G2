@@ -6,8 +6,9 @@
 package Modelo;
 
 import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class CampingTest {
     public CampingTest() {
        camping = new Camping();
        camping.cargarDatosIniciales();
+       
        
     }
 
@@ -78,6 +80,13 @@ public class CampingTest {
 
     @Test
     public void testReservasDeParcela() {
+        String parcelaPrueba = "A" + "1" + "";
+        ArrayList<Reserva> res  = new ArrayList<Reserva>();
+        int preEjecucion = res.size();
+        int postEjecucion = camping.reservasDeParcela(parcelaPrueba).size();
+        assertNotSame(preEjecucion,postEjecucion);
+        
+        
     }
 
     @Test
@@ -266,8 +275,32 @@ public class CampingTest {
         
     }
 
+    /*Problemas con el tratamiento del tipo Date
+        Importa java.sql.Date en vez de java.util.Date
+    
+    */
     @Test
     public void testNuevaEntrada() {
+        int preEjecucion = camping.getEntradas().size();
+        ArrayList<String> al = new ArrayList();
+        al.add("Prueba");
+        ArrayList nombres = new ArrayList();
+        nombres.add("Nombre");
+        ArrayList tam = new ArrayList();
+        tam.add(2);
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        Date fEntrada = null;
+        Date fSalida = null;
+        try{
+            fEntrada = (Date) formato.parse("16/12/2021");
+            fSalida = (Date) formato.parse("23/12/2021");
+        }catch(ParseException ex){
+            System.out.println(ex);
+        }
+        
+        camping.nuevaEntrada(al, 2, fEntrada, fSalida, nombres, tam, 2, "Prueba");
+        int postEjecucion = camping.getEntradas().size();
+        assertNotSame(preEjecucion,postEjecucion);
     }
 
     @Test
@@ -288,10 +321,14 @@ public class CampingTest {
 
     @Test
     public void testDevolverUsuario() {
+        String test = camping.devolverUsuario("Cliente Uno");
+        assertNotSame(test, "");
     }
 
     @Test
     public void testDevolverPass() {
+        String test = camping.devolverPass("clienteUno");
+        assertNotSame(test, "");
     }
 
     @Test

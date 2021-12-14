@@ -79,10 +79,10 @@ public class Camping {
         
         //cargo reservas
         
-        reservas.add(new Reserva("1",3));
-        reservas.add(new Reserva("2",5));
-        reservas.add(new Reserva("3",2));
-        reservas.add(new Reserva("4",1));
+        reservas.add(new Reserva("1",3,parcelas));
+        reservas.add(new Reserva("2",5,parcelas));
+        reservas.add(new Reserva("3",2,parcelas));
+        reservas.add(new Reserva("4",1,parcelas));
         
         
         //cargo entradas

@@ -176,6 +176,7 @@ public class ReservaCliente extends javax.swing.JFrame {
         //Obtengo las dos fechas y numero de tiendas a montar.
         Date fEntrada = fechaEntrada.getDate();
         Date fSalida  = fechaSalida.getDate();
+        
         //Creo la siguiente vista
         IntroducirDatosTienda tienda = new IntroducirDatosTienda(controlador, Integer.parseInt(numeroTiendas.getText()), fEntrada, fSalida, esCliente);
         tienda.setVisible(true);

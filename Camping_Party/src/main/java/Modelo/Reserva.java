@@ -133,6 +133,13 @@ public class Reserva {
         
     }
     
+    public Reserva(String parcelasIDt, int numParcelas, ArrayList<Parcela> p){
+        this.parcela = parcelasIDt;
+        this.nParcelas = numParcelas;
+        this.parcelas = p;
+        
+    }
+    
     public String getParcela()
     {
         return parcela;
