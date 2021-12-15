@@ -354,13 +354,32 @@ public class CampingTest {
        actividades = camping.devolverActividadesClientes("112");
         int tamanyo = actividades.size();
         
-       System.out.println(tamanyo);
+       //System.out.println(tamanyo);
        assertTrue(tamanyo!=0);
     }
 
     @Test
     public void testBorrarActividad() {
-         camping.anyadirActividadCliente("piscina", "Lunes 8:30-9:30", "112");
+        
+        
+        ArrayList<Actividad> actividades = new ArrayList();
+        ArrayList<Actividad> actividadesfinal = new ArrayList();
+        
+       actividades = camping.devolverActividadesClientes("11111111a");
+        int tamanyo = actividades.size();
+       for(Actividad actividad : actividades){
+           if("Fronton".equals(actividad.getNombre())){
+               camping.borrarActividad(actividad, "11111111a");
+           
+           }
+       
+       }
+        actividadesfinal = camping.devolverActividadesClientes("11111111a");
+       
+       int tamanyofinal = actividadesfinal.size();
+        
+        
+         /*camping.anyadirActividadCliente("piscina", "Lunes 8:30-9:30", "112");
          camping.devolverActividadesClientes("112");
          Actividad a  = new Actividad("piscina", "Lunes 8:30-9:30");
          ArrayList<Actividad> actividades = null;
@@ -370,13 +389,13 @@ public class CampingTest {
       
          camping.borrarActividad(a, "112");
          actividadesfinal = camping.devolverActividadesClientes("112");
-         int tamanyofinal = actividadesfinal.size();
+         int tamanyofinal = actividadesfinal.size();*/
         
        
        
-      // System.out.println(tamanyoinicial);
-       //System.out.println(tamanyofinal);
-       assertTrue(tamanyofinal==tamanyoinicial-1);
+       System.out.println(tamanyo);
+       System.out.println(tamanyofinal);
+       assertTrue(tamanyofinal==tamanyo-1);
         
     }
     
