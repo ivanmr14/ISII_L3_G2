@@ -14,12 +14,12 @@ import vista.Cliente;
  * @author alex
  */
 public class Parcela {
-    String parcelaID = "";      //Es la posición de la parcela    ej:A02
-    String posicionX = "";      //Posicion x es una letra         ej:  A
-    String posicionY = "";      //Posición y son 2 numeros        ej: 02
-    int tamanyoParcela;
-    float precioPorDia;
-    boolean luz;
+    private String parcelaID = "";      //Es la posición de la parcela    ej:A02
+    private String posicionX = "";      //Posicion x es una letra         ej:  A
+    private String posicionY = "";      //Posición y son 2 numeros        ej: 02
+    private int tamanyoParcela;
+    private float precioPorDia;
+    private boolean luz;
     //Boolean reservada; //esto lo decidirá un metodo de la clase reserva en el modelo.
     //Cliente cliente = null;
     
