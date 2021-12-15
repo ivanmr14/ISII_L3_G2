@@ -14,7 +14,7 @@ import vista.Cliente;
  * @author alex
  */
 public class Parcela {
-    private String parcelaID = "";      //Es la posición de la parcela    ej:A02
+    protected String parcelaID = "";      //Es la posición de la parcela    ej:A02
     private String posicionX = "";      //Posicion x es una letra         ej:  A
     private String posicionY = "";      //Posición y son 2 numeros        ej: 02
     private int tamanyoParcela;
