@@ -70,8 +70,9 @@ public class DAO {
             
             // Operación SQL sobre la base de datos
             String con = "INSERT INTO prueba (id_prueba) VALUES ('" + id + "')";
-            PreparedStatement preparedStmt = conexionBD.prepareStatement(con);
-            preparedStmt.executeUpdate();
+          //  PreparedStatement preparedStmt = conexionBD.prepareStatement(con);
+          //  preparedStmt.executeUpdate();
+            s.executeUpdate(con);          
             
         }
         catch(Exception e){ // Error al realizar la operación
@@ -104,9 +105,10 @@ public class DAO {
                         
             
             //Envío la query al la base de datos.
-            PreparedStatement preparedStmt = conexionBD.prepareStatement(query);
-            preparedStmt.executeUpdate();
-            s.close();
+      //      PreparedStatement preparedStmt = conexionBD.prepareStatement(query);
+        //    preparedStmt.executeUpdate();
+         //   s.close();
+                s.executeUpdate(query);
         }
         catch(Exception e){     //Fallo durante la operación
             System.out.println("No se ha actualizar la actividad.");
@@ -173,8 +175,8 @@ public class DAO {
             String query = "DELETE FROM actividad WHERE id_actividad = '" + id_actividad + "'";
             
             //Envío la query al la base de datos.
-            PreparedStatement preparedStmt = conexionBD.prepareStatement(query);
-            preparedStmt.executeUpdate();
+          //  PreparedStatement preparedStmt = conexionBD.prepareStatement(query);
+            s.executeUpdate(query);
         }
         catch(Exception e){     //Fallo durante la operación
             System.out.println("No se ha eliminado la actividad.");
