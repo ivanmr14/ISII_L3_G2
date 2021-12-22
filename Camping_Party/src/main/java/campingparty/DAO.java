@@ -44,6 +44,7 @@ public class DAO {
             String con = "INSERT INTO actividad (nombre, horario, cliente) VALUES ('"+ id + "', '"+ horario +"', '"+ dni +"')";
            PreparedStatement preparedStmt = conexionBD.prepareStatement(con);
             preparedStmt.executeUpdate();
+            s.close();
         }
         catch(Exception e){ // Error al realizar la operación
             //System.out.println("No se ha completado insertar en tabla");
@@ -63,6 +64,7 @@ public class DAO {
             String con = "INSERT INTO prueba (id_prueba) VALUES ('" + id + "')";
             PreparedStatement preparedStmt = conexionBD.prepareStatement(con);
             preparedStmt.executeUpdate();
+            s.close();
         }
         catch(Exception e){ // Error al realizar la operación
             System.out.println("No se ha completado la operación");
@@ -92,6 +94,7 @@ public class DAO {
             //Envío la query al la base de datos.
             PreparedStatement preparedStmt = conexionBD.prepareStatement(query);
             preparedStmt.executeUpdate();
+            s.close();
         }
         catch(Exception e){     //Fallo durante la operación
             System.out.println("No se ha actualizar la actividad.");
