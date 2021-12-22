@@ -37,13 +37,15 @@ public class DAO {
     public void insertarEnTabla(String id, String horario, String dni) throws SQLException{
         cont++;
         Statement s = conexionBD.createStatement();
+        
         try {
             //int id = 10; // Valor a insertar
             
             // Operación SQL sobre la base de datos
             String con = "INSERT INTO actividad (nombre, horario, cliente) VALUES ('"+ id + "', '"+ horario +"', '"+ dni +"')";
-           PreparedStatement preparedStmt = conexionBD.prepareStatement(con);
-            preparedStmt.executeUpdate();
+         //  PreparedStatement preparedStmt = conexionBD.prepareStatement(con);
+           // preparedStmt.executeUpdate();
+            s.executeUpdate(con);
             
         }
         catch(Exception e){ // Error al realizar la operación
@@ -59,19 +61,23 @@ public class DAO {
     
     }
     
-       public void realizarOperacion(){
+       public void realizarOperacion() throws SQLException{
         ResultSet resultados2 = null;
+        
+        Statement s = conexionBD.createStatement();
         try {
             int id = 10; // Valor a insertar
-            Statement s = conexionBD.createStatement();
+            
             // Operación SQL sobre la base de datos
             String con = "INSERT INTO prueba (id_prueba) VALUES ('" + id + "')";
             PreparedStatement preparedStmt = conexionBD.prepareStatement(con);
             preparedStmt.executeUpdate();
-            s.close();
+            
         }
         catch(Exception e){ // Error al realizar la operación
             System.out.println("No se ha completado la operación");
+        } finally{
+            s.close();
         }
     
     
@@ -86,10 +92,12 @@ public class DAO {
      * @param horaYDia 
      * @param actividad 
      */
-    public void actualizarActividadEnBD(int id, String n){
+    public void actualizarActividadEnBD(int id, String n) throws SQLException{
+        Statement s = conexionBD.createStatement();
+        
         try {
             //Me conecto a la base de datos.
-            Statement s = conexionBD.createStatement();
+            
             
             //Genero la operación SQL para la base de datos
             String query = "UPDATE actividad SET nombre = '" + n +"' WHERE id_actividad = " + id +" ";
@@ -103,6 +111,8 @@ public class DAO {
         catch(Exception e){     //Fallo durante la operación
             System.out.println("No se ha actualizar la actividad.");
             System.err.println(e);
+        } finally{
+            s.close();
         }
     
     }
@@ -116,14 +126,15 @@ public class DAO {
      * 
      * 
      */
-    public Actividad consultarActividadEnBD(String id_actividad){
+    public Actividad consultarActividadEnBD(String id_actividad) throws SQLException{
         
         Actividad a = new Actividad();
         a.setId(id_actividad);
         
+        Statement s = conexionBD.createStatement();
         try {
             
-            Statement s = conexionBD.createStatement();
+            
             ResultSet res = null;
             
             
@@ -144,16 +155,19 @@ public class DAO {
         }
         catch(Exception e){     //Fallo durante la operación
             System.out.println("No se ha consultar la actividad.");
+        } finally{
+            s.close();
         }
         
         return a;
         
     }  
     
-    public void eliminarActividdad (int id_actividad){
-         try {
+    public void eliminarActividdad (int id_actividad) throws SQLException{
+        Statement s = conexionBD.createStatement();
+        try {
             //Me conecto a la base de datos.
-            Statement s = conexionBD.createStatement();
+            
             
             //Genero la operación SQL para la base de datos
             String query = "DELETE FROM actividad WHERE id_actividad = '" + id_actividad + "'";
@@ -164,15 +178,18 @@ public class DAO {
         }
         catch(Exception e){     //Fallo durante la operación
             System.out.println("No se ha eliminado la actividad.");
+        } finally{
+            s.close();
         }
     
     }
     
-    public void realizarConsulta(){
+    public void realizarConsulta() throws SQLException{
         ResultSet resultados = null;
+        Statement s = conexionBD.createStatement();
         try {
             String con;
-            Statement s = conexionBD.createStatement();
+            
             // Consulta SQL
             con = "SELECT id_prueba FROM prueba";
             resultados = s.executeQuery(con);
@@ -183,16 +200,20 @@ public class DAO {
             }
         } catch (Exception e) { // Error en al realizar la consulta
             System.out.println("Error en la petición a la BD");
+        } finally{
+            s.close();
         }
     }
 
-    public ArrayList<String> devolverActividadesCliente(String dni) {
+    public ArrayList<String> devolverActividadesCliente(String dni) throws SQLException {
         ResultSet res = null;
         ArrayList<String> aux = new ArrayList<String>();
         //String str;
+        
+        Statement s = conexionBD.createStatement();
         try {
             String con;
-            Statement s = conexionBD.createStatement();
+            
             // Consulta SQL
             con = "SELECT * FROM actividad WHERE cliente = '"+dni+"'";
             res = s.executeQuery(con);
@@ -214,6 +235,8 @@ public class DAO {
             
         } catch (Exception e) { // Error en al realizar la consulta
             System.out.println("Error en la devolucion de las actividades ");
+        } finally{
+            s.close();
         }
         
        
