@@ -34,22 +34,26 @@ public class DAO {
     }
     
     
-    public void insertarEnTabla(String id, String horario, String dni){
+    public void insertarEnTabla(String id, String horario, String dni) throws SQLException{
         cont++;
-       
+        Statement s = conexionBD.createStatement();
         try {
             //int id = 10; // Valor a insertar
-            Statement s = conexionBD.createStatement();
+            
             // Operación SQL sobre la base de datos
             String con = "INSERT INTO actividad (nombre, horario, cliente) VALUES ('"+ id + "', '"+ horario +"', '"+ dni +"')";
            PreparedStatement preparedStmt = conexionBD.prepareStatement(con);
             preparedStmt.executeUpdate();
-            s.close();
+            
         }
         catch(Exception e){ // Error al realizar la operación
             //System.out.println("No se ha completado insertar en tabla");
             System.err.println(e.getMessage());
+        }finally{
+            s.close();
         }
+        
+        
         
         
     
